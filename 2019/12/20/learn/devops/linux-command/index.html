@@ -1,0 +1,597 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>程序员必须学会的Linux命令 | 零创世界</title><meta name="description" content="程序员必须学会的Linux命令"><meta name="keywords" content=""><meta name="author" content="颜华达"><meta name="copyright" content="颜华达"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/logo.png"><link rel="preconnect" href="//cdn.jsdelivr.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="程序员必须学会的Linux命令"><meta name="twitter:description" content="程序员必须学会的Linux命令"><meta name="twitter:image" content="http://q1q6z0e19.bkt.clouddn.com/Linux.jpeg"><meta property="og:type" content="article"><meta property="og:title" content="程序员必须学会的Linux命令"><meta property="og:url" content="http://yanhuada.cn/2019/12/20/learn/devops/linux-command/"><meta property="og:site_name" content="零创世界"><meta property="og:description" content="程序员必须学会的Linux命令"><meta property="og:image" content="http://q1q6z0e19.bkt.clouddn.com/Linux.jpeg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.css"><link rel="canonical" href="http://yanhuada.cn/2019/12/20/learn/devops/linux-command/"><link rel="next" title="面试时这几个常问问题，你会了吗？" href="/http:/yanhuada.cn/2019/12/16/interview/emotional-problems/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight_copy: 'false',
+  highlight_lang: 'true',
+  highlight_shrink: 'false',
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  copyright: undefined,
+  copy_copyright_js: false,
+  ClickShowText: undefined,
+  medium_zoom: 'false',
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"}
+  
+}</script></head><body><div id="header"> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">零创世界</a></span><i class="fa fa-bars fa-fw toggle-menu pull_right close" aria-hidden="true"></i><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/service/"><i class="fa-fw fa fa-tags"></i><span> 服务</span></a></div><div class="menus_item"><a class="site-page" href="/resources/"><i class="fa-fw fa fa-folder-open"></i><span> 资源</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></span><span class="pull_right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lazyload avatar_img" src="http://q1q6z0e19.bkt.clouddn.com/%E9%9B%B6%E5%88%9B.png" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is_center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">10</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/service/"><i class="fa-fw fa fa-tags"></i><span> 服务</span></a></div><div class="menus_item"><a class="site-page" href="/resources/"><i class="fa-fw fa fa-folder-open"></i><span> 资源</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#执行查看帮助命令"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">执行查看帮助命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#常用系统工作命令"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">常用系统工作命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#echo命令"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">echo命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#date命令"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">date命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#reboot命令"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">reboot命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#poweroff命令"><span class="toc_mobile_items-number">2.4.</span> <span class="toc_mobile_items-text">poweroff命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#wget命令"><span class="toc_mobile_items-number">2.5.</span> <span class="toc_mobile_items-text">wget命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#ps命令"><span class="toc_mobile_items-number">2.6.</span> <span class="toc_mobile_items-text">ps命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#top命令"><span class="toc_mobile_items-number">2.7.</span> <span class="toc_mobile_items-text">top命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#pidof命令"><span class="toc_mobile_items-number">2.8.</span> <span class="toc_mobile_items-text">pidof命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#kill命令"><span class="toc_mobile_items-number">2.9.</span> <span class="toc_mobile_items-text">kill命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#killall命令"><span class="toc_mobile_items-number">2.10.</span> <span class="toc_mobile_items-text">killall命令</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#系统状态检测命令"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">系统状态检测命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#ifconfig命令"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">ifconfig命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#uname命令"><span class="toc_mobile_items-number">3.2.</span> <span class="toc_mobile_items-text">uname命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#uptime命令"><span class="toc_mobile_items-number">3.3.</span> <span class="toc_mobile_items-text">uptime命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#free命令"><span class="toc_mobile_items-number">3.4.</span> <span class="toc_mobile_items-text">free命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#who命令"><span class="toc_mobile_items-number">3.5.</span> <span class="toc_mobile_items-text">who命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#last命令"><span class="toc_mobile_items-number">3.6.</span> <span class="toc_mobile_items-text">last命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#history命令"><span class="toc_mobile_items-number">3.7.</span> <span class="toc_mobile_items-text">history命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#sosreport命令"><span class="toc_mobile_items-number">3.8.</span> <span class="toc_mobile_items-text">sosreport命令</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#工作目录切换命令"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">工作目录切换命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#pwd命令"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">pwd命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#cd命令"><span class="toc_mobile_items-number">6.</span> <span class="toc_mobile_items-text">cd命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#ls命令"><span class="toc_mobile_items-number">7.</span> <span class="toc_mobile_items-text">ls命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#文本文件编辑命令"><span class="toc_mobile_items-number">8.</span> <span class="toc_mobile_items-text">文本文件编辑命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#cat命令"><span class="toc_mobile_items-number">8.1.</span> <span class="toc_mobile_items-text">cat命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#more命令"><span class="toc_mobile_items-number">8.2.</span> <span class="toc_mobile_items-text">more命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#head命令"><span class="toc_mobile_items-number">8.3.</span> <span class="toc_mobile_items-text">head命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#tail命令"><span class="toc_mobile_items-number">8.4.</span> <span class="toc_mobile_items-text">tail命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#tr命令"><span class="toc_mobile_items-number">8.5.</span> <span class="toc_mobile_items-text">tr命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#wc命令"><span class="toc_mobile_items-number">8.6.</span> <span class="toc_mobile_items-text">wc命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#stat命令"><span class="toc_mobile_items-number">8.7.</span> <span class="toc_mobile_items-text">stat命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#cut命令"><span class="toc_mobile_items-number">8.8.</span> <span class="toc_mobile_items-text">cut命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#diff命令"><span class="toc_mobile_items-number">8.9.</span> <span class="toc_mobile_items-text">diff命令</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#文件目录管理命令"><span class="toc_mobile_items-number">9.</span> <span class="toc_mobile_items-text">文件目录管理命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#touch命令"><span class="toc_mobile_items-number">9.1.</span> <span class="toc_mobile_items-text">touch命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#mkdir命令"><span class="toc_mobile_items-number">9.2.</span> <span class="toc_mobile_items-text">mkdir命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#cp命令"><span class="toc_mobile_items-number">9.3.</span> <span class="toc_mobile_items-text">cp命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#mv命令"><span class="toc_mobile_items-number">9.4.</span> <span class="toc_mobile_items-text">mv命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#rm命令"><span class="toc_mobile_items-number">9.5.</span> <span class="toc_mobile_items-text">rm命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#dd命令"><span class="toc_mobile_items-number">9.6.</span> <span class="toc_mobile_items-text">dd命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#file命令"><span class="toc_mobile_items-number">9.7.</span> <span class="toc_mobile_items-text">file命令</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#打包压缩与搜索命令"><span class="toc_mobile_items-number">10.</span> <span class="toc_mobile_items-text">打包压缩与搜索命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#tar-命令"><span class="toc_mobile_items-number">10.1.</span> <span class="toc_mobile_items-text">tar 命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#grep命令"><span class="toc_mobile_items-number">10.2.</span> <span class="toc_mobile_items-text">grep命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#find命令"><span class="toc_mobile_items-number">10.3.</span> <span class="toc_mobile_items-text">find命令</span></a></li></ol></li></ol></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行查看帮助命令"><span class="toc-number">1.</span> <span class="toc-text">执行查看帮助命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用系统工作命令"><span class="toc-number">2.</span> <span class="toc-text">常用系统工作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#echo命令"><span class="toc-number">2.1.</span> <span class="toc-text">echo命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#date命令"><span class="toc-number">2.2.</span> <span class="toc-text">date命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reboot命令"><span class="toc-number">2.3.</span> <span class="toc-text">reboot命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#poweroff命令"><span class="toc-number">2.4.</span> <span class="toc-text">poweroff命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wget命令"><span class="toc-number">2.5.</span> <span class="toc-text">wget命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ps命令"><span class="toc-number">2.6.</span> <span class="toc-text">ps命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#top命令"><span class="toc-number">2.7.</span> <span class="toc-text">top命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pidof命令"><span class="toc-number">2.8.</span> <span class="toc-text">pidof命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kill命令"><span class="toc-number">2.9.</span> <span class="toc-text">kill命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#killall命令"><span class="toc-number">2.10.</span> <span class="toc-text">killall命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统状态检测命令"><span class="toc-number">3.</span> <span class="toc-text">系统状态检测命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ifconfig命令"><span class="toc-number">3.1.</span> <span class="toc-text">ifconfig命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uname命令"><span class="toc-number">3.2.</span> <span class="toc-text">uname命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uptime命令"><span class="toc-number">3.3.</span> <span class="toc-text">uptime命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#free命令"><span class="toc-number">3.4.</span> <span class="toc-text">free命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#who命令"><span class="toc-number">3.5.</span> <span class="toc-text">who命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last命令"><span class="toc-number">3.6.</span> <span class="toc-text">last命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#history命令"><span class="toc-number">3.7.</span> <span class="toc-text">history命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sosreport命令"><span class="toc-number">3.8.</span> <span class="toc-text">sosreport命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作目录切换命令"><span class="toc-number">4.</span> <span class="toc-text">工作目录切换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd命令"><span class="toc-number">5.</span> <span class="toc-text">pwd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cd命令"><span class="toc-number">6.</span> <span class="toc-text">cd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls命令"><span class="toc-number">7.</span> <span class="toc-text">ls命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本文件编辑命令"><span class="toc-number">8.</span> <span class="toc-text">文本文件编辑命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cat命令"><span class="toc-number">8.1.</span> <span class="toc-text">cat命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#more命令"><span class="toc-number">8.2.</span> <span class="toc-text">more命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#head命令"><span class="toc-number">8.3.</span> <span class="toc-text">head命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tail命令"><span class="toc-number">8.4.</span> <span class="toc-text">tail命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tr命令"><span class="toc-number">8.5.</span> <span class="toc-text">tr命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wc命令"><span class="toc-number">8.6.</span> <span class="toc-text">wc命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stat命令"><span class="toc-number">8.7.</span> <span class="toc-text">stat命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cut命令"><span class="toc-number">8.8.</span> <span class="toc-text">cut命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#diff命令"><span class="toc-number">8.9.</span> <span class="toc-text">diff命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录管理命令"><span class="toc-number">9.</span> <span class="toc-text">文件目录管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#touch命令"><span class="toc-number">9.1.</span> <span class="toc-text">touch命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mkdir命令"><span class="toc-number">9.2.</span> <span class="toc-text">mkdir命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cp命令"><span class="toc-number">9.3.</span> <span class="toc-text">cp命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mv命令"><span class="toc-number">9.4.</span> <span class="toc-text">mv命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rm命令"><span class="toc-number">9.5.</span> <span class="toc-text">rm命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dd命令"><span class="toc-number">9.6.</span> <span class="toc-text">dd命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#file命令"><span class="toc-number">9.7.</span> <span class="toc-text">file命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包压缩与搜索命令"><span class="toc-number">10.</span> <span class="toc-text">打包压缩与搜索命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tar-命令"><span class="toc-number">10.1.</span> <span class="toc-text">tar 命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grep命令"><span class="toc-number">10.2.</span> <span class="toc-text">grep命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#find命令"><span class="toc-number">10.3.</span> <span class="toc-text">find命令</span></a></li></ol></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://q1q6z0e19.bkt.clouddn.com/Linux.jpeg)"><div id="post-info"><div id="post-title"><div class="posttitle">程序员必须学会的Linux命令</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2019-12-20<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2019-12-20</time><span class="post-meta__separator mobile_hidden">|</span><span class="mobile_hidden"><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/devops-linux/">devops - linux</a></span><div class="post-meta-wordcount"><i class="fa fa-eye post-meta__icon" aria-hidden="true">       </i><span>阅读量: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h3 id="执行查看帮助命令"><a href="#执行查看帮助命令" class="headerlink" title="执行查看帮助命令"></a>执行查看帮助命令</h3><p>在命令行终端中可以输入man man命令来查看man命令自身的帮助信息。<br /><strong>man命令中常用按键以及用途</strong> </p>
+<p>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空格键</strong></td>
+<td align="center">向下翻一页</td>
+</tr>
+<tr>
+<td align="center"><strong>PaGe down</strong></td>
+<td align="center">向下翻一页</td>
+</tr>
+<tr>
+<td align="center"><strong>PaGe up</strong></td>
+<td align="center">最大尝试次数</td>
+</tr>
+<tr>
+<td align="center"><strong>home</strong></td>
+<td align="center">直接前往首页</td>
+</tr>
+<tr>
+<td align="center"><strong>end</strong></td>
+<td align="center">直接前往尾页</td>
+</tr>
+<tr>
+<td align="center"><strong>/</strong></td>
+<td align="center">从上至下搜索某个关键词， 如“/linux”</td>
+</tr>
+<tr>
+<td align="center"><strong>?</strong></td>
+<td align="center">从下至上搜索某个关键词， 如“?linux”</td>
+</tr>
+<tr>
+<td align="center"><strong>n</strong></td>
+<td align="center">定位到下一个搜索到的关键词</td>
+</tr>
+<tr>
+<td align="center"><strong>N</strong></td>
+<td align="center">定位到上一个搜索到的关键词</td>
+</tr>
+<tr>
+<td align="center"><strong>q</strong></td>
+<td align="center">退出帮助文档</td>
+</tr>
+</tbody></table>
+<p>一般来讲， 使用man命令查看到的帮助内容信息都会很长很多， 如果读者不了解帮助文档信息的目录结构和操作方法，乍一看到这么多信息可能会感到相当困惑。 <br /><strong>man命令帮助信息的结构以及意义</strong> </p>
+<p>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>NAME</strong></td>
+<td align="center">命令的名称</td>
+</tr>
+<tr>
+<td align="center"><strong>SYNOPSIS</strong></td>
+<td align="center">参数的大致使用方法</td>
+</tr>
+<tr>
+<td align="center">DESCRIPTION</td>
+<td align="center">介绍说明</td>
+</tr>
+<tr>
+<td align="center">EXAMPLES</td>
+<td align="center">演示（附带简单说明）</td>
+</tr>
+<tr>
+<td align="center"><strong>end</strong></td>
+<td align="center">直接前往尾页</td>
+</tr>
+<tr>
+<td align="center">OVERVIEW</td>
+<td align="center">概述</td>
+</tr>
+<tr>
+<td align="center">DEFAULTS</td>
+<td align="center">默认的功能</td>
+</tr>
+<tr>
+<td align="center">OPTIONS</td>
+<td align="center">具体的可用选项（带介绍）</td>
+</tr>
+<tr>
+<td align="center">ENVIRONMENT</td>
+<td align="center">环境变量</td>
+</tr>
+<tr>
+<td align="center">FILES</td>
+<td align="center">用到的文件</td>
+</tr>
+<tr>
+<td align="center">SEE ALSO</td>
+<td align="center">相关的资料</td>
+</tr>
+<tr>
+<td align="center">HISTORY</td>
+<td align="center">维护历史与联系方式</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="常用系统工作命令"><a href="#常用系统工作命令" class="headerlink" title="常用系统工作命令"></a>常用系统工作命令</h3><h4 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h4><p>echo命令用于在终端输出字符串或变量提取后的值， 格式为“echo [字符串 | $变量]”。</p>
+<h4 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a>date命令</h4><p>date命令用于显示及设置系统的时间或日期， 格式为“date[选项] [+指定的格式]”。<br />只需在强大的date命令中输入以“+”号开头的参数， 即可按照指定格式来输出系统的时间或日期， 这样在日常工作时便可以把备份数据的命令与指定格式输出的时间信息结合到一起。例如， 把打包后的文件自动按照“年-月-日”的格式打包成“backup-2017-9-1.tar.gz”， 用户只需要看一眼文件名称就能大概了解到每个文件的备份时间了。<br /><br><br />*<em>date命令中的参数以及作用 *</em></p>
+<hr>
+<p>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>%t</strong></td>
+<td align="center">跳格[Tab键]</td>
+</tr>
+<tr>
+<td align="center"><strong>%H</strong></td>
+<td align="center">小时（ 00～ 23）</td>
+</tr>
+<tr>
+<td align="center"><strong>%I</strong></td>
+<td align="center">小时（ 00～ 12）</td>
+</tr>
+<tr>
+<td align="center"><strong>%M</strong></td>
+<td align="center">分钟（ 00～ 59）</td>
+</tr>
+<tr>
+<td align="center"><strong>%S</strong></td>
+<td align="center">秒（ 00～ 59）</td>
+</tr>
+<tr>
+<td align="center"><strong>%j</strong></td>
+<td align="center">今年中的第几天</td>
+</tr>
+</tbody></table>
+<h4 id="reboot命令"><a href="#reboot命令" class="headerlink" title="reboot命令"></a>reboot命令</h4><p>reboot命令用于重启系统， 其格式为reboot。<br />由于重启计算机这种操作会涉及硬件资源的管理权限， 因此默认只能使用root管理员来重启。</p>
+<h4 id="poweroff命令"><a href="#poweroff命令" class="headerlink" title="poweroff命令"></a>poweroff命令</h4><p>poweroff命令用于关闭系统， 其格式为poweroff。<br />该命令与reboot命令相同， 都会涉及硬件资源的管理权限， 因此默认只有root管理员才可以关闭电脑， 其命令如下。</p>
+<h4 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a>wget命令</h4><p>wget命令用于在终端中下载网络文件， 格式为“wget [参数]下载地址”。<br />*<em>wget命令的参数以及作用 *</em></p>
+<p>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-b</strong></td>
+<td align="center">后台下载模式</td>
+</tr>
+<tr>
+<td align="center"><strong>-p</strong></td>
+<td align="center">下载到指定目录</td>
+</tr>
+<tr>
+<td align="center"><strong>-t</strong></td>
+<td align="center">最大尝试次数</td>
+</tr>
+<tr>
+<td align="center"><strong>-c</strong></td>
+<td align="center">断点续传</td>
+</tr>
+<tr>
+<td align="center"><strong>-P</strong></td>
+<td align="center">下载页面内所有资源， 包括图片、 视频等</td>
+</tr>
+<tr>
+<td align="center"><strong>-r</strong></td>
+<td align="center">递归下载</td>
+</tr>
+</tbody></table>
+<h4 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h4><p>ps命令用于查看系统中的进程状态， 格式为“ps [参数]”。<br /><strong>ps命令的参数以及作用</strong><br>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-a</strong></td>
+<td align="center">显示所有进程（包括其他用户的进程）</td>
+</tr>
+<tr>
+<td align="center"><strong>-u</strong></td>
+<td align="center">用户以及其他详细信息</td>
+</tr>
+<tr>
+<td align="center"><strong>-x</strong></td>
+<td align="center">显示没有控制终端的进程</td>
+</tr>
+</tbody></table>
+<p>Linux系统中时刻运行着许多进程， 如果能够合理地管理它们， 则可以优化系统的性能。 在Linux系统中， 有5种常见的进程状态， 分别为运行、 中断、 不可中断、 僵死与停止， 其各自含义如下所示：</p>
+<ul>
+<li><strong>R（运行）</strong> ： 进程正在运行或在运行队列中等待。</li>
+<li><strong>S（中断）</strong> ： 进程处于休眠中， 当某个条件形成后或者接收到信号时， 则脱离该 状态。</li>
+<li><strong>D（不可中断）</strong> ： 进程不响应系统异步信号， 即便用kill命令也不能将其中断。</li>
+<li>*<em>Z（僵死） *</em>： 进程已经终止， 但进程描述符依然存在, 直到父进程调用wait4()系统函数后将进程释放。</li>
+<li><strong>T（停止）</strong> ： 进程收到停止信号后停止运行。</li>
+</ul>
+<h4 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h4><p>top命令用于动态地监视进程活动与系统负载等信息， 其格式为top。<br />top命令相当强大， 能够动态地查看系统运维状态， 完全将它看作Linux中的“强化版的Windows任务管理器”。</p>
+<h4 id="pidof命令"><a href="#pidof命令" class="headerlink" title="pidof命令"></a>pidof命令</h4><p>pidof命令用于查询某个指定服务进程的PID值， 格式为“pidof [参数] [服务名称]”。<br />每个进程的进程号码值（PID） 是唯一的， 因此可以通过PID来区分不同的进程。 </p>
+<h4 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h4><p>kill命令用于终止某个指定PID的服务进程， 格式为“kill [参数] [进程PID]”。</p>
+<h4 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h4><p>killall命令用于终止某个指定名称的服务所对应的全部进程， 格式为： “killall [参数] [进程名称]”。<br />通常来讲， 复杂软件的服务程序会有多个进程协同为用户提供服务， 如果逐个去结束这些进程会比较麻烦， 此时可以使用killall命令来批量结束某个服务程序带有的全部进程。</p>
+<p><strong>注意</strong>：如果我们在系统终端中执行一个命令后想立即停止它， 可以同时按下Ctrl + C组合键（生产环境中比较常用的一个快捷键） ， 这样将立即终止该命令的进程。 或者， 如果有些命令在执行时不断地在屏幕上输出信息， 影响到后续命令的输入， 则可以在执行命令时在末尾添加上一个&amp;符号， 这样命令将进入系统后台来执行。</p>
+<hr>
+<h3 id="系统状态检测命令"><a href="#系统状态检测命令" class="headerlink" title="系统状态检测命令"></a>系统状态检测命令</h3><h4 id="ifconfig命令"><a href="#ifconfig命令" class="headerlink" title="ifconfig命令"></a>ifconfig命令</h4><p>ifconfig命令用于获取网卡配置与网络状态等信息， 格式为“ifconfig [网络设备] [参数]”。<br />使用ifconfig命令来查看本机当前的网卡配置与网络状态等信息时， 其实主要查看的就是网卡名称、 inet参数后面的IP地址、 ether参数后面的网卡物理地址（又称为MAC地址） ， 以及RX、 TX的接收数据包与发送数据包的个数及累计流量。</p>
+<h4 id="uname命令"><a href="#uname命令" class="headerlink" title="uname命令"></a>uname命令</h4><p>uname命令用于查看系统内核与系统版本等信息， 格式为“uname [-a]”。<br />在使用uname命令时， 一般会固定搭配上-a参数来完整地查看当前系统的内核名称、 主机名、 内核发行版本、 节点名、系统时间、 硬件名称、 硬件平台、 处理器类型以及操作系统名称等信息。</p>
+<h4 id="uptime命令"><a href="#uptime命令" class="headerlink" title="uptime命令"></a>uptime命令</h4><p>uptime用于查看系统的负载信息， 格式为uptime。<br />uptime命令真的很棒， 它可以显示当前系统时间、 系统已运行时间、 启用终端数量以及平均负载值等信息。 平均负载值指的是系统在最近1分钟、 5分钟、 15分钟内的压力情况（ 下面加粗的信息部分） ； 负载值越低越好， 尽量不要长期超过1，在生产环境中不要超过5。</p>
+<h4 id="free命令"><a href="#free命令" class="headerlink" title="free命令"></a>free命令</h4><p>free用于显示当前系统中内存的使用量信息， 格式为“free[-h]”。<br />为了保证Linux系统不会因资源耗尽而突然宕机， 运维人员需要时刻关注内存的使用量。 在使用free命令时， 可以结合使用-h参数以更人性化的方式输出当前内存的实时使用量信息。</p>
+<h4 id="who命令"><a href="#who命令" class="headerlink" title="who命令"></a>who命令</h4><p>who用于查看当前登入主机的用户终端信息， 格式为“who[参数]”。<br /><br><br />这三个简单的字母可以快速显示出所有正在登录本机的用户的名称以及他们正在开启的终端信息。<br /><br><br /><strong>执行who命令的结果</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">登录的用户名</th>
+<th align="center">终端设备</th>
+<th align="center">登录到系统的时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">root</td>
+<td align="center">:0</td>
+<td align="center">2017-08-24 17:52 (:0)</td>
+</tr>
+<tr>
+<td align="center">root</td>
+<td align="center">pts/0</td>
+<td align="center">2017-08-24 17:52 (:0)</td>
+</tr>
+</tbody></table>
+<h4 id="last命令"><a href="#last命令" class="headerlink" title="last命令"></a>last命令</h4><p>last命令用于查看所有系统的登录记录， 格式为“last [参数]”。<br />使用last命令可以查看本机的登录记录。 但是， 由于这些信息都是以日志文件的形式保存在系统中， 因此黑客可以很容易地对内容进行篡改。 千万不要单纯以该命令的输出信息而判断系统有无被恶意入侵！</p>
+<h4 id="history命令"><a href="#history命令" class="headerlink" title="history命令"></a>history命令</h4><p>history命令用于显示历史执行过的命令， 格式为“history [-c]”。<br /><br><br />history命令应该是作者最喜欢的命令。 执行history命令能显示出当前用户在本地计算机中执行过的最近1000条命令记录。 如果觉得1000不够用， 还可以自定义/etc/profile文件中的HISTSIZE变量值。 在使用history命令时， 如果使用-c参数则会清空所有的命令历史记录。 还可以使用“!编码数字”的方式来重复执行某一次的命令。 总之， history命令有很多有趣的玩法等待您去开发。</p>
+<p>历史命令会被保存到用户家目录中的.bash_history文件中。 Linux系统中以点（.） 开头的文件均代表隐藏文件， 这些文件大多数为系统服务文件， 可以用cat命令查看其文件内容。</p>
+<h4 id="sosreport命令"><a href="#sosreport命令" class="headerlink" title="sosreport命令"></a>sosreport命令</h4><p>sosreport命令用于收集系统配置及架构信息并输出诊断文档， 格式为sosreport。<br /><br><br />当Linux系统出现故障需要联系技术支持人员时， 大多数时候都要先使用这个命令来简单收集系统的运行状态和服务配置信息， 以便让技术支持人员能够远程解决一些小问题， 亦或让他们能提前了解某些复杂问题。</p>
+<hr>
+<h3 id="工作目录切换命令"><a href="#工作目录切换命令" class="headerlink" title="工作目录切换命令"></a>工作目录切换命令</h3><h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h3><p>pwd命令用于显示用户当前所处的工作目录， 格式为“pwd[选项]”。<br /></p>
+<h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h3><p>cd命令用于切换工作路径， 格式为“cd [目录名称]”。<br />这个命令应该是最常用的一个Linux命令了。 可以通过cd命令迅速、 灵活地切换到不同的工作目录。 除了常见的切换目录方式， 还可以使用“cd -”命令返回到上一次所处的目录， 使用“cd..”命令进入上级目录， 以及使用“cd ~”命令切换到当前用户的家目录， 亦或使用“cd ~username”切换到其他用户的家目录。 </p>
+<h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>ls命令用于显示目录中的文件信息， 格式为“ls [选项] [文件] ”。<br />所处的工作目录不同， 当前工作目录下的文件肯定也不同。 使用ls命令的“-a”参数看到全部文件（包括隐藏文件） ，使用“-l”参数可以查看文件的属性、 大小等详细信息。 将这两个参数整合之后， 再执行ls命令即可查看当前目录中的所有文件并输出这些文件的属性信息<br />如果想要查看目录属性信息， 则需要额外添加一个-d参数。 </p>
+<hr>
+<h3 id="文本文件编辑命令"><a href="#文本文件编辑命令" class="headerlink" title="文本文件编辑命令"></a>文本文件编辑命令</h3><h4 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h4><p>cat命令用于查看纯文本文件（内容较少的） ， 格式为“cat[选项] [文件]”。<br />Linux系统中有多个用于查看文本内容的命令， 每个命令都有自己的特点， 比如这个cat命令就是用于查看内容较少的纯文本文件的。 cat这个命令也很好记， 因为cat在英语中是“猫”的意思， 小猫咪是不是给您一种娇小、 可爱的感觉呢？<br /><br><br />如果在查看文本内容时还想顺便显示行号的话， 不妨在cat命令后面追加一个-n参数。</p>
+<h4 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h4><p>more命令用于查看纯文本文件（ 内容较多的） ， 格式为“more [选项]文件”。<br />如果需要阅读长篇小说或者非常长的配置文件， 那么“小猫咪”可就真的不适合了。 因为一旦使用cat命令阅读长篇的文本内容， 信息就会在屏幕上快速翻滚， 导致自己还没有来得及看到， 内容就已经翻篇了。 因此对于长篇的文本内容， 推荐使用more命令来查看。 more命令会在最下面使用百分比的形式来提示您已经阅读了多少内容。 您还可以使用空格键或回车键向下翻页。</p>
+<h4 id="head命令"><a href="#head命令" class="headerlink" title="head命令"></a>head命令</h4><p>head命令用于查看纯文本文档的前N行， 格式为“head [选项] [文件]”。<br />在阅读文本内容时， 谁也难以保证会按照从头到尾的顺序往下看完整个文件。 如果只想查看文本中前20行的内容， 该怎么办呢？ head命令可以派上用场了</p>
+<h4 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h4><p>tail命令用于查看纯文本文档的后N行或持续刷新内容， 格式为“tail [选项] [文件]”。<br /><br><br />我们可能还会遇到另外一种情况， 比如需要查看文本内容的最后20行， 这时就需要用到tail命令了。 tail命令的操作方法与head命令非常相似， 只需要执行“tail -n 20 文件名”命令就可以达到这样的效果。 tail命令最强悍的功能是可以持续刷新一个文件的内容， 当想要实时查看最新日志文件时， 这特别有用， 此时的命令格式为“tail -f 文件名”。</p>
+<h4 id="tr命令"><a href="#tr命令" class="headerlink" title="tr命令"></a>tr命令</h4><p>tr命令用于替换文本文件中的字符， 格式为“tr [原始字符][目标字符]”。</p>
+<h4 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h4><p>wc命令用于统计指定文本的行数、 字数、 字节数， 格式为“wc [参数] 文本”。<br /><strong>**wc的参数以及作用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-l</strong></td>
+<td align="center">只显示行数</td>
+</tr>
+<tr>
+<td align="center"><strong>-w</strong></td>
+<td align="center">只显示单词数</td>
+</tr>
+<tr>
+<td align="center"><strong>-c</strong></td>
+<td align="center">只显示字节数</td>
+</tr>
+</tbody></table>
+<h4 id="stat命令"><a href="#stat命令" class="headerlink" title="stat命令"></a>stat命令</h4><p>stat命令用于查看文件的具体存储信息和时间等信息， 格式为“stat 文件名称”。<br /><br><br />stat命令可以用于查看文件的存储信息和时间等信息， 命令stat anaconda-ks.cfg会显示出文件的三种时间状态（已加粗） ： <strong>Access、 Modify、 Change</strong>。</p>
+<h4 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h4><p>cut命令用于按“列”提取文本字符， 格式为“cut [参数] 文本”。<br />在Linux系统中， 如何准确地提取出最想要的数据， 这也是我们应该重点学习的内容。 一般而言， 按基于“行”的方式来提取数据是比较简单的， 只需要设置好要搜索的关键词即可。但是如果按列搜索， 不仅要使用-f参数来设置需要看的列数，还需要使用-d参数来设置间隔符号。 </p>
+<h4 id="diff命令"><a href="#diff命令" class="headerlink" title="diff命令"></a>diff命令</h4><p>diff命令用于比较多个文本文件的差异， 格式为“diff [参数]文件”。<br />在使用diff命令时， 不仅可以使用—brief参数来确认两个文件是否不同， 还可以使用-c参数来详细比较出多个文件的差异之处， 这绝对是判断文件是否被篡改的有力神器。 </p>
+<hr>
+<h3 id="文件目录管理命令"><a href="#文件目录管理命令" class="headerlink" title="文件目录管理命令"></a>文件目录管理命令</h3><h4 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h4><p>touch命令用于创建空白文件或设置文件的时间， 格式为“touch [选项] [文件]”。<br />在创建空白的文本文件方面， 这个touch命令相当简捷， 简捷到没有必要铺开去讲。 比如， touch linuxprobe命令可以创建出一个名为linuxprobe的空白文本文件。 对touch命令来讲， 有难度的操作主要是体现在设置文件内容的修改时间（mtime） 、 文件权限或属性的更改时间（ctime） 与文件的读取时间（atime） 上面。<br /><strong>touch命令的参数及其作用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-a</strong></td>
+<td align="center">仅修改“读取时间”（atime）</td>
+</tr>
+<tr>
+<td align="center"><strong>-m</strong></td>
+<td align="center">仅修改“修改时间”（mtime）</td>
+</tr>
+<tr>
+<td align="center"><strong>-d</strong></td>
+<td align="center">同时修改atime与mtime</td>
+</tr>
+</tbody></table>
+<h4 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h4><p>mkdir命令用于创建空白的目录， 格式为“mkdir [选项] 目录”。<br />在Linux系统中， 文件夹是最常见的文件类型之一。 除了能创建单个空白目录外， mkdir命令还可以结合-p参数来递归创建出具有嵌套叠层关系的文件目录。</p>
+<h4 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h4><p>cp命令用于复制文件或目录， 格式为“cp [选项] 源文件 目标文件”。<br />大家对文件复制操作应该不陌生， 在Linux系统中， 复制操作具体分为3种情况：</p>
+<ul>
+<li>如果目标文件是目录， 则会把源文件复制到该目录中；</li>
+<li>如果目标文件也是普通文件， 则会询问是否要覆盖它；</li>
+<li>如果目标文件不存在， 则执行正常的复制操作。</li>
+</ul>
+<p><strong>cp命令的参数及其作用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-p</strong></td>
+<td align="center">保留原始文件的属性</td>
+</tr>
+<tr>
+<td align="center"><strong>-d</strong></td>
+<td align="center">若对象为“链接文件”， 则保留该“链接文件”的属性</td>
+</tr>
+<tr>
+<td align="center"><strong>-r</strong></td>
+<td align="center">递归持续复制（用于目录）</td>
+</tr>
+<tr>
+<td align="center"><strong>-i</strong></td>
+<td align="center">若目标文件存在则询问是否覆盖</td>
+</tr>
+<tr>
+<td align="center"><strong>-a</strong></td>
+<td align="center">相当于-pdr（p、 d、 r为上述参数）</td>
+</tr>
+</tbody></table>
+<h4 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h4><p>mv命令用于剪切文件或将文件重命名， 格式为“mv [选项]源文件 [目标路径|目标文件名]”。<br />剪切操作不同于复制操作， 因为它会默认把源文件删除掉， 只保留剪切后的文件。 如果在同一个目录中对一个文件进行剪切操作， 其实也就是对其进行重命名：</p>
+<h4 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h4><p>rm命令用于删除文件或目录， 格式为“rm [选项] 文件”。<br /><br><br />在Linux系统中删除文件时， 系统会默认向您询问是否要执行删除操作， 如果不想总是看到这种反复的确认信息， 可在rm命令后跟上-f参数来强制删除。 另外， 想要删除一个目录，需要在rm命令后面一个-r参数才可以， 否则删除不掉。 </p>
+<h4 id="dd命令"><a href="#dd命令" class="headerlink" title="dd命令"></a>dd命令</h4><p>dd命令用于按照指定大小和个数的数据块来复制文件或转换文件， 格式为“dd [参数]”。<br />dd命令是一个比较重要而且比较有特色的一个命令， 它能够让用户按照指定大小和个数的数据块来复制文件的内容。 当然如果愿意的话， 还可以在复制过程中转换其中的数据。<br /><strong>dd命令的参数及其作用</strong><br>**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>if</strong></td>
+<td align="center">输入的文件名称</td>
+</tr>
+<tr>
+<td align="center"><strong>of</strong></td>
+<td align="center">输出的文件名称</td>
+</tr>
+</tbody></table>
+<p> |<br>| <strong>bs</strong> | 设置每个“块”的大小 |<br>| <strong>count</strong> | 设置要复制“块”的个数 |</p>
+<h4 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h4><p>file命令用于查看文件的类型， 格式为“file 文件名”。<br />在Linux系统中， 由于文本、 目录、 设备等所有这些一切都统称为文件， 而我们又不能单凭后缀就知道具体的文件类型， 这时就需要使用file命令来查看文件类型了。</p>
+<hr>
+<h3 id="打包压缩与搜索命令"><a href="#打包压缩与搜索命令" class="headerlink" title="打包压缩与搜索命令"></a>打包压缩与搜索命令</h3><h4 id="tar-命令"><a href="#tar-命令" class="headerlink" title="tar 命令"></a>tar 命令</h4><p>tar命令用于对文件进行打包压缩或解压， 格式为“<strong>tar [选项] [文件]</strong>”。<br /><br><br /><strong>tar命令的参数及其作用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-c</strong></td>
+<td align="center">创建压缩文件</td>
+</tr>
+<tr>
+<td align="center"><strong>-x</strong></td>
+<td align="center">解开压缩文件</td>
+</tr>
+<tr>
+<td align="center"><strong>-t</strong></td>
+<td align="center">查看压缩包内有哪些文件</td>
+</tr>
+<tr>
+<td align="center"><strong>-z</strong></td>
+<td align="center">用Gzip压缩或解压</td>
+</tr>
+<tr>
+<td align="center"><strong>-j</strong></td>
+<td align="center">用bzip2压缩或解压</td>
+</tr>
+<tr>
+<td align="center"><strong>-v</strong></td>
+<td align="center">显示压缩或解压的过程</td>
+</tr>
+<tr>
+<td align="center"><strong>-f</strong></td>
+<td align="center">目标文件名</td>
+</tr>
+<tr>
+<td align="center"><strong>-p</strong></td>
+<td align="center">保留原始的权限与属性</td>
+</tr>
+<tr>
+<td align="center"><strong>-P</strong></td>
+<td align="center">使用绝对路径来压缩</td>
+</tr>
+<tr>
+<td align="center"><strong>-C</strong></td>
+<td align="center">指定解压到的目录</td>
+</tr>
+</tbody></table>
+<h4 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h4><p>grep命令用于在文本中执行关键词搜索， 并显示匹配的结果， 格式为“grep [选项] [文件]”。<br /><strong><br /></strong>grep命令的参数及其作用**</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-b</strong></td>
+<td align="center">将可执行文件（ binary） 当作文本文件（ text） 来搜索</td>
+</tr>
+<tr>
+<td align="center"><strong>-c</strong></td>
+<td align="center">仅显示找到的行数</td>
+</tr>
+<tr>
+<td align="center"><strong>-i</strong></td>
+<td align="center">忽略大小写</td>
+</tr>
+<tr>
+<td align="center"><strong>-n</strong></td>
+<td align="center">显示行号</td>
+</tr>
+<tr>
+<td align="center"><strong>-v</strong></td>
+<td align="center">反向选择——仅列出没有“关键词”的行</td>
+</tr>
+</tbody></table>
+<h4 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h4><p>find命令用于按照指定条件来查找文件， 格式为“find [查找路径] 寻找条件 操作”。</p>
+<p><strong>find命令中的参数以及作用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>参数</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>-name</strong></td>
+<td align="center">匹配名称</td>
+</tr>
+<tr>
+<td align="center"><strong>-perm</strong></td>
+<td align="center">匹配权限（mode为完全匹配， -mode为包含即可）</td>
+</tr>
+<tr>
+<td align="center"><strong>-user</strong></td>
+<td align="center">匹配所有者</td>
+</tr>
+<tr>
+<td align="center"><strong>-group</strong></td>
+<td align="center">匹配所有组</td>
+</tr>
+<tr>
+<td align="center"><strong>-mtime -n +n</strong></td>
+<td align="center">匹配修改内容的时间（-n指n天以内， +n指n天以前）</td>
+</tr>
+<tr>
+<td align="center"><strong>-ctime -n +n</strong></td>
+<td align="center">匹配修改文件权限的时间（-n指n天以内， +n指n天以前）</td>
+</tr>
+<tr>
+<td align="center"><strong>-nouser</strong></td>
+<td align="center">匹配无所有者的文件</td>
+</tr>
+<tr>
+<td align="center"><strong>-nogroup</strong></td>
+<td align="center">匹配无所有组的文件</td>
+</tr>
+<tr>
+<td align="center"><strong>-newer f1 !f2</strong></td>
+<td align="center">匹配比文件f1新但比f2旧的文件</td>
+</tr>
+<tr>
+<td align="center"><strong>- -type b/d/c/p/1/f</strong></td>
+<td align="center">匹配文件类型（后面的字幕参数依次表示块设备、 目录、<br />字符设备、 管道、 链接文件、 文本文件）</td>
+</tr>
+<tr>
+<td align="center"><strong>-size</strong></td>
+<td align="center">匹配文件的大小（+50KB为查找超过50KB的文件，而-50KB为查找小于50KB的文件）</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>-prune</strong></td>
+<td align="center">忽略某个目录</td>
+</tr>
+<tr>
+<td align="center"><strong>-exec …… {};</strong></td>
+<td align="center">后面可跟用于进一步处理搜索结果的命令（下文会有演<br />示）</td>
+</tr>
+</tbody></table>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" target="_blank" rel="noopener">颜华达</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="/http:/yanhuada.cn/2019/12/20/learn/devops/linux-command/">http://yanhuada.cn/2019/12/20/learn/devops/linux-command/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yanhuada.cn">零创世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="http://q1q6z0e19.bkt.clouddn.com/Linux.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button"><i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wx.png"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/zhifubao.png"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2019/12/16/interview/emotional-problems/"><img class="next_cover lazyload" data-src="http://q1q6z0e19.bkt.clouddn.com/mianshi.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>面试时这几个常问问题，你会了吗？</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = '昵称,邮箱'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'iPaRl7ltAVBY6XGnmnoz8EzM-gzGzoHsz',
+  appKey:'YkTl1QShlb2qlFr88zGkIKRj',
+  placeholder:'请填上邮箱，可收到回复...',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></div><footer id="footer" style="background-image: url(http://q1q6z0e19.bkt.clouddn.com/Linux.jpeg)"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2019 By 颜华达</div><div class="icp"><a href="http://www.beian.gov.cn/" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>粤ICP备19154308号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = true; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/tw_cn.js"></script><script>translateInitilization()
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
