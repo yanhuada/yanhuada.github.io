@@ -1,81 +1,423 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>熟读《Linux就该这么学》 | 零创世界</title><meta name="description" content="熟读《Linux就该这么学》"><meta name="keywords" content=""><meta name="author" content="颜华达"><meta name="copyright" content="颜华达"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/me2.jpg"><link rel="preconnect" href="//cdn.jsdelivr.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="熟读《Linux就该这么学》"><meta name="twitter:description" content="熟读《Linux就该这么学》"><meta name="twitter:image" content="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/top2.png"><meta property="og:type" content="article"><meta property="og:title" content="熟读《Linux就该这么学》"><meta property="og:url" content="http://yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/"><meta property="og:site_name" content="零创世界"><meta property="og:description" content="熟读《Linux就该这么学》"><meta property="og:image" content="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/top2.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
-var t = Cookies.get("theme");
-if (autoChangeMode == '1'){
-const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-if (t === undefined){
-  if (isLightMode) activateLightMode()
-  else if (isDarkMode) activateDarkMode()
-  else if (isNotSpecified || hasNoSupport){
-    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-    now = new Date();
-    hour = now.getHours();
-    isNight = hour < 6 || hour >= 18
-    isNight ? activateDarkMode() : activateLightMode()
-}
-} else if (t == 'light') activateLightMode()
-else activateDarkMode()
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="熟读《Linux就该这么学》, 零创世界">
+    <meta name="description" content="资源下载
 
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.css"><link rel="canonical" href="http://yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/"><link rel="prev" title="《熟读丁雪丰译的《SpringBoot实战》" href="/http:/yanhuada.cn/2019/12/06/book/frame/spring-boot-in-action/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  highlight_copy: 'false',
-  highlight_lang: 'true',
-  highlight_shrink: 'false',
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    title: 'Snackbar.bookmark.title',
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime_unit: '天',
-  copyright: undefined,
-  copy_copyright_js: false,
-  ClickShowText: undefined,
-  medium_zoom: 'false',
-  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"}
+PDF下载
+
+
+第1章 部署虚拟环境安装Linux系统准备您的工具安装配置VM虚拟机第2章 新手必须掌握的Linux命令强大好用的Shell&amp;emsp;通常来讲， 计算机硬件是由运算器、 控制器、 存储器、 输入/输出设备等共同">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>熟读《Linux就该这么学》 | 零创世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="alternate" href="/atom.xml" title="零创世界" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">零创世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-}</script></head><body><div id="header"> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">零创世界</a></span><i class="fa fa-bars fa-fw toggle-menu pull_right close" aria-hidden="true"></i><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-tags"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/resources/"><i class="fa-fw fa fa-folder-open"></i><span> 资源</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-heart"></i><span> 友情链接</span></a></div></div></span><span class="pull_right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lazyload avatar_img" src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/me2.jpg" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is_center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is_center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">12</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-tags"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/resources/"><i class="fa-fw fa fa-folder-open"></i><span> 资源</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-heart"></i><span> 友情链接</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第1章-部署虚拟环境安装Linux系统"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">第1章 部署虚拟环境安装Linux系统</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#准备您的工具"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">准备您的工具</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装配置VM虚拟机"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">安装配置VM虚拟机</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第2章-新手必须掌握的Linux命令"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">第2章 新手必须掌握的Linux命令</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#强大好用的Shell"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">强大好用的Shell</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#执行查看帮助命令"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">执行查看帮助命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#常用系统工作命令"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">常用系统工作命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#系统状态检测命令"><span class="toc_mobile_items-number">2.4.</span> <span class="toc_mobile_items-text">系统状态检测命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#工作目录切换命令"><span class="toc_mobile_items-number">2.5.</span> <span class="toc_mobile_items-text">工作目录切换命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#文本文件编辑命令"><span class="toc_mobile_items-number">2.6.</span> <span class="toc_mobile_items-text">文本文件编辑命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#文件目录管理命令"><span class="toc_mobile_items-number">2.7.</span> <span class="toc_mobile_items-text">文件目录管理命令</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#打包压缩与搜索命令"><span class="toc_mobile_items-number">2.8.</span> <span class="toc_mobile_items-text">打包压缩与搜索命令</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第3章-管道符、重定向与环境变量"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">第3章 管道符、重定向与环境变量</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#输入输出重定向"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">输入输出重定向</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#管道命令符"><span class="toc_mobile_items-number">3.2.</span> <span class="toc_mobile_items-text">管道命令符</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#命令行的通配符"><span class="toc_mobile_items-number">3.3.</span> <span class="toc_mobile_items-text">命令行的通配符</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#常用的转义字符"><span class="toc_mobile_items-number">3.4.</span> <span class="toc_mobile_items-text">常用的转义字符</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#重要的环境变量"><span class="toc_mobile_items-number">3.5.</span> <span class="toc_mobile_items-text">重要的环境变量</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#复习题"><span class="toc_mobile_items-number">3.6.</span> <span class="toc_mobile_items-text">复习题</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第4章-Vim编辑器与Shell命令脚本"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">第4章 Vim编辑器与Shell命令脚本</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#Vim文本编辑器"><span class="toc_mobile_items-number">4.1.</span> <span class="toc_mobile_items-text">Vim文本编辑器</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#编写简单文档"><span class="toc_mobile_items-number">4.1.1.</span> <span class="toc_mobile_items-text">编写简单文档</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#配置主机名称"><span class="toc_mobile_items-number">4.1.2.</span> <span class="toc_mobile_items-text">配置主机名称</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#配置网卡信息"><span class="toc_mobile_items-number">4.1.3.</span> <span class="toc_mobile_items-text">配置网卡信息</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#配置Yum软件仓库"><span class="toc_mobile_items-number">4.1.4.</span> <span class="toc_mobile_items-text">配置Yum软件仓库</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#编写Shell脚本"><span class="toc_mobile_items-number">4.2.</span> <span class="toc_mobile_items-text">编写Shell脚本</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#编写简单的脚本"><span class="toc_mobile_items-number">4.2.1.</span> <span class="toc_mobile_items-text">编写简单的脚本</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#接收用户的参数"><span class="toc_mobile_items-number">4.2.2.</span> <span class="toc_mobile_items-text">接收用户的参数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#判断用户的参数"><span class="toc_mobile_items-number">4.2.3.</span> <span class="toc_mobile_items-text">判断用户的参数</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#流程控制语句"><span class="toc_mobile_items-number">4.3.</span> <span class="toc_mobile_items-text">流程控制语句</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#if条件测试语句"><span class="toc_mobile_items-number">4.3.1.</span> <span class="toc_mobile_items-text">if条件测试语句</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#for条件循环语句"><span class="toc_mobile_items-number">4.3.2.</span> <span class="toc_mobile_items-text">for条件循环语句</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#while条件循环语句"><span class="toc_mobile_items-number">4.3.3.</span> <span class="toc_mobile_items-text">while条件循环语句</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#case条件测试语句"><span class="toc_mobile_items-number">4.3.4.</span> <span class="toc_mobile_items-text">case条件测试语句</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#计划任务服务程序"><span class="toc_mobile_items-number">4.4.</span> <span class="toc_mobile_items-text">计划任务服务程序</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#复习题-1"><span class="toc_mobile_items-number">4.5.</span> <span class="toc_mobile_items-text">复习题</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第5章-用户身份与文件权限"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">第5章 用户身份与文件权限</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第6章-存储结构与磁盘划分"><span class="toc_mobile_items-number">6.</span> <span class="toc_mobile_items-text">第6章 存储结构与磁盘划分</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第7章-使用RAID与LVM磁盘阵列技术"><span class="toc_mobile_items-number">7.</span> <span class="toc_mobile_items-text">第7章 使用RAID与LVM磁盘阵列技术</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第8章-iptables与firewalld防火墙"><span class="toc_mobile_items-number">8.</span> <span class="toc_mobile_items-text">第8章 iptables与firewalld防火墙</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第9章-使用ssh服务管理远程主机"><span class="toc_mobile_items-number">9.</span> <span class="toc_mobile_items-text">第9章 使用ssh服务管理远程主机</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第10章-使用Apache服务部署静态网站"><span class="toc_mobile_items-number">10.</span> <span class="toc_mobile_items-text">第10章 使用Apache服务部署静态网站</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第11章-使用vsftpd服务传输文件"><span class="toc_mobile_items-number">11.</span> <span class="toc_mobile_items-text">第11章 使用vsftpd服务传输文件</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第12章-使用Samba或NFS实现文件共享"><span class="toc_mobile_items-number">12.</span> <span class="toc_mobile_items-text">第12章 使用Samba或NFS实现文件共享</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第13章-使用BIND提供域名解析服务"><span class="toc_mobile_items-number">13.</span> <span class="toc_mobile_items-text">第13章 使用BIND提供域名解析服务</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第14章-使用DHCP动态管理主机地址"><span class="toc_mobile_items-number">14.</span> <span class="toc_mobile_items-text">第14章 使用DHCP动态管理主机地址</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第15章-使用Postifx与Dovecot部署邮件系统"><span class="toc_mobile_items-number">15.</span> <span class="toc_mobile_items-text">第15章 使用Postifx与Dovecot部署邮件系统</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第16章-使用Squid部署代理缓存服务"><span class="toc_mobile_items-number">16.</span> <span class="toc_mobile_items-text">第16章 使用Squid部署代理缓存服务</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第17章-使用iSCSI服务部署网络存储"><span class="toc_mobile_items-number">17.</span> <span class="toc_mobile_items-text">第17章 使用iSCSI服务部署网络存储</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第18章-使用MariaDB数据库管理系统"><span class="toc_mobile_items-number">18.</span> <span class="toc_mobile_items-text">第18章 使用MariaDB数据库管理系统</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第19章-使用PXE-Kickstart无人值守安装服务"><span class="toc_mobile_items-number">19.</span> <span class="toc_mobile_items-text">第19章 使用PXE+Kickstart无人值守安装服务</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#第20章-使用LNMP架构部署动态网站环境"><span class="toc_mobile_items-number">20.</span> <span class="toc_mobile_items-text">第20章 使用LNMP架构部署动态网站环境</span></a></li></ol></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-部署虚拟环境安装Linux系统"><span class="toc-number">1.</span> <span class="toc-text">第1章 部署虚拟环境安装Linux系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备您的工具"><span class="toc-number">1.1.</span> <span class="toc-text">准备您的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装配置VM虚拟机"><span class="toc-number">1.2.</span> <span class="toc-text">安装配置VM虚拟机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第2章-新手必须掌握的Linux命令"><span class="toc-number">2.</span> <span class="toc-text">第2章 新手必须掌握的Linux命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强大好用的Shell"><span class="toc-number">2.1.</span> <span class="toc-text">强大好用的Shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行查看帮助命令"><span class="toc-number">2.2.</span> <span class="toc-text">执行查看帮助命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用系统工作命令"><span class="toc-number">2.3.</span> <span class="toc-text">常用系统工作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统状态检测命令"><span class="toc-number">2.4.</span> <span class="toc-text">系统状态检测命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作目录切换命令"><span class="toc-number">2.5.</span> <span class="toc-text">工作目录切换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本文件编辑命令"><span class="toc-number">2.6.</span> <span class="toc-text">文本文件编辑命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录管理命令"><span class="toc-number">2.7.</span> <span class="toc-text">文件目录管理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包压缩与搜索命令"><span class="toc-number">2.8.</span> <span class="toc-text">打包压缩与搜索命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第3章-管道符、重定向与环境变量"><span class="toc-number">3.</span> <span class="toc-text">第3章 管道符、重定向与环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入输出重定向"><span class="toc-number">3.1.</span> <span class="toc-text">输入输出重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道命令符"><span class="toc-number">3.2.</span> <span class="toc-text">管道命令符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令行的通配符"><span class="toc-number">3.3.</span> <span class="toc-text">命令行的通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的转义字符"><span class="toc-number">3.4.</span> <span class="toc-text">常用的转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重要的环境变量"><span class="toc-number">3.5.</span> <span class="toc-text">重要的环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复习题"><span class="toc-number">3.6.</span> <span class="toc-text">复习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第4章-Vim编辑器与Shell命令脚本"><span class="toc-number">4.</span> <span class="toc-text">第4章 Vim编辑器与Shell命令脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim文本编辑器"><span class="toc-number">4.1.</span> <span class="toc-text">Vim文本编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编写简单文档"><span class="toc-number">4.1.1.</span> <span class="toc-text">编写简单文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置主机名称"><span class="toc-number">4.1.2.</span> <span class="toc-text">配置主机名称</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置网卡信息"><span class="toc-number">4.1.3.</span> <span class="toc-text">配置网卡信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置Yum软件仓库"><span class="toc-number">4.1.4.</span> <span class="toc-text">配置Yum软件仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Shell脚本"><span class="toc-number">4.2.</span> <span class="toc-text">编写Shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编写简单的脚本"><span class="toc-number">4.2.1.</span> <span class="toc-text">编写简单的脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接收用户的参数"><span class="toc-number">4.2.2.</span> <span class="toc-text">接收用户的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断用户的参数"><span class="toc-number">4.2.3.</span> <span class="toc-text">判断用户的参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制语句"><span class="toc-number">4.3.</span> <span class="toc-text">流程控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#if条件测试语句"><span class="toc-number">4.3.1.</span> <span class="toc-text">if条件测试语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for条件循环语句"><span class="toc-number">4.3.2.</span> <span class="toc-text">for条件循环语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while条件循环语句"><span class="toc-number">4.3.3.</span> <span class="toc-text">while条件循环语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case条件测试语句"><span class="toc-number">4.3.4.</span> <span class="toc-text">case条件测试语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计划任务服务程序"><span class="toc-number">4.4.</span> <span class="toc-text">计划任务服务程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复习题-1"><span class="toc-number">4.5.</span> <span class="toc-text">复习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第5章-用户身份与文件权限"><span class="toc-number">5.</span> <span class="toc-text">第5章 用户身份与文件权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第6章-存储结构与磁盘划分"><span class="toc-number">6.</span> <span class="toc-text">第6章 存储结构与磁盘划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第7章-使用RAID与LVM磁盘阵列技术"><span class="toc-number">7.</span> <span class="toc-text">第7章 使用RAID与LVM磁盘阵列技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第8章-iptables与firewalld防火墙"><span class="toc-number">8.</span> <span class="toc-text">第8章 iptables与firewalld防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第9章-使用ssh服务管理远程主机"><span class="toc-number">9.</span> <span class="toc-text">第9章 使用ssh服务管理远程主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第10章-使用Apache服务部署静态网站"><span class="toc-number">10.</span> <span class="toc-text">第10章 使用Apache服务部署静态网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第11章-使用vsftpd服务传输文件"><span class="toc-number">11.</span> <span class="toc-text">第11章 使用vsftpd服务传输文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第12章-使用Samba或NFS实现文件共享"><span class="toc-number">12.</span> <span class="toc-text">第12章 使用Samba或NFS实现文件共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第13章-使用BIND提供域名解析服务"><span class="toc-number">13.</span> <span class="toc-text">第13章 使用BIND提供域名解析服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第14章-使用DHCP动态管理主机地址"><span class="toc-number">14.</span> <span class="toc-text">第14章 使用DHCP动态管理主机地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第15章-使用Postifx与Dovecot部署邮件系统"><span class="toc-number">15.</span> <span class="toc-text">第15章 使用Postifx与Dovecot部署邮件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第16章-使用Squid部署代理缓存服务"><span class="toc-number">16.</span> <span class="toc-text">第16章 使用Squid部署代理缓存服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第17章-使用iSCSI服务部署网络存储"><span class="toc-number">17.</span> <span class="toc-text">第17章 使用iSCSI服务部署网络存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第18章-使用MariaDB数据库管理系统"><span class="toc-number">18.</span> <span class="toc-text">第18章 使用MariaDB数据库管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第19章-使用PXE-Kickstart无人值守安装服务"><span class="toc-number">19.</span> <span class="toc-text">第19章 使用PXE+Kickstart无人值守安装服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第20章-使用LNMP架构部署动态网站环境"><span class="toc-number">20.</span> <span class="toc-text">第20章 使用LNMP架构部署动态网站环境</span></a></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/top2.png)"><div id="post-info"><div id="post-title"><div class="posttitle">熟读《Linux就该这么学》</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2019-12-06<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2019-12-23</time><span class="post-meta__separator mobile_hidden">|</span><span class="mobile_hidden"><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E4%B9%A6%E7%B1%8D/">书籍</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E4%B9%A6%E7%B1%8D/DevOps/">DevOps</a></span><div class="post-meta-wordcount"><i class="fa fa-eye post-meta__icon" aria-hidden="true">       </i><span>阅读量: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><p><strong>资源下载</strong></p>
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">零创世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">熟读《Linux就该这么学》</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/" class="post-category">
+                                书籍
+                            </a>
+                        
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/DevOps/" class="post-category">
+                                DevOps
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>资源下载</strong></p>
 <blockquote>
 <p><a href="https://pan.baidu.com/s/1rbdLNG0pC8eXXkplNXTjWg" target="_blank" rel="noopener">PDF下载</a></p>
 </blockquote>
 <hr>
 <h2 id="第1章-部署虚拟环境安装Linux系统"><a href="#第1章-部署虚拟环境安装Linux系统" class="headerlink" title="第1章 部署虚拟环境安装Linux系统"></a>第1章 部署虚拟环境安装Linux系统</h2><h3 id="准备您的工具"><a href="#准备您的工具" class="headerlink" title="准备您的工具"></a>准备您的工具</h3><h3 id="安装配置VM虚拟机"><a href="#安装配置VM虚拟机" class="headerlink" title="安装配置VM虚拟机"></a>安装配置VM虚拟机</h3><h2 id="第2章-新手必须掌握的Linux命令"><a href="#第2章-新手必须掌握的Linux命令" class="headerlink" title="第2章 新手必须掌握的Linux命令"></a>第2章 新手必须掌握的Linux命令</h2><h3 id="强大好用的Shell"><a href="#强大好用的Shell" class="headerlink" title="强大好用的Shell"></a>强大好用的Shell</h3><p>&emsp;通常来讲， 计算机硬件是由运算器、 控制器、 存储器、 输入/输出设备等共同组成的， 而让各种硬件设备各司其职且又能协同运行的东西就是系统内核。 Linux系统的内核负责完成对硬件资源的分配、 调度等管理任务。 由此可见， 系统内核对计算机的正常运行来讲是太重要了， 因此一般不建议直接去编辑内核中的参数， 而是让用户通过基于系统调用接口开发出的程序或服务来管理计算机， 以满足日常工作的需要， 如图2-1所示。</p>
 <p>&emsp;必须肯定的是， Linux系统中有些图形化工具（比如逻辑卷管理器[Logical Volume Manager， LVM]） 确实非常好用， 极大地降低了运维人员操作出错的概率， 值得称赞。 但是， 很多图形化工具其实是调用了脚本来完成相应的工作， 往往只是为了完成某种工作而设计的， 缺乏Linux命令 原有的灵活性及可控性。 再者， 图形化工具相较于Linux命令行界面会更加消耗系统资源， 因此经验丰富的运维人员甚至都不会给Linux系统安装图形界面， 需要开始运维工作时直接通过命令行模式远程连接过去， 不得不说这样做确实挺高效的。</p>
-<p><img alt="图2-1 用户与Linux系统的交互" data-src class="lazyload"></p>
+<p><img src="" alt="图2-1 用户与Linux系统的交互"></p>
 <p>&emsp;Shell就是这样的一个命令行工具。 Shell（也称为终端或壳） 充当的是人与内核（硬件） 之间的翻译官， 用户把一些命令“告诉”终端， 它就会调用相应的程序服务去完成某些工作。现在包括红帽 系统在内的许多主流Linux系统默认使用的终端是Bash（Bourne-Again SHell） 解释器。 主流Linux系统选择Bash解释器作为命令行终端主要有以下4项优势， 读者可以在今后的学习和生产工作中细细体会Linux系统命令行的美妙之处， 真正从心里爱上它们。</p>
 <ul>
 <li>通过上下方向键来调取过往执行过的Linux命令；</li>
@@ -214,14 +556,12 @@ function activateLightMode(){
 <p><strong>1.echo命令</strong></p>
 <p>&emsp;echo命令用于在终端输出字符串或变量提取后的值， 格式为“echo [字符串 | $变量]”。</p>
 <p>&emsp;例如， 把指定字符串“Linuxprobe.com”输出到终端屏幕的命令为：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# echo Linuxprobe.com</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# echo Linuxprobe.com</code></pre>
 <p>&emsp;该命令会在终端屏幕上显示如下信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Linuxprobe.com</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">Linuxprobe.com</code></pre>
 <p>&emsp;下面， 我们使用$变量的方式提取变量SHELL的值， 并将其输出到屏幕上：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# echo $SHELL</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">/bin/bash</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# echo $SHELL
+/bin/bash</code></pre>
 <p><strong>2. date命令</strong></p>
 <p>&emsp;date命令用于显示及设置系统的时间或日期， 格式为“date[选项] [+指定的格式]”。</p>
 <p>&emsp;只需在强大的date命令中输入以“+”号开头的参数， 即可按照指定格式来输出系统的时间或日期， 这样在日常工作时便可以把备份数据的命令与指定格式输出的时间信息结合到一起。例如， 把打包后的文件自动按照“年-月-日”的格式打包成“backup-2017-9-1.tar.gz”， 用户只需要看一眼文件名称就能大概了解到每个文件的备份时间了。 date命令中常见的参数格式及作用如表2-4所示。</p>
@@ -260,32 +600,28 @@ function activateLightMode(){
 </tr>
 </tbody></table>
 <p>&emsp;按照默认格式查看当前系统时间的date命令如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# date</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Mon Dec  9 13:58:40 CST 2019</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# date
+Mon Dec  9 13:58:40 CST 2019</code></pre>
 <p>&emsp;按照“年-月-日 小时:分钟:秒”的格式查看当前系统时间的date命令如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# date "+%Y-%m-%d %H:%M:%S"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">2019-12-09 14:01:53</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# date "+%Y-%m-%d %H:%M:%S"
+2019-12-09 14:01:53</code></pre>
 <p>&emsp;将系统的当前时间设置为2017年9月1日8点30分的date命令如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# date -s "20170901 8:30:00"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Fri Sep 1 08:30:00 CST 2017</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# date -s "20170901 8:30:00"
+Fri Sep 1 08:30:00 CST 2017</code></pre>
 <p>&emsp;再次使用date命令并按照默认的格式查看当前的系统时间， 如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# date</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Fri Sep 1 08:30:01 CST 2017</span></pre></td></tr></table></figure>
-
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# date
+Fri Sep 1 08:30:01 CST 2017</code></pre>
 <p>&emsp;date命令中的参数%j可用来查看今天是当年中的第几天。这个参数能够很好地区分备份时间的新旧， 即数字越大， 越靠近当前时间。 该参数的使用方式以及显示结果如下所示。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# date "+%j"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">343</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# date "+%j"
+343</code></pre>
 <p><strong>3. reboot命令</strong></p>
 <p>&emsp;reboot命令用于重启系统， 其格式为reboot。</p>
 <p>&emsp;由于重启计算机这种操作会涉及硬件资源的管理权限， 因此默认只能使用root管理员来重启， 其命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# reboot</span></pre></td></tr></table></figure>
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# reboot</code></pre>
 <p><strong>4. poweroff命令</strong></p>
 <p>&emsp;poweroff命令用于关闭系统， 其格式为poweroff。</p>
 <p>&emsp;该命令与reboot命令相同， 都会涉及硬件资源的管理权限， 因此默认只有root管理员才可以关闭电脑， 其命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[root@izwm9udzga32q8z /]# poweroff</span></pre></td></tr></table></figure>
-
-
+<pre class=" language-Shell"><code class="language-Shell">[root@izwm9udzga32q8z /]# poweroff</code></pre>
 <p><strong>5. wget命令</strong></p>
 <p>&emsp;wget命令用于在终端中下载网络文件， 格式为“wget [参数]下载地址”。</p>
 <p>&emsp;如果您没有Linux系统的管理经验， 当前只需了解一下wget命令的参数以及作用， 然后看一下下面的演示实验即可，切记不要急于求成。 后面章节将逐步讲解Linux系统的配置管理方法， 可以等您掌握了网卡的配置方法后再来进行这个实验操作。 表2-5所示为wget命令的参数以及参数的作用。</p>
@@ -359,7 +695,7 @@ function activateLightMode(){
 <p><strong>7. top命令</strong></p>
 <p>&emsp;top命令用于动态地监视进程活动与系统负载等信息， 其格式为top。</p>
 <p>&emsp;top命令相当强大， 能够动态地查看系统运维状态， 完全将它看作Linux中的“强化版的Windows任务管理器”。 top命令的运行界面如图2-5所示。</p>
-<p><img alt="图2-5 top命令的运行界面" data-src class="lazyload"></p>
+<p><img src="" alt="图2-5 top命令的运行界面"></p>
 <p>&emsp;在图2-5中， top命令执行结果的前5行为系统整体的统计信息， 其所代表的含义如下。</p>
 <ul>
 <li>第1行： 系统时间、 运行时间、 登录终端数、 系统负载（三个数值分别为1分钟、 5分钟、 15分钟内的平均值， 数值越小意味着负载越低） 。</li>
@@ -375,9 +711,7 @@ function activateLightMode(){
 <li>错误输出重定向（STDERR，文件描述符为2）：默认输出到屏幕。</li>
 </ul>
 <p>&emsp;&emsp;比如我们分别查看两个文件的属性信息，其中第二个文件是不存在的，虽然针对这两个文件的操作都分别会在屏幕上输出一些数据信息，但这两个操作的差异其实很大：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在上述命令中，名为linuxprobe的文件是存在的，输出信息是该文件的一些相关权限、所有者、所属组、文件大小及修改时间等信息，这也是该命令的标准输出信息。而名为xxxxxx的第二个文件是不存在的，因此在执行完ls命令之后显示的报错提示信息也是该命令的错误输出信息。那么，要想把原本输出到屏幕上的数据转而写入到文件当中，就要区别对待这两种输出信息。</p>
+<pre><code></code></pre><p>&emsp;&emsp;在上述命令中，名为linuxprobe的文件是存在的，输出信息是该文件的一些相关权限、所有者、所属组、文件大小及修改时间等信息，这也是该命令的标准输出信息。而名为xxxxxx的第二个文件是不存在的，因此在执行完ls命令之后显示的报错提示信息也是该命令的错误输出信息。那么，要想把原本输出到屏幕上的数据转而写入到文件当中，就要区别对待这两种输出信息。</p>
 <p>&emsp;&emsp;对于输入重定向来讲，用到的符号及其作用如表3-1所示。</p>
 <center>表3-1 输入重定向中用到的符号及其作用</center>
 
@@ -433,24 +767,12 @@ function activateLightMode(){
 </tr>
 </tbody></table>
 <p>&emsp;&emsp;对于重定向中的标准输出模式，可以省略文件描述符1不写，而错误输出模式的文件描述符2是必须要写的。我们先来小试牛刀。通过标准输出重定向将man bash命令原本要输出到屏幕的信息写入到文件readme.txt中，然后显示readme.txt文件中的内容。具体命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;有没有感觉到很方便呢？我们接下来尝试输出重定向技术中的覆盖写入与追加写入这两种不同模式带来的变化。首先通过覆盖写入模式向readme.txt文件写入一行数据（该文件中包含上一个实验的man命令信息），然后再通过追加写入模式向文件再写入一次数据，其命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在执行cat命令之后，可以看到如下所示的文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;虽然都是输出重定向技术，但是不同命令的标准输出和错误输出还是有区别的。例如查看当前目录中某个文件的信息，这里linuxprobe文件为例。因为这个文件是真实存在的，因此使用标准输出即可将原本要输出到屏幕的信息写入到文件中，而错误的输出重定向则依然把信息输出到了屏幕上。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;如果想把命令的报错信息写入到文件，该怎么操作呢？当用户在执行一个自动化的Shell脚本时，这个操作会特别有用，而且特别实用，因为它可以把整个脚本执行过程中的报错信息都记录到文件中，便于安装后的排错工作。接下来我们以一个不存在的文件进行实验演示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;输入重定向相对来说有些冷门，在工作中遇到的概率会小一点。输入重定向的作用是把文件直接导入到命令中。接下来使用输入重定向把readme.txt文件导入给wc -l命令，统计一下文件中的内容行数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<blockquote>
+<pre><code></code></pre><p>&emsp;&emsp;有没有感觉到很方便呢？我们接下来尝试输出重定向技术中的覆盖写入与追加写入这两种不同模式带来的变化。首先通过覆盖写入模式向readme.txt文件写入一行数据（该文件中包含上一个实验的man命令信息），然后再通过追加写入模式向文件再写入一次数据，其命令如下：</p>
+<pre><code></code></pre><p>&emsp;&emsp;在执行cat命令之后，可以看到如下所示的文件内容：</p>
+<pre><code></code></pre><p>&emsp;&emsp;虽然都是输出重定向技术，但是不同命令的标准输出和错误输出还是有区别的。例如查看当前目录中某个文件的信息，这里linuxprobe文件为例。因为这个文件是真实存在的，因此使用标准输出即可将原本要输出到屏幕的信息写入到文件中，而错误的输出重定向则依然把信息输出到了屏幕上。</p>
+<pre><code></code></pre><p>&emsp;&emsp;如果想把命令的报错信息写入到文件，该怎么操作呢？当用户在执行一个自动化的Shell脚本时，这个操作会特别有用，而且特别实用，因为它可以把整个脚本执行过程中的报错信息都记录到文件中，便于安装后的排错工作。接下来我们以一个不存在的文件进行实验演示：</p>
+<pre><code></code></pre><p>&emsp;&emsp;输入重定向相对来说有些冷门，在工作中遇到的概率会小一点。输入重定向的作用是把文件直接导入到命令中。接下来使用输入重定向把readme.txt文件导入给wc -l命令，统计一下文件中的内容行数。</p>
+<pre><code></code></pre><blockquote>
 <p><strong>注意：</strong> 上述命令实际上等同于接下来要学习的cat readme.txt | wc -l的管道符命令组合。</p>
 </blockquote>
 <h3 id="管道命令符"><a href="#管道命令符" class="headerlink" title="管道命令符"></a>管道命令符</h3><p>&emsp;&emsp;细心的读者肯定还记得在2.6节学习tr命令时曾经见到过一个名为管道符的东西。同时按下键盘上的Shift+\键即可输入管道符，其执行格式为“命令A | 命令B”。命令符的作用也可以用一句话来概括“把前一个命令原本要输出到屏幕的数据当作是后一个命令的标准输入”。在2.8节讲解grep文本搜索命令时，我们通过匹配关键词/sbin/nologin找出了所有被限制登录系统的用户。在学完本节内容后，完全可以把下面这两条命令合并为一条：</p>
@@ -459,35 +781,17 @@ function activateLightMode(){
 <li>统计文本行数的命令则是wc -l。</li>
 </ul>
 <p>&emsp;&emsp;现在要做的就是把搜索命令的输出值传递给统计命令，即把原本要输出到屏幕的用户信息列表再交给wc命令作进一步的加工，因此只需要把管道符放到两条命令之间即可，具体如下。这简直是太方便了！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;这个管道符就像一个法宝，我们可以将它套用到其他不同的命令上，比如用翻页的形式查看/etc目录中的文件列表及属性信息（这些内容默认会一股脑儿地显示到屏幕上，根本看不清楚）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在修改用户密码时，通常都需要输入两次密码以进行确认，这在编写自动化脚本时将成为一个非常致命的缺陷。通过把管道符和passwd命令的—stdin参数相结合，我们可以用一条命令来完成密码重置操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;大家是不是觉得管道符命令有些相见恨晚？管道符的玩法还有很多，比如，在发送电子邮件时，默认采用交互式的方式来进行，我们完全可以利用一条结合了管道符的命令语句，把编辑好的内容与标题一起“打包”，最终用这一条命令实现邮件的发送。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;如果读者是一名Linux新手，可能会觉得上面的命令组合已经十分复杂了，但是有过运维经验的读者又会感觉如隔靴挠痒般不过瘾，他们希望能将这样方便的命令写得更高级一些，功能更强大一些。比如通过重定向技术能够一次性地把多行信息打包输入或输出，让日常工作更有效率。为了大家对我们这本书的捧场，刘遄老师当然要义不容辞地把技术拱手奉上。</p>
+<pre><code></code></pre><p>&emsp;&emsp;这个管道符就像一个法宝，我们可以将它套用到其他不同的命令上，比如用翻页的形式查看/etc目录中的文件列表及属性信息（这些内容默认会一股脑儿地显示到屏幕上，根本看不清楚）：</p>
+<pre><code></code></pre><p>&emsp;&emsp;在修改用户密码时，通常都需要输入两次密码以进行确认，这在编写自动化脚本时将成为一个非常致命的缺陷。通过把管道符和passwd命令的—stdin参数相结合，我们可以用一条命令来完成密码重置操作：</p>
+<pre><code></code></pre><p>&emsp;&emsp;大家是不是觉得管道符命令有些相见恨晚？管道符的玩法还有很多，比如，在发送电子邮件时，默认采用交互式的方式来进行，我们完全可以利用一条结合了管道符的命令语句，把编辑好的内容与标题一起“打包”，最终用这一条命令实现邮件的发送。</p>
+<pre><code></code></pre><p>&emsp;&emsp;如果读者是一名Linux新手，可能会觉得上面的命令组合已经十分复杂了，但是有过运维经验的读者又会感觉如隔靴挠痒般不过瘾，他们希望能将这样方便的命令写得更高级一些，功能更强大一些。比如通过重定向技术能够一次性地把多行信息打包输入或输出，让日常工作更有效率。为了大家对我们这本书的捧场，刘遄老师当然要义不容辞地把技术拱手奉上。</p>
 <p>&emsp;&emsp;下面这条自造的命令就结合使用了mail邮件命令与输入重定向的分界符，其目的是让用户一直输入内容，直到用户输入了其自定义的分界符时，才结束输入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;当然，大家千万不要误以为管道命令符只能在一个命令组合中使用一次，我们完全可以这样使用：“命令A| 命令B| 命令C”。为了帮助读者进一步理解管道符的作用，刘遄老师在讲课时经常会把管道符描述成“任意门”。想必大家小时候都看过“哆啦A梦”动画片吧。哆啦A梦（也就是我们常称的机器猫）经常为了取悦大雄而从口袋中掏出一件件宝贝，其中好多次就用到了任意门这个道具。其实，管道符就好像是用于实现数据穿越的任意门，可以帮我们提高工作效率，完成之前不敢想象的复杂工作。</p>
+<pre><code></code></pre><p>&emsp;&emsp;当然，大家千万不要误以为管道命令符只能在一个命令组合中使用一次，我们完全可以这样使用：“命令A| 命令B| 命令C”。为了帮助读者进一步理解管道符的作用，刘遄老师在讲课时经常会把管道符描述成“任意门”。想必大家小时候都看过“哆啦A梦”动画片吧。哆啦A梦（也就是我们常称的机器猫）经常为了取悦大雄而从口袋中掏出一件件宝贝，其中好多次就用到了任意门这个道具。其实，管道符就好像是用于实现数据穿越的任意门，可以帮我们提高工作效率，完成之前不敢想象的复杂工作。</p>
 <h3 id="命令行的通配符"><a href="#命令行的通配符" class="headerlink" title="命令行的通配符"></a>命令行的通配符</h3><p>&emsp;&emsp;大家可能都遇到过提笔忘字的尴尬，作为Linux运维人员，我们有时候也会遇到明明一个文件的名称就在嘴边但就是想不起来的情况。如果就记得一个文件的开头几个字母，想遍历查找出所有以这个关键词开头的文件，该怎么操作呢？又比如，假设想要批量查看所有硬盘文件的相关权限属性，一种方式是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;幸亏我的硬盘文件和分区只有3个，要是有几百个，估计需要花费一天的时间来忙这个事情了。由此可见，这种方式的效率确实很低。虽然我们在第6章才会讲解Linux系统的存储结构和FHS，但现在我们应该能看出一些简单规律了。比如，这些硬盘设备文件都是以sda开头并且存放到了/dev目录中，这样一来，即使我们不知道硬盘的分区编号和具体分区的个数，也可以使用通配符来搞定。顾名思义，通配符就是通用的匹配信<br>息的符号，比如星号（*）代表匹配零个或多个字符，问号（?）代表匹配单个字符，中括号内加上数字[0-9]代表匹配0～9之间的单个数字的字符，而中括号内加上字母[abc]则是代表匹配a、b、c三个字符中的任意一个字符。俗话讲“百闻不如一见，看书不如实验”，下面我们就来匹配所有在/dev目录中且以sda开头的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;如果只想查看文件名为sda开头，但是后面还紧跟其他某一个字符的文件的相关信息，该怎么操作呢？这时就需要用到问号来进行通配了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;除了使用[0-9]来匹配0~9之间的单个数字，也可以用[135]这样的方式仅匹配这三个指定数字中的一个，若没有匹配到，则不会显示出来：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<h3 id="常用的转义字符"><a href="#常用的转义字符" class="headerlink" title="常用的转义字符"></a>常用的转义字符</h3><p>&emsp;&emsp;为了能够更好地理解用户的表达，Shell解释器还提供了特别丰富的转义字符来处理输入的特殊数据。刘遄老师以近十年的工作和培训为基础，愣是用了两周时间从数十个转义字符中提炼出了4个最常用的转义字符！这件事情也让我深刻反省了很长时间。原本认为图书写的越厚，作者越是大牛，现在发现这种观念完全是错误的，希望读者在读完本书后能体会到刘遄老师的用心付出。</p>
+<pre><code></code></pre><p>&emsp;&emsp;幸亏我的硬盘文件和分区只有3个，要是有几百个，估计需要花费一天的时间来忙这个事情了。由此可见，这种方式的效率确实很低。虽然我们在第6章才会讲解Linux系统的存储结构和FHS，但现在我们应该能看出一些简单规律了。比如，这些硬盘设备文件都是以sda开头并且存放到了/dev目录中，这样一来，即使我们不知道硬盘的分区编号和具体分区的个数，也可以使用通配符来搞定。顾名思义，通配符就是通用的匹配信<br>息的符号，比如星号（*）代表匹配零个或多个字符，问号（?）代表匹配单个字符，中括号内加上数字[0-9]代表匹配0～9之间的单个数字的字符，而中括号内加上字母[abc]则是代表匹配a、b、c三个字符中的任意一个字符。俗话讲“百闻不如一见，看书不如实验”，下面我们就来匹配所有在/dev目录中且以sda开头的文件：</p>
+<pre><code></code></pre><p>&emsp;&emsp;如果只想查看文件名为sda开头，但是后面还紧跟其他某一个字符的文件的相关信息，该怎么操作呢？这时就需要用到问号来进行通配了。</p>
+<pre><code></code></pre><p>&emsp;&emsp;除了使用[0-9]来匹配0~9之间的单个数字，也可以用[135]这样的方式仅匹配这三个指定数字中的一个，若没有匹配到，则不会显示出来：</p>
+<pre><code></code></pre><h3 id="常用的转义字符"><a href="#常用的转义字符" class="headerlink" title="常用的转义字符"></a>常用的转义字符</h3><p>&emsp;&emsp;为了能够更好地理解用户的表达，Shell解释器还提供了特别丰富的转义字符来处理输入的特殊数据。刘遄老师以近十年的工作和培训为基础，愣是用了两周时间从数十个转义字符中提炼出了4个最常用的转义字符！这件事情也让我深刻反省了很长时间。原本认为图书写的越厚，作者越是大牛，现在发现这种观念完全是错误的，希望读者在读完本书后能体会到刘遄老师的用心付出。</p>
 <p>&emsp;&emsp;4个最常用的转义字符如下所示。</p>
 <ul>
 <li>反斜杠（\）：使反斜杠后面的一个变量变为单纯的字符串。</li>
@@ -496,31 +800,17 @@ function activateLightMode(){
 <li>反引号（“）：把其中的命令执行后返回结果。</li>
 </ul>
 <p>&emsp;&emsp;我们先定义一个名为PRICE的变量并赋值为5，然后输出以双引号括起来的字符串与变量信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;接下来，我们希望能够输出“Price is $5”，即价格是5美元的字符串内容，但碰巧美元符号与变量提取符号合并后的$$作用是显示当前程序的进程ID号码，于是命令执行后输出的内容并不是我们所预期的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;要想让第一个“$”乖乖地作为美元符号，那么就需要使用反斜杠（\）来进行转义，将这个命令提取符转义成单纯的文本，去除其特殊功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;而如果只需要某个命令的输出值时，可以像命令这样，将命令用反引号括起来，达到预期的效果。例如，将反引号与uname -a命令结合，然后使用echo命令来查看本机的Linux版本和内核信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-
-
-<h3 id="重要的环境变量"><a href="#重要的环境变量" class="headerlink" title="重要的环境变量"></a>重要的环境变量</h3><p>&emsp;&emsp;变量是计算机系统用于保存可变值的数据类型。在Linux系统中，变量名称一般都是大写的，这是一种约定俗成的规范。我们可以直接通过变量名称来提取到对应的变量值。Linux系统中的环境变量是用来定义系统运行环境的一些参数，比如每个用户不同的家目录、邮件存放位置等。</p>
+<pre><code></code></pre><p>&emsp;&emsp;接下来，我们希望能够输出“Price is $5”，即价格是5美元的字符串内容，但碰巧美元符号与变量提取符号合并后的$$作用是显示当前程序的进程ID号码，于是命令执行后输出的内容并不是我们所预期的：</p>
+<pre><code></code></pre><p>&emsp;&emsp;要想让第一个“$”乖乖地作为美元符号，那么就需要使用反斜杠（\）来进行转义，将这个命令提取符转义成单纯的文本，去除其特殊功能。</p>
+<pre><code></code></pre><p>&emsp;&emsp;而如果只需要某个命令的输出值时，可以像命令这样，将命令用反引号括起来，达到预期的效果。例如，将反引号与uname -a命令结合，然后使用echo命令来查看本机的Linux版本和内核信息：</p>
+<pre><code></code></pre><h3 id="重要的环境变量"><a href="#重要的环境变量" class="headerlink" title="重要的环境变量"></a>重要的环境变量</h3><p>&emsp;&emsp;变量是计算机系统用于保存可变值的数据类型。在Linux系统中，变量名称一般都是大写的，这是一种约定俗成的规范。我们可以直接通过变量名称来提取到对应的变量值。Linux系统中的环境变量是用来定义系统运行环境的一些参数，比如每个用户不同的家目录、邮件存放位置等。</p>
 <p>&emsp;&emsp;细心的读者应该发现了，本节和上一节的标题名都分别加了形容词——重要的、常见的。原因其实不言而喻——要想让Linux系统能够正常运行并且为用户提供服务，需要数百个环境变量来协同工作，我们没有必要逐一查看、学习每一个变量，而是应该在有限的篇幅中精讲最重要的内容。</p>
 <p>&emsp;&emsp;为了通过环境变量帮助Linux系统构建起能够为用户提供服务的工作运行环境，需要数百个变量协同工作才能完成。您当然没有必要去把每一个变量都看一遍，而应该在最宝贵的书籍中为读者精讲最重要的内容。为了更好地帮助大家理解变量的作用，刘遄老师给大家举个例子。前文中曾经讲到，在Linux系统中一切都是文件，Linux命令也不例外。那么，在用户执行了一条命令之后，Linux系统中到底发生了什么事情呢？简单来说，命令在Linux中的执行分为4个步骤。</p>
 <p>&emsp;&emsp;第1步：判断用户是否以绝对路径或相对路径的方式输入命令（如/bin/ls），如果是的话则直接执行。</p>
 <p>&emsp;&emsp;第2步：Linux系统检查用户输入的命令是否为“别名命令”，即用一个自定义的命令名称来替换原本的命令名称。可以用alias命令来创建一个属于自己的命令别名，格式为“alias别名=命令”。若要取消一个命令别名，则是用unalias命令，格式为“unalias 别名”。我们之前在使用rm命令删除文件时，Linux系统都会要求我们再确认是否执行删除操作，其实这就是Linux系统为了防止用户误删除文件而特意设置的rm别名命令，接下来我们把它取消掉：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;第3步：Bash解释器判断用户输入的是内部命令还是外部命令。内部命令是解释器内部的指令，会被直接执行；而用户在绝大部分时间输入的是外部命令，这些命令交由步骤4继续处理。可以使用“type命令名称”来判断用户输入的命令是内部命令还是外部命令。</p>
+<pre><code></code></pre><p>&emsp;&emsp;第3步：Bash解释器判断用户输入的是内部命令还是外部命令。内部命令是解释器内部的指令，会被直接执行；而用户在绝大部分时间输入的是外部命令，这些命令交由步骤4继续处理。可以使用“type命令名称”来判断用户输入的命令是内部命令还是外部命令。</p>
 <p>&emsp;&emsp;第4步：系统在多个路径中查找用户输入的命令文件，而定义这些路径的变量叫作PATH，可以简单地把它理解成是“解释器的小助手”，作用是告诉Bash解释器待执行的命令可能存放的位置，然后Bash解释器就会乖乖地在这些位置中逐个查找。PATH是由多个路径值组成的变量，每个路径值之间用冒<br>号间隔，对这些路径的增加和删除操作将影响到Bash解释器对Linux命令的查找。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;这里有比较经典的问题：“为什么不能将当前目录（.）添加到PATH中呢? ” 原因是，尽管可以将当前目录（.）添加到PATH变量中，从而在某些情况下可以让用户免去输入命令所在路径的麻烦。但是，如果黑客在比较常用的公共目录/tmp中存放了一个与ls或cd命令同名的木马文件，而用户又恰巧在公共目录中执行了这些命令，那么就极有可能中招了。</p>
+<pre><code></code></pre><p>&emsp;&emsp;这里有比较经典的问题：“为什么不能将当前目录（.）添加到PATH中呢? ” 原因是，尽管可以将当前目录（.）添加到PATH变量中，从而在某些情况下可以让用户免去输入命令所在路径的麻烦。但是，如果黑客在比较常用的公共目录/tmp中存放了一个与ls或cd命令同名的木马文件，而用户又恰巧在公共目录中执行了这些命令，那么就极有可能中招了。</p>
 <p>&emsp;&emsp;所以，作为一名态度谨慎、有经验的运维人员，在接手了一台Linux系统后一定会在执行命令前先检查PATH变量中是否有可疑的目录，另外读者从前面的PATH变量示例中是否也感觉到环境变量特别有用呢。我们可以使用env命令来查看到Linux系统中所有的环境变量，而刘遄老师为您精挑细选出了最重要的10个环境变量，如表3-3所示。</p>
 <center>表3-3　Linux系统中最重要的10个环境变量</center>
 
@@ -573,16 +863,9 @@ function activateLightMode(){
 </tr>
 </tbody></table>
 <p>&emsp;&emsp;Linux作为一个多用户多任务的操作系统，能够为每个用户提供独立的、合适的工作运行环境，因此，一个相同的变量会因为用户身份的不同而具有不同的值。例如，我们使用下述命令来查看HOME变量在不同用户身份下都有哪些值（su是用于切换用户身份的命令，将在第5章跟大家见面）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;其实变量是由固定的变量名与用户或系统设置的变量值两部分组成的，我们完全可以自行创建变量，来满足工作需求。例如设置一个名称为WORKDIR的变量，方便用户更轻松地进入一个层次较深的目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;但是，这样的变量不具有全局性，作用范围也有限，默认情况下不能被其他用户使用。如果工作需要，可以使用export命令将其提升为全局变量，这样其他用户也就可以使用它了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr></table></figure>
-
-
-<h3 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h3><ol>
+<pre><code></code></pre><p>&emsp;&emsp;其实变量是由固定的变量名与用户或系统设置的变量值两部分组成的，我们完全可以自行创建变量，来满足工作需求。例如设置一个名称为WORKDIR的变量，方便用户更轻松地进入一个层次较深的目录：</p>
+<pre><code></code></pre><p>&emsp;&emsp;但是，这样的变量不具有全局性，作用范围也有限，默认情况下不能被其他用户使用。如果工作需要，可以使用export命令将其提升为全局变量，这样其他用户也就可以使用它了：</p>
+<pre><code></code></pre><h3 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h3><ol>
 <li>把ls命令的正常输出信息追加写入到error.txt文件中的命令是什么？<br>&emsp;&emsp;答：ls &gt;&gt; error.txt</li>
 <li>请简单概述管道符的作用。<br>&emsp;&emsp;答：把左面（前面）命令的输出值作为右面（后面）命令的输入值以便进一步处理信息。</li>
 <li>Bash解释器的通配符中，星号（*）代表几个字符？<br>&emsp;&emsp;答：零个或多个。</li>
@@ -597,7 +880,7 @@ function activateLightMode(){
 <li>输入模式：正常的文本录入。</li>
 <li>末行模式：保存或退出文档，以及设置编辑环境。</li>
 </ul>
-<p><img alt="图4-1　Vim编辑器模式的切换方法" data-src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E3%80%8ALinux%E5%B0%B1%E8%AF%A5%E8%BF%99%E4%B9%88%E5%AD%A6%E3%80%8B/chapter04%20/4-1-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%87%E6%8D%A2%E6%96%B9%E6%B3%95.png?Expires=1577113548&OSSAccessKeyId=TMP.hjzAJXbDEzWCA6m8aNdaoUxP2xjADNhzHYtyMVdAQJqXXCUij2LGmeNzzcH5vhMQb3yZFcmzq5ndtqdEMSpR8RV4F3EXjaCkx3ZcgcnjWqpzfsC7ZxzfRea31JEEmV.tmp&Signature=DkZ0G6vcvcRgbIvvusu1%2B%2B4qdcY%3D" class="lazyload"></p>
+<p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E3%80%8ALinux%E5%B0%B1%E8%AF%A5%E8%BF%99%E4%B9%88%E5%AD%A6%E3%80%8B/chapter04%20/4-1-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%87%E6%8D%A2%E6%96%B9%E6%B3%95.png?Expires=1577113548&OSSAccessKeyId=TMP.hjzAJXbDEzWCA6m8aNdaoUxP2xjADNhzHYtyMVdAQJqXXCUij2LGmeNzzcH5vhMQb3yZFcmzq5ndtqdEMSpR8RV4F3EXjaCkx3ZcgcnjWqpzfsC7ZxzfRea31JEEmV.tmp&Signature=DkZ0G6vcvcRgbIvvusu1%2B%2B4qdcY%3D" alt="图4-1　Vim编辑器模式的切换方法"></p>
 <p>&emsp;&emsp;在每次运行Vim编辑器时，默认进入命令模式，此时需要先切换到输入模式后再进行文档编写工作，而每次在编写完文档后需要先返回命令模式，然后再进入末行模式，执行文档的保存或退出操作。在Vim中，无法直接从输入模式切换到末行模式。Vim编辑器中内置的命令有成百上千种用法，为了能够帮助读者更快地掌握Vim编辑器，表4-1总结了在命令模式中最常用的一些命令。</p>
 <center>表4-1　　Vim中常用的命令</center>
 
@@ -704,50 +987,915 @@ function activateLightMode(){
 <td>在文本中从上至下搜索该字符串</td>
 </tr>
 </tbody></table>
-<h4 id="编写简单文档"><a href="#编写简单文档" class="headerlink" title="编写简单文档"></a>编写简单文档</h4><h4 id="配置主机名称"><a href="#配置主机名称" class="headerlink" title="配置主机名称"></a>配置主机名称</h4><h4 id="配置网卡信息"><a href="#配置网卡信息" class="headerlink" title="配置网卡信息"></a>配置网卡信息</h4><h4 id="配置Yum软件仓库"><a href="#配置Yum软件仓库" class="headerlink" title="配置Yum软件仓库"></a>配置Yum软件仓库</h4><h3 id="编写Shell脚本"><a href="#编写Shell脚本" class="headerlink" title="编写Shell脚本"></a>编写Shell脚本</h3><h4 id="编写简单的脚本"><a href="#编写简单的脚本" class="headerlink" title="编写简单的脚本"></a>编写简单的脚本</h4><h4 id="接收用户的参数"><a href="#接收用户的参数" class="headerlink" title="接收用户的参数"></a>接收用户的参数</h4><h4 id="判断用户的参数"><a href="#判断用户的参数" class="headerlink" title="判断用户的参数"></a>判断用户的参数</h4><h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if条件测试语句"><a href="#if条件测试语句" class="headerlink" title="if条件测试语句"></a>if条件测试语句</h4><h4 id="for条件循环语句"><a href="#for条件循环语句" class="headerlink" title="for条件循环语句"></a>for条件循环语句</h4><h4 id="while条件循环语句"><a href="#while条件循环语句" class="headerlink" title="while条件循环语句"></a>while条件循环语句</h4><h4 id="case条件测试语句"><a href="#case条件测试语句" class="headerlink" title="case条件测试语句"></a>case条件测试语句</h4><h3 id="计划任务服务程序"><a href="#计划任务服务程序" class="headerlink" title="计划任务服务程序"></a>计划任务服务程序</h3><h3 id="复习题-1"><a href="#复习题-1" class="headerlink" title="复习题"></a>复习题</h3><h2 id="第5章-用户身份与文件权限"><a href="#第5章-用户身份与文件权限" class="headerlink" title="第5章 用户身份与文件权限"></a>第5章 用户身份与文件权限</h2><h2 id="第6章-存储结构与磁盘划分"><a href="#第6章-存储结构与磁盘划分" class="headerlink" title="第6章 存储结构与磁盘划分"></a>第6章 存储结构与磁盘划分</h2><h2 id="第7章-使用RAID与LVM磁盘阵列技术"><a href="#第7章-使用RAID与LVM磁盘阵列技术" class="headerlink" title="第7章 使用RAID与LVM磁盘阵列技术"></a>第7章 使用RAID与LVM磁盘阵列技术</h2><h2 id="第8章-iptables与firewalld防火墙"><a href="#第8章-iptables与firewalld防火墙" class="headerlink" title="第8章 iptables与firewalld防火墙"></a>第8章 iptables与firewalld防火墙</h2><h2 id="第9章-使用ssh服务管理远程主机"><a href="#第9章-使用ssh服务管理远程主机" class="headerlink" title="第9章 使用ssh服务管理远程主机"></a>第9章 使用ssh服务管理远程主机</h2><h2 id="第10章-使用Apache服务部署静态网站"><a href="#第10章-使用Apache服务部署静态网站" class="headerlink" title="第10章 使用Apache服务部署静态网站"></a>第10章 使用Apache服务部署静态网站</h2><h2 id="第11章-使用vsftpd服务传输文件"><a href="#第11章-使用vsftpd服务传输文件" class="headerlink" title="第11章 使用vsftpd服务传输文件"></a>第11章 使用vsftpd服务传输文件</h2><h2 id="第12章-使用Samba或NFS实现文件共享"><a href="#第12章-使用Samba或NFS实现文件共享" class="headerlink" title="第12章 使用Samba或NFS实现文件共享"></a>第12章 使用Samba或NFS实现文件共享</h2><h2 id="第13章-使用BIND提供域名解析服务"><a href="#第13章-使用BIND提供域名解析服务" class="headerlink" title="第13章 使用BIND提供域名解析服务"></a>第13章 使用BIND提供域名解析服务</h2><h2 id="第14章-使用DHCP动态管理主机地址"><a href="#第14章-使用DHCP动态管理主机地址" class="headerlink" title="第14章 使用DHCP动态管理主机地址"></a>第14章 使用DHCP动态管理主机地址</h2><h2 id="第15章-使用Postifx与Dovecot部署邮件系统"><a href="#第15章-使用Postifx与Dovecot部署邮件系统" class="headerlink" title="第15章 使用Postifx与Dovecot部署邮件系统"></a>第15章 使用Postifx与Dovecot部署邮件系统</h2><h2 id="第16章-使用Squid部署代理缓存服务"><a href="#第16章-使用Squid部署代理缓存服务" class="headerlink" title="第16章 使用Squid部署代理缓存服务"></a>第16章 使用Squid部署代理缓存服务</h2><h2 id="第17章-使用iSCSI服务部署网络存储"><a href="#第17章-使用iSCSI服务部署网络存储" class="headerlink" title="第17章 使用iSCSI服务部署网络存储"></a>第17章 使用iSCSI服务部署网络存储</h2><h2 id="第18章-使用MariaDB数据库管理系统"><a href="#第18章-使用MariaDB数据库管理系统" class="headerlink" title="第18章 使用MariaDB数据库管理系统"></a>第18章 使用MariaDB数据库管理系统</h2><h2 id="第19章-使用PXE-Kickstart无人值守安装服务"><a href="#第19章-使用PXE-Kickstart无人值守安装服务" class="headerlink" title="第19章 使用PXE+Kickstart无人值守安装服务"></a>第19章 使用PXE+Kickstart无人值守安装服务</h2><h2 id="第20章-使用LNMP架构部署动态网站环境"><a href="#第20章-使用LNMP架构部署动态网站环境" class="headerlink" title="第20章 使用LNMP架构部署动态网站环境"></a>第20章 使用LNMP架构部署动态网站环境</h2></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" target="_blank" rel="noopener">颜华达</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="/http:/yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/">http://yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yanhuada.cn">零创世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/top2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button"><i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wx.png"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/zhifubao.png"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull-full"><a href="/2019/12/06/book/frame/spring-boot-in-action/"><img class="prev_cover lazyload" data-src="http://q1q6z0e19.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191207230636.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">上一篇</div><div class="prev_info"><span>《熟读丁雪丰译的《SpringBoot实战》</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
-var verify = false == true ? true : false;
-var GUEST_INFO = ['nick','mail','link'];
-var guest_info = '昵称,邮箱'.split(',').filter(function(item){
-  return GUEST_INFO.indexOf(item) > -1
-});
-guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+<h4 id="编写简单文档"><a href="#编写简单文档" class="headerlink" title="编写简单文档"></a>编写简单文档</h4><h4 id="配置主机名称"><a href="#配置主机名称" class="headerlink" title="配置主机名称"></a>配置主机名称</h4><h4 id="配置网卡信息"><a href="#配置网卡信息" class="headerlink" title="配置网卡信息"></a>配置网卡信息</h4><h4 id="配置Yum软件仓库"><a href="#配置Yum软件仓库" class="headerlink" title="配置Yum软件仓库"></a>配置Yum软件仓库</h4><h3 id="编写Shell脚本"><a href="#编写Shell脚本" class="headerlink" title="编写Shell脚本"></a>编写Shell脚本</h3><h4 id="编写简单的脚本"><a href="#编写简单的脚本" class="headerlink" title="编写简单的脚本"></a>编写简单的脚本</h4><h4 id="接收用户的参数"><a href="#接收用户的参数" class="headerlink" title="接收用户的参数"></a>接收用户的参数</h4><h4 id="判断用户的参数"><a href="#判断用户的参数" class="headerlink" title="判断用户的参数"></a>判断用户的参数</h4><h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if条件测试语句"><a href="#if条件测试语句" class="headerlink" title="if条件测试语句"></a>if条件测试语句</h4><h4 id="for条件循环语句"><a href="#for条件循环语句" class="headerlink" title="for条件循环语句"></a>for条件循环语句</h4><h4 id="while条件循环语句"><a href="#while条件循环语句" class="headerlink" title="while条件循环语句"></a>while条件循环语句</h4><h4 id="case条件测试语句"><a href="#case条件测试语句" class="headerlink" title="case条件测试语句"></a>case条件测试语句</h4><h3 id="计划任务服务程序"><a href="#计划任务服务程序" class="headerlink" title="计划任务服务程序"></a>计划任务服务程序</h3><h3 id="复习题-1"><a href="#复习题-1" class="headerlink" title="复习题"></a>复习题</h3><h2 id="第5章-用户身份与文件权限"><a href="#第5章-用户身份与文件权限" class="headerlink" title="第5章 用户身份与文件权限"></a>第5章 用户身份与文件权限</h2><h2 id="第6章-存储结构与磁盘划分"><a href="#第6章-存储结构与磁盘划分" class="headerlink" title="第6章 存储结构与磁盘划分"></a>第6章 存储结构与磁盘划分</h2><h2 id="第7章-使用RAID与LVM磁盘阵列技术"><a href="#第7章-使用RAID与LVM磁盘阵列技术" class="headerlink" title="第7章 使用RAID与LVM磁盘阵列技术"></a>第7章 使用RAID与LVM磁盘阵列技术</h2><h2 id="第8章-iptables与firewalld防火墙"><a href="#第8章-iptables与firewalld防火墙" class="headerlink" title="第8章 iptables与firewalld防火墙"></a>第8章 iptables与firewalld防火墙</h2><h2 id="第9章-使用ssh服务管理远程主机"><a href="#第9章-使用ssh服务管理远程主机" class="headerlink" title="第9章 使用ssh服务管理远程主机"></a>第9章 使用ssh服务管理远程主机</h2><h2 id="第10章-使用Apache服务部署静态网站"><a href="#第10章-使用Apache服务部署静态网站" class="headerlink" title="第10章 使用Apache服务部署静态网站"></a>第10章 使用Apache服务部署静态网站</h2><h2 id="第11章-使用vsftpd服务传输文件"><a href="#第11章-使用vsftpd服务传输文件" class="headerlink" title="第11章 使用vsftpd服务传输文件"></a>第11章 使用vsftpd服务传输文件</h2><h2 id="第12章-使用Samba或NFS实现文件共享"><a href="#第12章-使用Samba或NFS实现文件共享" class="headerlink" title="第12章 使用Samba或NFS实现文件共享"></a>第12章 使用Samba或NFS实现文件共享</h2><h2 id="第13章-使用BIND提供域名解析服务"><a href="#第13章-使用BIND提供域名解析服务" class="headerlink" title="第13章 使用BIND提供域名解析服务"></a>第13章 使用BIND提供域名解析服务</h2><h2 id="第14章-使用DHCP动态管理主机地址"><a href="#第14章-使用DHCP动态管理主机地址" class="headerlink" title="第14章 使用DHCP动态管理主机地址"></a>第14章 使用DHCP动态管理主机地址</h2><h2 id="第15章-使用Postifx与Dovecot部署邮件系统"><a href="#第15章-使用Postifx与Dovecot部署邮件系统" class="headerlink" title="第15章 使用Postifx与Dovecot部署邮件系统"></a>第15章 使用Postifx与Dovecot部署邮件系统</h2><h2 id="第16章-使用Squid部署代理缓存服务"><a href="#第16章-使用Squid部署代理缓存服务" class="headerlink" title="第16章 使用Squid部署代理缓存服务"></a>第16章 使用Squid部署代理缓存服务</h2><h2 id="第17章-使用iSCSI服务部署网络存储"><a href="#第17章-使用iSCSI服务部署网络存储" class="headerlink" title="第17章 使用iSCSI服务部署网络存储"></a>第17章 使用iSCSI服务部署网络存储</h2><h2 id="第18章-使用MariaDB数据库管理系统"><a href="#第18章-使用MariaDB数据库管理系统" class="headerlink" title="第18章 使用MariaDB数据库管理系统"></a>第18章 使用MariaDB数据库管理系统</h2><h2 id="第19章-使用PXE-Kickstart无人值守安装服务"><a href="#第19章-使用PXE-Kickstart无人值守安装服务" class="headerlink" title="第19章 使用PXE+Kickstart无人值守安装服务"></a>第19章 使用PXE+Kickstart无人值守安装服务</h2><h2 id="第20章-使用LNMP架构部署动态网站环境"><a href="#第20章-使用LNMP架构部署动态网站环境" class="headerlink" title="第20章 使用LNMP架构部署动态网站环境"></a>第20章 使用LNMP架构部署动态网站环境</h2>
+            </div>
+            <hr/>
 
-window.valine = new Valine({
-  el:'#vcomment',
-  notify:notify,
-  verify:verify,
-  appId:'iPaRl7ltAVBY6XGnmnoz8EzM-gzGzoHsz',
-  appKey:'YkTl1QShlb2qlFr88zGkIKRj',
-  placeholder:'请填上邮箱，可收到回复...',
-  avatar:'monsterid',
-  guest_info:guest_info,
-  pageSize:'10',
-  lang:'zh-cn',
-  recordIP: true
-});</script></div></div></div><footer id="footer" style="background-image: url(https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E5%9B%BE%E7%89%87/top2.png)"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2020 By 颜华达</div><div class="icp"><a href="http://www.beian.gov.cn/" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>粤ICP备19154308号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  CommonHTML: {
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "HTML-CSS": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "SVG": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  }
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.yanhuada.cn" rel="external nofollow noreferrer">颜华达</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/">https://blog.yanhuada.cn/2019/12/06/book/devops/that-is-how-linux-should-learn/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://blog.yanhuada.cn" target="_blank">颜华达</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'iPaRl7ltAVBY6XGnmnoz8EzM-gzGzoHsz',
+        appKey: 'YkTl1QShlb2qlFr88zGkIKRj',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/12/06/book/java/java-core-technology-volume1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="熟读《Java核心技术 卷Ⅰ》">
+                        
+                        <span class="card-title">熟读《Java核心技术 卷Ⅰ》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            资源下载
+PDF下载
+
+
+第1章 Java程序设计概述1.1 Java程序设计平台1.2 Java“白皮书”的关键术语1.2.1 简单性1.2.2 面向对象1.2.3 分布式1.2.4 健壮性1.2.5 安全性1.2.6 体系结构中立1.2
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/" class="post-category">
+                                    书籍
+                                </a>
+                            
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/06/book/frame/spring-boot-in-action/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="《熟读丁雪丰译的《SpringBoot实战》">
+                        
+                        <span class="card-title">《熟读丁雪丰译的《SpringBoot实战》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            资源下载
+
+PDF下载
+
+
+第1章 入门本章内容
+
+Spring Boot简化Spring应用程序开发
+Spring Boot的基本特性
+Spring Boot工作区的设置
+
+&emsp;Spring Framework已有十余年的历史了，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/" class="post-category">
+                                    书籍
+                                </a>
+                            
+                            <a href="/categories/%E4%B9%A6%E7%B1%8D/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 零创世界<br />'
+            + '文章作者: 颜华达<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://blog.yanhuada.cn" target="_blank">颜华达</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="" target="_blank"></a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/yanhuada" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanhuada99@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=546230185" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 546230185" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
-</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
-  var all = MathJax.Hub.getAllJax(), i;
-  for (i=0; i < all.length; i += 1) {
-    all[i].SourceElement().parentNode.className += ' has-jax';
-  }
-});
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.js"></script><script src="/js/baidupush.js"> </script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true; // make power mode colorful
-POWERMODE.shake = true; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script><script src="/js/tw_cn.js"></script><script>translateInitilization()
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
