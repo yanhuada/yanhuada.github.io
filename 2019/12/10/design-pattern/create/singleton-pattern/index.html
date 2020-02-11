@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="生成器模式, 零创世界">
-    <meta name="description" content="概念&amp;emsp;&amp;emsp;生成器模式（英：Builder Pattern） 是一种设计模式，又名：建造模式，是一种对象构建模式。它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。">
+    <meta name="keywords" content="单例模式, 零创世界">
+    <meta name="description" content="##概念
+&amp;emsp;&amp;emsp;确保一个类只有一个实例，并提供对该实例的全局访问。
+##作用
+&amp;emsp;&amp;emsp;在设计的系统中，有些类其实只需要一个对象，如果只需要一个对象却new出多个对象，可能会导致一些问题的产生，使用单例模式，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>生成器模式 | 零创世界</title>
+    <title>单例模式 | 零创世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">生成器模式</h1>
+                    <h1 class="description center-align post-title">单例模式</h1>
                 </div>
             </div>
         </div>
@@ -370,7 +373,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-09
+                    2019-12-10
                 </div>
                 
 
@@ -387,108 +390,88 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>&emsp;&emsp;<strong>生成器模式（英：Builder Pattern）</strong> 是一种设计模式，又名：建造模式，是一种对象构建模式。它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。</p>
-<h2 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h2><p>在以下情况使用生成器模式：</p>
+                <p>##概念</p>
+<p>&emsp;&emsp;确保一个类只有一个实例，并提供对该实例的全局访问。</p>
+<p>##作用</p>
+<p>&emsp;&emsp;在设计的系统中，有些类其实只需要一个对象，如果只需要一个对象却new出多个对象，可能会导致一些问题的产生，使用单例模式，确保只生成一个对象，则避免问题的产生。还可以降低系统的开销，减轻CPU的压力。</p>
+<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><p>&emsp;&emsp;通常单例模式在Java语言中，有两种构建方式：</p>
 <ul>
-<li>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时；</li>
-<li>当构造过程必须允许被构造的对象有不同的表示时。</li>
+<li><strong>懒汉方式</strong>：指全局的单例实例在第一次被使用时构建。</li>
+<li><strong>饿汉方式</strong>：指全局的单例实例在类装载时构建。</li>
 </ul>
-<h2 id="参与者"><a href="#参与者" class="headerlink" title="参与者"></a>参与者</h2><ul>
-<li><p><strong>Builder</strong><br><br>&emsp;&emsp;为创建一个Product对象的各个部件指定抽象接口。</p>
-</li>
-<li><p><strong>ConcreteBuilder</strong><br><br>&emsp;&emsp;实现Builder的接口以构造和装配该产品的各个部件。<br><br>&emsp;&emsp;定义并明确它所创建的表示。<br><br>&emsp;&emsp;提供一个检索产品的接口。</p>
-</li>
-<li><p><strong>Director</strong><br><br>&emsp;&emsp;构造一个使用Builder接口的对象。</p>
-</li>
-<li><p><strong>Product</strong><br><br>&emsp;&emsp;表示被构造的复杂对象。ConcreateBuilder创建该产品的内部表示并定义它的装配过程。包含定义组成部件的类，包括将这些部件装配成最终产品的接口。</p>
-</li>
+<p>##代码实现</p>
+<h3 id="饿汉式实现"><a href="#饿汉式实现" class="headerlink" title="饿汉式实现"></a>饿汉式实现</h3><ul>
+<li><strong>类字段上创建实例（线程安全）</strong></li>
 </ul>
-<h2 id="协作"><a href="#协作" class="headerlink" title="协作"></a>协作</h2><p>客户创建Director对象，并用它所想要的Builder对象进行配置。</p>
 <ul>
-<li>一旦产品部件被生成，导向器就会通知生成器。</li>
-<li>生成器处理导向器的请求，并将部件添加到该产品中。</li>
-<li>客户从生成器中检索产品。</li>
+<li><strong>枚举实现（推荐）（线程安全）</strong></li>
 </ul>
-<h2 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/** Product */</span>
- <span class="token keyword">class</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
-   <span class="token keyword">private</span> String dough <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-   <span class="token keyword">private</span> String sauce <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-   <span class="token keyword">private</span> String topping <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDough</span> <span class="token punctuation">(</span>String dough<span class="token punctuation">)</span>     <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>dough <span class="token operator">=</span> dough<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSauce</span> <span class="token punctuation">(</span>String sauce<span class="token punctuation">)</span>     <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sauce <span class="token operator">=</span> sauce<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setTopping</span> <span class="token punctuation">(</span>String topping<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>topping <span class="token operator">=</span> topping<span class="token punctuation">;</span> <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/** Abstract Builder */</span>
- <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">PizzaBuilder</span> <span class="token punctuation">{</span>
-   <span class="token keyword">protected</span> Pizza pizza<span class="token punctuation">;</span>
-
-   <span class="token keyword">public</span> Pizza <span class="token function">getPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> pizza<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createNewPizzaProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> pizza <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildDough</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildSauce</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildTopping</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">/** ConcreteBuilder */</span>
- <span class="token keyword">class</span> <span class="token class-name">HawaiianPizzaBuilder</span> <span class="token keyword">extends</span> <span class="token class-name">PizzaBuilder</span> <span class="token punctuation">{</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildDough</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setDough</span><span class="token punctuation">(</span><span class="token string">"cross"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildSauce</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setSauce</span><span class="token punctuation">(</span><span class="token string">"mild"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildTopping</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setTopping</span><span class="token punctuation">(</span><span class="token string">"ham+pineapple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">/** ConcreteBuilder */</span>
- <span class="token keyword">class</span> <span class="token class-name">SpicyPizzaBuilder</span> <span class="token keyword">extends</span> <span class="token class-name">PizzaBuilder</span> <span class="token punctuation">{</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildDough</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setDough</span><span class="token punctuation">(</span><span class="token string">"pan baked"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildSauce</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setSauce</span><span class="token punctuation">(</span><span class="token string">"hot"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildTopping</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> pizza<span class="token punctuation">.</span><span class="token function">setTopping</span><span class="token punctuation">(</span><span class="token string">"pepperoni+salami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">/** Director */</span>
- <span class="token keyword">class</span> <span class="token class-name">Waiter</span> <span class="token punctuation">{</span>
-   <span class="token keyword">private</span> PizzaBuilder pizzaBuilder<span class="token punctuation">;</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setPizzaBuilder</span> <span class="token punctuation">(</span>PizzaBuilder pb<span class="token punctuation">)</span> <span class="token punctuation">{</span> pizzaBuilder <span class="token operator">=</span> pb<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">public</span> Pizza <span class="token function">getPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> pizzaBuilder<span class="token punctuation">.</span><span class="token function">getPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">constructPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     pizzaBuilder<span class="token punctuation">.</span><span class="token function">createNewPizzaProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     pizzaBuilder<span class="token punctuation">.</span><span class="token function">buildDough</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     pizzaBuilder<span class="token punctuation">.</span><span class="token function">buildSauce</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     pizzaBuilder<span class="token punctuation">.</span><span class="token function">buildTopping</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">/** A customer ordering a pizza. */</span>
- <span class="token keyword">class</span> <span class="token class-name">BuilderExample</span> <span class="token punctuation">{</span>
-   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     Waiter waiter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Waiter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     PizzaBuilder hawaiian_pizzabuilder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HawaiianPizzaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     PizzaBuilder spicy_pizzabuilder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpicyPizzaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-     waiter<span class="token punctuation">.</span><span class="token function">setPizzaBuilder</span> <span class="token punctuation">(</span> hawaiian_pizzabuilder <span class="token punctuation">)</span><span class="token punctuation">;</span>
-     waiter<span class="token punctuation">.</span><span class="token function">constructPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-     Pizza pizza <span class="token operator">=</span> waiter<span class="token punctuation">.</span><span class="token function">getPizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
- <span class="token punctuation">}</span></code></pre>
-<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><ul>
-<li><p><strong>装配和构造接口</strong><br>&emsp;&emsp;生成器逐步的构造它们的产品。因此生成器界面必须足够普遍，以便为各种类型的具体生成器构造产品。</p>
-</li>
-<li><p><strong>没有抽象类</strong><br>&emsp;&emsp;通常情况下，由具体生成器生成的产品，它们的表示相差是如此之大以至于给不同的产品以公共父类没有太大意思。</p>
-</li>
-<li><p><strong>在生成器中预设的方法为空</strong><br>&emsp;&emsp;定义为空方法可以使客户只重定义他们所感兴趣的操作。</p>
-</li>
+<h3 id="懒汉式实现"><a href="#懒汉式实现" class="headerlink" title="懒汉式实现"></a>懒汉式实现</h3><ul>
+<li><strong>非线程安全</strong></li>
 </ul>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><ul>
-<li>它使你可以改变一个产品的内部表示</li>
-<li>它将构造代码和表示代码分开</li>
-<li>它使你可对构造过程进行更精细的控制</li>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single</span><span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token keyword">static</span> Single instance<span class="token punctuation">;</span>
+
+  <span class="token keyword">private</span> <span class="token function">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> Single <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><strong>synchronized关键字实现线程安全</strong></li>
 </ul>
-<h2 id="相关模式"><a href="#相关模式" class="headerlink" title="相关模式"></a>相关模式</h2><p>&emsp;&emsp;抽象工厂模式与生成器相似，因为它也可以创建复杂对象。主要的区别是生成器模式着重于一步步构造一个复杂对象。而抽象工厂模式着重于多个系列的产品对象（简单的或是复杂的）。生成器在最后的一步返回产品，而对于抽象工厂来说，产品是立即返回的。</p>
-<p>&emsp;&emsp;组合模式通常是用生成器生成的。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single</span><span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token keyword">static</span> Single instance<span class="token punctuation">;</span>
+
+  <span class="token keyword">private</span> <span class="token function">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> Single <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre>
+<ul>
+<li><strong>双重检查加锁</strong></li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single</span><span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">static</span> Single instance<span class="token punctuation">;</span>
+
+  <span class="token keyword">private</span> <span class="token function">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> Single <span class="token function">getInstace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">synchronized</span><span class="token punctuation">(</span>Single<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+          instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><strong>静态内部类实现（线程安全）</strong></li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single</span><span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SingleHolder</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Single instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">private</span> <span class="token function">Single</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Single <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> SingleHolder<span class="token punctuation">.</span>instance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -514,7 +497,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.yanhuada.cn/2019/12/09/design-pattern/create/builder-pattern/">https://blog.yanhuada.cn/2019/12/09/design-pattern/create/builder-pattern/</a>
+                    <a href="https://blog.yanhuada.cn/2019/12/10/design-pattern/create/singleton-pattern/">https://blog.yanhuada.cn/2019/12/10/design-pattern/create/singleton-pattern/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -986,9 +969,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/10/design-pattern/create/singleton-pattern/">
                     <div class="card-image">
@@ -1009,9 +993,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1024,6 +1008,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1046,24 +1031,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/08/design-pattern/create/abstract-factory-pattern/">
+                <a href="/2019/12/09/design-pattern/create/builder-pattern/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="抽象工厂模式">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="生成器模式">
                         
-                        <span class="card-title">抽象工厂模式</span>
+                        <span class="card-title">生成器模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概念&emsp;&emsp;抽象工厂模式（英语：Abstract factory pattern）是一种软件开发设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体
+                            概念&emsp;&emsp;生成器模式（英：Builder Pattern） 是一种设计模式，又名：建造模式，是一种对象构建模式。它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-09
                             </span>
                         <span class="publish-author">
                             
