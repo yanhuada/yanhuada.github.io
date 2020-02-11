@@ -392,9 +392,10 @@
 <p>&emsp;&emsp;工厂”是创建产品（对象）的地方，其目的是将产品的创建与产品的使用分离。抽象工厂模式的目的，是将若干抽象产品的接口与不同主题产品的具体实现分离开。这样就能在增加新的具体工厂的时候，不用修改引用抽象工厂的客户端代码。</p>
 <p>&emsp;&emsp;使用抽象工厂模式，能够在具体工厂变化的时候，不用修改使用工厂的客户端代码，甚至是在运行时。然而，使用这种模式或者相似的设计模式，可能给编写代码带来不必要的复杂性和额外的工作。正确使用设计模式能够抵消这样的“额外工作”。</p>
 <p>&emsp;&emsp;抽象工厂模式的实质是“提供接口，创建一系列相关或独立的对象，而不指定这些对象的具体类。”</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>具体的工厂决定了创建对象的具体类型，而且工厂就是对象实际创建的地方。然而，抽象工厂只返回一个指向创建的对象的抽象引用（或指针）。</p>
-<p>这样，客户端程序调用抽象工厂引用的方法，由具体工厂完成对象创建，然后客户端程序得到的是抽象产品的引用。如此使客户端代码与对象的创建分离开来。</p>
-<pre><code>   因为工厂仅仅返回一个抽象产品的引用（或指针），所以客户端程序不知道（也不会牵绊于）工厂创建对象的具体类型。然而，工厂知道具体对象的类型；例如，工厂可能从配置文件中读取某种类型。这时，客户端没有必要指定具体类型，因为已经在配置文件中指定了。通常，这意味着：</code></pre><ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>&emsp;&emsp;具体的工厂决定了创建对象的具体类型，而且工厂就是对象实际创建的地方。然而，抽象工厂只返回一个指向创建的对象的抽象引用（或指针）。</p>
+<p>&emsp;&emsp;这样，客户端程序调用抽象工厂引用的方法，由具体工厂完成对象创建，然后客户端程序得到的是抽象产品的引用。如此使客户端代码与对象的创建分离开来。</p>
+<p>&emsp;&emsp;因为工厂仅仅返回一个抽象产品的引用（或指针），所以客户端程序不知道（也不会牵绊于）工厂创建对象的具体类型。然而，工厂知道具体对象的类型；例如，工厂可能从配置文件中读取某种类型。这时，客户端没有必要指定具体类型，因为已经在配置文件中指定了。通常，这意味着：</p>
+<ul>
 <li>客户端代码不知道任何具体类型，也就没必要引入任何相关的头文件或类定义。客户端代码仅仅处理抽象类型。工厂确实创建了具体类型的对象，但是客户端代码仅使用这些对象的抽象接口来访问它们。</li>
 </ul>
 <ul>
@@ -405,23 +406,25 @@
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Border</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
 <ul>
-<li>实现抽象类<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MacButton</span> <span class="token keyword">implements</span> <span class="token class-name">Button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MacBorder</span> <span class="token keyword">implements</span> <span class="token class-name">Border</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-</code></pre>
-</li>
+<li>实现抽象类</li>
 </ul>
-<p>public class WinButton implements Button {}<br>public class WinBorder implements Border {}</p>
-<pre><code>
-- 接着实现工厂
-```java
-public class MacFactory {
-    public static Button createButton() {
-        return new MacButton();
-    }
-    public static Border createBorder() {
-        return new MacBorder();
-    }
-}</code></pre><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinFactory</span> <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MacButton</span> <span class="token keyword">implements</span> <span class="token class-name">Button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MacBorder</span> <span class="token keyword">implements</span> <span class="token class-name">Border</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinButton</span> <span class="token keyword">implements</span> <span class="token class-name">Button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinBorder</span> <span class="token keyword">implements</span> <span class="token class-name">Border</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<ul>
+<li>接着实现工厂</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MacFactory</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Button <span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MacButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Border <span class="token function">createBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MacBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinFactory</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> Button <span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WinButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
