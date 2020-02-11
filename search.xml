@@ -13,12 +13,18 @@
       
       <categories>
           
-          <category> 资源 </category>
-          
-          <category> 开发工具 </category>
+          <category> IDEA </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+            <tag> 破解 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -34,16 +40,16 @@
       
       <categories>
           
-          <category> Markdown </category>
+          <category> 测试 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Typora </tag>
+            <tag> markdown </tag>
             
-            <tag> Markdown </tag>
+            <tag> hexo </tag>
             
         </tags>
       
@@ -62,8 +68,6 @@
       <categories>
           
           <category> 设计模式 </category>
-          
-          <category> 创建型设计模式 </category>
           
       </categories>
       

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.yanhuada.cn/"/>
-  <updated>2020-02-11T15:04:56.472Z</updated>
+  <updated>2020-02-11T15:32:03.719Z</updated>
   <id>https://blog.yanhuada.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.yanhuada.cn/2019/12/07/tool/idea/"/>
     <id>https://blog.yanhuada.cn/2019/12/07/tool/idea/</id>
     <published>2019-12-07T13:01:00.000Z</published>
-    <updated>2020-02-11T15:04:56.472Z</updated>
+    <updated>2020-02-11T15:32:03.719Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一步：关注公众号，获取资源"><a href="#第一步：关注公众号，获取资源" class="headerlink" title="第一步：关注公众号，获取资源"></a>第一步：关注公众号，获取资源</h2><p>微信扫一扫<br><img src="http://q1q6z0e19.bkt.clouddn.com/qrcode_for_gh_b9e5fa1667b4_258.jpg" alt="公众号二维码"></p><p>关注微信公众号，【零创世界】，输入idea，即可获取idea安装包，jetbrains-agent.jar补丁和激活码，如下图<br><img src="http://q1q6z0e19.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191207173752.png" alt="资源"></p><h2 id="第二步：安装IDEA，放置好补丁"><a href="#第二步：安装IDEA，放置好补丁" class="headerlink" title="第二步：安装IDEA，放置好补丁"></a>第二步：安装IDEA，放置好补丁</h2><p>安装IDEA, 将补丁 jetbrains-agent.jar，并把该jar包放到一个文件夹中，建议放到IDEA的安装目录bin文件夹下。</p><h2 id="第三步：配置补丁位置"><a href="#第三步：配置补丁位置" class="headerlink" title="第三步：配置补丁位置"></a>第三步：配置补丁位置</h2><p>打开安装好的IDEA ，选择菜单栏中的 Help -&gt; Edit Custom VM Options，配置补丁位置，格式为，-javaagent:D:\software\idea\creack_package\jetbrains-agent.jar，其中补丁jetbrains-agent.jar按自己的实际位置填，操作如下图：<br><img src="http://q1q6z0e19.bkt.clouddn.com/idea1.png" alt="资源"></p><p><img src="http://q1q6z0e19.bkt.clouddn.com/idea2.png" alt="资源"></p><h2 id="第四步：输入激活码"><a href="#第四步：输入激活码" class="headerlink" title="第四步：输入激活码"></a>第四步：输入激活码</h2><p>输入激活码，Help -&gt; Register，如下图：<br><img src="http://q1q6z0e19.bkt.clouddn.com/idea3.png" alt="资源"></p><h2 id="第五步：查看是否破解成功"><a href="#第五步：查看是否破解成功" class="headerlink" title="第五步：查看是否破解成功"></a>第五步：查看是否破解成功</h2><p>查看是否破解成功，破解到哪一年<br><img src="http://q1q6z0e19.bkt.clouddn.com/idea4.png" alt="资源"></p>]]></content>
     
@@ -35,10 +35,12 @@
     </summary>
     
     
-      <category term="资源" scheme="https://blog.yanhuada.cn/categories/%E8%B5%84%E6%BA%90/"/>
+      <category term="IDEA" scheme="https://blog.yanhuada.cn/categories/IDEA/"/>
     
-      <category term="开发工具" scheme="https://blog.yanhuada.cn/categories/%E8%B5%84%E6%BA%90/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
+      <category term="开发工具" scheme="https://blog.yanhuada.cn/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="破解" scheme="https://blog.yanhuada.cn/tags/%E7%A0%B4%E8%A7%A3/"/>
     
   </entry>
   
@@ -47,7 +49,7 @@
     <link href="https://blog.yanhuada.cn/2019/12/07/test/hexo-test/"/>
     <id>https://blog.yanhuada.cn/2019/12/07/test/hexo-test/</id>
     <published>2019-12-07T12:01:00.000Z</published>
-    <updated>2020-02-11T14:58:12.050Z</updated>
+    <updated>2020-02-11T15:30:46.849Z</updated>
     
     <content type="html"><![CDATA[<h2 id="文章示例"><a href="#文章示例" class="headerlink" title="文章示例"></a>文章示例</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>title: typora-vue-theme主题介绍date: 2018-09-07 09:25:00author: 赵奇img: /source/images/xxx.jpgtop: truecover: truecoverImg: /images/1.jpgpassword: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92toc: falsemathjax: falsesummary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要categories: Markdowntags:  <span class="token list punctuation">-</span> Typora  - <span class="token title important">Markdown<span class="token punctuation">---</span></span></code></pre>]]></content>
     
@@ -62,12 +64,12 @@
     </summary>
     
     
-      <category term="Markdown" scheme="https://blog.yanhuada.cn/categories/Markdown/"/>
+      <category term="测试" scheme="https://blog.yanhuada.cn/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
-      <category term="Typora" scheme="https://blog.yanhuada.cn/tags/Typora/"/>
+      <category term="markdown" scheme="https://blog.yanhuada.cn/tags/markdown/"/>
     
-      <category term="Markdown" scheme="https://blog.yanhuada.cn/tags/Markdown/"/>
+      <category term="hexo" scheme="https://blog.yanhuada.cn/tags/hexo/"/>
     
   </entry>
   
@@ -76,7 +78,7 @@
     <link href="https://blog.yanhuada.cn/2019/12/07/design-pattern/create/factory-method-pattern/"/>
     <id>https://blog.yanhuada.cn/2019/12/07/design-pattern/create/factory-method-pattern/</id>
     <published>2019-12-07T12:01:00.000Z</published>
-    <updated>2020-02-11T15:25:16.150Z</updated>
+    <updated>2020-02-11T15:28:36.776Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>&emsp;&emsp;<strong>工厂方法模式（Factory method pattern</strong>） 是一种实现了“工厂”概念的面向对象设计模式。就像其他创建型模式一样，它也是处理在不指定对象具体类型的情况下创建对象的问题。工厂方法模式的实质是“定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。工厂方法让类的实例化推迟到子类中进行。”</p><p>&emsp;&emsp;创建一个对象常常需要复杂的过程，所以不适合包含在一个复合对象中。创建对象可能会导致大量的重复代码，可能会需要复合对象访问不到的信息，也可能提供不了足够级别的抽象，还可能并不是复合对象概念的一部分。工厂方法模式通过定义一个单独的创建对象的方法来解决这些问题。由子类实现这个方法来创建具体类型的对象。</p><p>&emsp;&emsp;对象创建中的有些过程包括决定创建哪个对象、管理对象的生命周期，以及管理特定对象的创建和销毁的概念。</p><h2 id="代码举例"><a href="#代码举例" class="headerlink" title="代码举例"></a>代码举例</h2><p>&emsp;&emsp;例如，有一个<code>Button</code>类表示按钮，另有它的两个子类<code>WinButton</code>和<code>MacButton</code>分别代表Windows和Mac风格的按钮，那么这几个类和用于创建它们的工厂类在Java中可以如下实现（在此省略所有类和方法的可见性设置）：</p><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//几个Button类</span><span class="token keyword">class</span> <span class="token class-name">Button</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">/* ...*/</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">WinButton</span> <span class="token keyword">extends</span> <span class="token class-name">Button</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">/* ...*/</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">MacButton</span> <span class="token keyword">extends</span> <span class="token class-name">Button</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">/* ...*/</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">//他们的工厂类</span><span class="token keyword">interface</span> <span class="token class-name">ButtonFactory</span><span class="token punctuation">{</span>    <span class="token keyword">abstract</span> Button <span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">WinButtonFactory</span> <span class="token keyword">implements</span> <span class="token class-name">ButtonFactory</span><span class="token punctuation">{</span>    Button <span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WinButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">MacButtonFactory</span> <span class="token keyword">implements</span> <span class="token class-name">ButtonFactory</span><span class="token punctuation">{</span>    Button <span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MacButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><h2 id="工厂“方法”而非工厂“类”"><a href="#工厂“方法”而非工厂“类”" class="headerlink" title="工厂“方法”而非工厂“类”"></a>工厂“方法”而非工厂“类”</h2><p>&emsp;&emsp;如果抛开设计模式的范畴，“工厂方法”这个词也可以指作为“工厂”的方法，这个方法的主要目的就是创建对象，而这个方法不一定在单独的工厂类中。这些方法通常作为静态方法，定义在方法所实例化的类中。</p><p>&emsp;&emsp;每个工厂方法都有特定的名称。在许多面向对象的编程语言中，构造方法必须和它所在的类具有相同的名称，这样的话，如果有多种创建对象的方式（重载）就可能导致歧义。工厂方法没有这种限制，所以可以具有描述性的名称。举例来说，根据两个实数创建一个复数，而这两个实数表示直角坐标或极坐标，如果使用工厂方法，方法的含义就非常清晰了。当工厂方法起到这种消除歧义的作用时，构造方法常常被设置为私有方法，从而强制客户端代码使用工厂方法创建对象。</p><p><strong>代码举例：</strong></p><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Complex</span> <span class="token punctuation">{</span>     <span class="token keyword">public</span> <span class="token keyword">static</span> Complex <span class="token function">fromCartesianFactory</span><span class="token punctuation">(</span><span class="token keyword">double</span> real<span class="token punctuation">,</span> <span class="token keyword">double</span> imaginary<span class="token punctuation">)</span> <span class="token punctuation">{</span>         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Complex</span><span class="token punctuation">(</span>real<span class="token punctuation">,</span> imaginary<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token keyword">public</span> <span class="token keyword">static</span> Complex <span class="token function">fromPolarFactory</span><span class="token punctuation">(</span><span class="token keyword">double</span> modulus<span class="token punctuation">,</span> <span class="token keyword">double</span> angle<span class="token punctuation">)</span> <span class="token punctuation">{</span>         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Complex</span><span class="token punctuation">(</span>modulus <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">,</span> modulus <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token keyword">private</span> <span class="token function">Complex</span><span class="token punctuation">(</span><span class="token keyword">double</span> a<span class="token punctuation">,</span> <span class="token keyword">double</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>         <span class="token comment" spellcheck="true">//...</span>     <span class="token punctuation">}</span><span class="token punctuation">}</span>Complex product <span class="token operator">=</span> Complex<span class="token punctuation">.</span><span class="token function">fromPolarFactory</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> pi<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h2 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h2><p>&emsp;&emsp;下列情况可以考虑使用工厂方法模式：</p><ul><li>创建对象需要大量重复的代码。</li><li>创建对象需要访问某些信息，而这些信息不应该包含在复合类中。</li><li>创建对象的生命周期必须集中管理，以保证在整个程序中具有一致的行为。</li></ul><h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>&emsp;&emsp;使用工厂方法有三个局限，第一个与代码重构有关，另外两个与类的扩展有关。</p><ul><li>第一个局限是，重构已经存在的类会破坏客户端代码。例如，<code>Complex</code>类是一个标准的类，客户端使用构造方法将其实例化。可能会有很多这样的客户端代码：</li></ul><pre class=" language-java"><code class="language-java">Complex c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Complex</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><ul><li>第二个局限是，因为工厂方法所实例化的类具有私有的构造方法，所以这些类就不能扩展了。因为任何子类都必须调用父类的构造方法，但父类的私有构造方法是不能被子类调用的。</li><li>第三个局限是，如果确实扩展了工厂方法所实例化的类（例如将构造方法设为保护的，虽然有风险但也是可行的），子类必须具有所有工厂方法的一套实现。例如，在上述<code>Complex</code>的例子中，如果<code>Complex</code>有了一个子类<code>StrangeComplex</code>，那么<code>StrangeComplex</code>必须提供属于它自己的所有工厂方法，否则</li></ul><pre class=" language-java"><code class="language-java">StrangeComplex<span class="token punctuation">.</span><span class="token function">fromPolar</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> pi<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>&emsp;&emsp;将会返回一个<code>Complex</code>（父类）的实例，而不是所希望的子类实例。但有些语言的反射特性可以避免这个问题。</p><p>&emsp;&emsp;通过修改底层编程语言，使工厂方法称为第一类的类成员，可以缓解这三个问题。</p>]]></content>
     
@@ -91,8 +93,6 @@
     
     
       <category term="设计模式" scheme="https://blog.yanhuada.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-      <category term="创建型设计模式" scheme="https://blog.yanhuada.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
       <category term="设计模式" scheme="https://blog.yanhuada.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
