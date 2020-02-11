@@ -400,7 +400,7 @@
 <ul>
 <li>如果要增加一个具体类型，只需要修改客户端代码使用另一个工厂即可，而且这个修改通常只是一个文件中的一行代码。不同的工厂创建不同的具体类型的对象，但是和以前一样返回一个抽象类型的引用（或指针），因此客户端代码的其他部分不需要任何改动。这样比修改客户端代码创建新类型的对象简单多了。如果是后者的话，需要修改代码中每一个创建这种对象的地方（而且需要注意的是，这些地方都知道对象的具体类型，而且需要引入具体类型的头文件或类定义）。如果所有的工厂对象都存储在全局的单例对象中，所有的客户端代码到这个单例中访问需要的工厂，那么，更换工厂就非常简单了，仅仅需要更改这个单例对象即可</li>
 </ul>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="image/abstract-factory-pattern/1.png" alt="image.png"></p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%88%9B%E5%BB%BA%E5%9E%8B/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/%E7%B1%BB%E5%9B%BE.png" alt="image.png"></p>
 <h2 id="代码举例"><a href="#代码举例" class="headerlink" title="代码举例"></a>代码举例</h2><p>&emsp;&emsp;假设我们有两种产品接口 Button 和 Border ，每一种产品都支持多种系列，比如 Mac 系列和 Windows 系列。这样每个系列的产品分别是 MacButton, WinButton, MacBorder, WinBorder 。为了可以在运行时刻创建一个系列的产品族，我们可以为每个系列的产品族创建一个工厂 MacFactory 和 WinFactory 。每个工厂都有两个方法 CreateButton 和 CreateBorder 并返回对应的产品，可以将这两个方法抽象成一个接口 AbstractFactory 。这样在运行时刻我们可以选择创建需要的产品系列。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Border</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
