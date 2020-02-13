@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="适配器模式, 零创世界">
-    <meta name="description" content="将某个类的接口转换成客户端期望的另一个接口表示。适配器模式可以消除由于接口不匹配所造成的类兼容性问题。">
+    <meta name="keywords" content="修饰模式, 零创世界">
+    <meta name="description" content="向某个对象动态地添加更多的功能。修饰模式是除类继承外另一种扩展功能的方法。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>适配器模式 | 零创世界</title>
+    <title>修饰模式 | 零创世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,12 +219,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">适配器模式</h1>
+                    <h1 class="description center-align post-title">修饰模式</h1>
                 </div>
             </div>
         </div>
@@ -370,7 +370,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-11
+                    2019-12-13
                 </div>
                 
 
@@ -387,7 +387,119 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>
+                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>&emsp;&emsp; <strong>修饰模式</strong> ，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能。</p>
+<p>&emsp;&emsp; 通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p>
+<p>&emsp;&emsp; 修饰模式是类继承的另外一种选择。类继承在编译时候增加行为，而装饰模式是在运行时增加行为。</p>
+<p>&emsp;&emsp;当有几个相互独立的功能需要扩充时，这个区别就变得很重要。在有些面向对象的编程语言中，类不能在运行时被创建，通常在设计的时候也不能预测到有哪几种功能组合。这就意味着要为每一种组合创建一个新类。相反，修饰模式是面向运行时候的对象实例的,这样就可以在运行时根据需要进行组合。一个修饰模式的示例是JAVA里的<code>Java I/O Streams</code>的实现。</p>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>&emsp;&emsp;例如，一个窗口系统中的窗口，允许这个窗口内容滚动，我们希望给它添加水平或垂直滚动条。假设窗口通过“Window”类实例来表示，并且假设它没有添加滚动条功能。我们可以创建一个子类“ScrollingWindow”来提供，或者我们可以创建一个ScrollingWindowDecorator来为已存在的Window对象添加这个功能。在这点上，只要是解决方案就可以了。 现在我们假设希望选择给我们的窗口添加边框，同样，我们的原始Window类不支持。ScrollingWindow子类现在会造成一个问题，因为它会有效的创建一种新的窗口。如果我们想要给所有窗口添加边框，我们必须创建WindowWithBorder和ScrollingWindowWithBorder子类。显然，这个问题由于被添加类而变得更糟了。对于修饰模式，我们简单的创建一个新类BorderedWindowDecorator，在运行时，我们能够使用ScrollingWindowDecorator或BorderedWindowDecorator或两者结合来修饰已存在的窗口。 一个修饰能够被应用的另一个好例子是当有需要根据某套规则或者几个平行的规则集（不同的用户凭据等）限制访问对象的属性或方法时。</p>
+<p>&emsp;&emsp;一个对象的属性或方法按照某组规则或几个并行规则(不同用户证书等)需要限制访问时，在这种情况下，不是在原始对象中实现访问控制而是在他的使用中不变或不知道任何限制，并且他被包装在一个访问控制修饰对象中，这个对象能够对允许的原始对象的接口子集服务。</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E5%9E%8B/%E4%BF%AE%E9%A5%B0%E6%A8%A1%E5%BC%8F/%E7%B1%BB%E5%9B%BE.png" alt=""></p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>&emsp;&emsp;Java IO 流为典型的装饰模式。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>&emsp;&emsp;这个示例使用window/scrolling情境。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// The Window interface class</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Draws the Window</span>
+    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Returns a description of the Window</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">// implementation of a simple Window without any scrollbars</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleWindow</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Draw window</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"simple window"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>&emsp;&emsp;以下类包含所有Window类的decorator，以及修饰类本身。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// abstract decorator class - note that it implements Window</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">WindowDecorator</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> Window decoratedWindow<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// the Window being decorated</span>
+
+    <span class="token keyword">public</span> <span class="token function">WindowDecorator</span> <span class="token punctuation">(</span>Window decoratedWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>decoratedWindow <span class="token operator">=</span> decoratedWindow<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        decoratedWindow<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> decoratedWindow<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">// The first concrete decorator which adds vertical scrollbar functionality</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VerticalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">VerticalScrollBar</span><span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Draw the vertical scrollbar</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including vertical scrollbars"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">// The second concrete decorator which adds horizontal scrollbar functionality</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HorizontalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator1</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">HorizontalScrollBar</span> <span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Draw the horizontal scrollbar</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including horizontal scrollbars"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>&emsp;&emsp;以下是一个测试程序，它创建了一个包含多重装饰的Window实例(如,包含了垂直的和水平的滚动条),然后输出它的描述：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// for print descriptions of the window subclasses</span>
+    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span>Window w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"description:"</span><span class="token operator">+</span>w<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// original SimpleWindow</span>
+        SimpleWindow sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printInfo</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// HorizontalScrollBar  mixed Window</span>
+        HorizontalScrollBar hbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HorizontalScrollBar</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printInfo</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// VerticalScrollBar mixed Window</span>
+        VerticalScrollBar vbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VerticalScrollBar</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printInfo</span><span class="token punctuation">(</span>vbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>&emsp;&emsp;以下是SimpleWindow及添加了组件HorizontalScrollBar和VerticalScrollBar后的Window测试结果：</p>
+<pre><code>description:simple window
+description:simple window, including horizontal scrollbars
+description:simple window, including horizontal scrollbars, including vertical scrollbars</code></pre>
             </div>
             <hr/>
 
@@ -412,7 +524,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/">https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/</a>
+                    <a href="https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/">https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -643,29 +755,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/11/design-pattern/structural/proxy-pattern/">
+                <a href="/2019/12/13/design-pattern/structural/decorator-pattern/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="代理模式">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="修饰模式">
                         
-                        <span class="card-title">代理模式</span>
+                        <span class="card-title">修饰模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            为其他对象提供一个代理以控制对这个对象的访问。
+                            向某个对象动态地添加更多的功能。修饰模式是除类继承外另一种扩展功能的方法。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -678,6 +791,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -700,31 +814,47 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/10/design-pattern/create/singleton-pattern/">
+                <a href="/2019/12/12/tool/idea-keymap/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="单例模式">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="IDEA快捷键大全">
                         
-                        <span class="card-title">单例模式</span>
+                        <span class="card-title">IDEA快捷键大全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            确保一个类只有一个实例，并提供对该实例的全局访问。
+                            编辑类快捷键
+
+
+快捷键
+说明
+
+
+
+Ctrl + Space
+基本代码完成（任何类的名称，方法或变量）
+
+
+Ctrl + Shift + Space
+智能代码完成（筛选方法和变量（按预期类型）
+
+
+Ctrl + Shift + Enter
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
+                            <a href="/categories/IDEA/" class="post-category">
+                                    IDEA
                                 </a>
                             
                             
@@ -734,12 +864,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
+                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">开发工具</span>
                     </a>
                     
-                    <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">创建型设计模式</span>
+                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">快捷键</span>
                     </a>
                     
                 </div>

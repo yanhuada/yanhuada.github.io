@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.yanhuada.cn/"/>
-  <updated>2020-02-12T17:04:36.558Z</updated>
+  <updated>2020-02-13T10:01:40.542Z</updated>
   <id>https://blog.yanhuada.cn/</id>
   
   <author>
@@ -17,51 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>IDEA快捷键大全</title>
-    <link href="https://blog.yanhuada.cn/2019/12/12/tool/idea-keymap/"/>
-    <id>https://blog.yanhuada.cn/2019/12/12/tool/idea-keymap/</id>
-    <published>2019-12-12T13:01:00.000Z</published>
-    <updated>2020-02-12T17:04:36.558Z</updated>
+    <title>修饰模式</title>
+    <link href="https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/"/>
+    <id>https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/</id>
+    <published>2019-12-13T12:01:00.000Z</published>
+    <updated>2020-02-13T10:01:40.542Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="编辑类快捷键："><a href="#编辑类快捷键：" class="headerlink" title="编辑类快捷键："></a>编辑类快捷键：</h2><table><thead><tr><th><strong>快捷键</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td><strong>Ctrl + Space</strong></td><td>基本代码完成（任何类的名称，方法或变量）</td></tr><tr><td><strong>Ctrl + Shift + Space</strong></td><td>智能代码完成（筛选方法和变量（按预期类型）</td></tr><tr><td><strong>Ctrl + Shift + Enter</strong></td><td>完整的陈述</td></tr><tr><td><strong>Ctrl + P</strong></td><td>参数信息（在方法调用参数内）</td></tr><tr><td><strong>Ctrl + Q</strong></td><td>快速文档查找</td></tr><tr><td><strong>Shift + F1</strong></td><td>外部文件</td></tr><tr><td><strong>Ctrl + mouse over code</strong></td><td>简短的信息</td></tr><tr><td><strong>Ctrl + F1</strong></td><td>在插入符号处显示错误或警告的描述</td></tr><tr><td><strong>Alt + Insert</strong></td><td>生成代码…(getter、setter,Constructors、hashCode/equals, toString)<br /></td></tr><tr><td><strong>Ctrl + O</strong></td><td>重载方法</td></tr><tr><td><strong>Ctrl + I</strong></td><td>实现方法</td></tr><tr><td><strong>Ctrl + Alt + T</strong></td><td>包裹代码… (if..else, try..catch, for,synchronized, 等.)</td></tr><tr><td><strong>Ctrl + /</strong></td><td>用行注释注释/取消注释<br /></td></tr><tr><td><strong>Ctrl + Shift + /</strong></td><td>用块注释注释/取消注释</td></tr><tr><td><strong>Ctrl + W</strong></td><td>选择连续递增的代码块</td></tr><tr><td><strong>Ctrl + Shift + W</strong></td><td>将当前选择减少到以前的状态</td></tr><tr><td><strong>Alt + Q</strong></td><td>上下文信息</td></tr><tr><td><strong>Alt + Enter</strong></td><td>显示意图动作和快速修复</td></tr><tr><td><strong>Ctrl + Alt + L</strong></td><td>重新格式化代码</td></tr><tr><td><strong>Ctrl + Alt + O</strong></td><td>最优化导入</td></tr><tr><td><strong>Ctrl + Alt + I</strong></td><td>自动缩进线(年代)</td></tr><tr><td><strong>Tab / Shift + Tab</strong></td><td>缩进/ unindent选定的行</td></tr><tr><td><strong>Ctrl + X , Shift + Delete</strong></td><td>将当前行或选定块剪切到剪贴板</td></tr><tr><td><strong>Ctrl + C , Ctrl + Insert</strong></td><td>将当前行或选定块复制到剪贴板</td></tr><tr><td><strong>Ctrl + V , Shift + Insert</strong></td><td>从剪切板粘贴</td></tr><tr><td><strong>Ctrl + Shift + V</strong></td><td>从最近的缓冲区粘贴。。。</td></tr><tr><td><strong>Ctrl + D</strong></td><td>复制当前行或选定块</td></tr><tr><td><strong>Ctrl + Y</strong></td><td>删除插入符号处的行</td></tr><tr><td><strong>Ctrl + Shift + J</strong></td><td>智能线路连接</td></tr><tr><td><strong>Ctrl + Enter</strong></td><td>智能线路拆分</td></tr><tr><td><strong>Shift + Enter</strong></td><td>启动新线</td></tr><tr><td><strong>Ctrl + Shift + U</strong></td><td>在插入符号或选定块处切换单词大小写</td></tr><tr><td><strong>Ctrl + Shift + ]/[</strong></td><td>选择直到代码块结束/开始</td></tr><tr><td><strong>Ctrl + Delete/Backspace</strong></td><td>删除到单词结束/开始</td></tr><tr><td><strong>Ctrl + NumPad+/-</strong></td><td>展开/折叠代码块</td></tr><tr><td><strong>Ctrl + Shift + NumPad+</strong></td><td>全部展开</td></tr><tr><td><strong>Ctrl + Shift + NumPad-</strong></td><td>全部折叠</td></tr><tr><td><strong>Ctrl + F4</strong></td><td>关闭活动编辑器选项卡</td></tr></tbody></table><h2 id="搜索相关快捷键"><a href="#搜索相关快捷键" class="headerlink" title="搜索相关快捷键"></a>搜索相关快捷键</h2><table><thead><tr><th><strong>快捷键</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>Alt + F7/Ctrl + F7</td><td>查找用法/查找文件中的用法</td></tr><tr><td>Ctrl + Shift + F7</td><td>在文件中高领显示用法</td></tr><tr><td>Ctrl + Alt + F7</td><td>显示使用</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;编辑类快捷键：&quot;&gt;&lt;a href=&quot;#编辑类快捷键：&quot; class=&quot;headerlink&quot; title=&quot;编辑类快捷键：&quot;&gt;&lt;/a&gt;编辑类快捷键：&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;快捷键&lt;/strong&gt;&lt;/th&gt;
-&lt;t
-      
-    
-    </summary>
-    
-    
-      <category term="IDEA" scheme="https://blog.yanhuada.cn/categories/IDEA/"/>
-    
-    
-      <category term="开发工具" scheme="https://blog.yanhuada.cn/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="快捷键" scheme="https://blog.yanhuada.cn/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>适配器模式</title>
-    <link href="https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/"/>
-    <id>https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/</id>
-    <published>2019-12-11T12:01:00.000Z</published>
-    <updated>2020-02-12T16:36:17.363Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>&emsp;&emsp; <strong>修饰模式</strong> ，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能。</p><p>&emsp;&emsp; 通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p><p>&emsp;&emsp; 修饰模式是类继承的另外一种选择。类继承在编译时候增加行为，而装饰模式是在运行时增加行为。</p><p>&emsp;&emsp;当有几个相互独立的功能需要扩充时，这个区别就变得很重要。在有些面向对象的编程语言中，类不能在运行时被创建，通常在设计的时候也不能预测到有哪几种功能组合。这就意味着要为每一种组合创建一个新类。相反，修饰模式是面向运行时候的对象实例的,这样就可以在运行时根据需要进行组合。一个修饰模式的示例是JAVA里的<code>Java I/O Streams</code>的实现。</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>&emsp;&emsp;例如，一个窗口系统中的窗口，允许这个窗口内容滚动，我们希望给它添加水平或垂直滚动条。假设窗口通过“Window”类实例来表示，并且假设它没有添加滚动条功能。我们可以创建一个子类“ScrollingWindow”来提供，或者我们可以创建一个ScrollingWindowDecorator来为已存在的Window对象添加这个功能。在这点上，只要是解决方案就可以了。 现在我们假设希望选择给我们的窗口添加边框，同样，我们的原始Window类不支持。ScrollingWindow子类现在会造成一个问题，因为它会有效的创建一种新的窗口。如果我们想要给所有窗口添加边框，我们必须创建WindowWithBorder和ScrollingWindowWithBorder子类。显然，这个问题由于被添加类而变得更糟了。对于修饰模式，我们简单的创建一个新类BorderedWindowDecorator，在运行时，我们能够使用ScrollingWindowDecorator或BorderedWindowDecorator或两者结合来修饰已存在的窗口。 一个修饰能够被应用的另一个好例子是当有需要根据某套规则或者几个平行的规则集（不同的用户凭据等）限制访问对象的属性或方法时。</p><p>&emsp;&emsp;一个对象的属性或方法按照某组规则或几个并行规则(不同用户证书等)需要限制访问时，在这种情况下，不是在原始对象中实现访问控制而是在他的使用中不变或不知道任何限制，并且他被包装在一个访问控制修饰对象中，这个对象能够对允许的原始对象的接口子集服务。</p><h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E5%9E%8B/%E4%BF%AE%E9%A5%B0%E6%A8%A1%E5%BC%8F/%E7%B1%BB%E5%9B%BE.png" alt=""></p><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>&emsp;&emsp;Java IO 流为典型的装饰模式。</p><h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>&emsp;&emsp;这个示例使用window/scrolling情境。</p><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// The Window interface class</span><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Draws the Window</span>    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Returns a description of the Window</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">// implementation of a simple Window without any scrollbars</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleWindow</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// Draw window</span>    <span class="token punctuation">}</span>    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token string">"simple window"</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>&emsp;&emsp;以下类包含所有Window类的decorator，以及修饰类本身。</p><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// abstract decorator class - note that it implements Window</span><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">WindowDecorator</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>    <span class="token keyword">protected</span> Window decoratedWindow<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// the Window being decorated</span>    <span class="token keyword">public</span> <span class="token function">WindowDecorator</span> <span class="token punctuation">(</span>Window decoratedWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>decoratedWindow <span class="token operator">=</span> decoratedWindow<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        decoratedWindow<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> decoratedWindow<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">// The first concrete decorator which adds vertical scrollbar functionality</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VerticalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token function">VerticalScrollBar</span><span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// Draw the vertical scrollbar</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including vertical scrollbars"</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">// The second concrete decorator which adds horizontal scrollbar functionality</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HorizontalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator1</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token function">HorizontalScrollBar</span> <span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// Draw the horizontal scrollbar</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including horizontal scrollbars"</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>&emsp;&emsp;以下是一个测试程序，它创建了一个包含多重装饰的Window实例(如,包含了垂直的和水平的滚动条),然后输出它的描述：</p><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">// for print descriptions of the window subclasses</span>    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span>Window w<span class="token punctuation">)</span> <span class="token punctuation">{</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"description:"</span><span class="token operator">+</span>w<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// original SimpleWindow</span>        SimpleWindow sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">printInfo</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// HorizontalScrollBar  mixed Window</span>        HorizontalScrollBar hbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HorizontalScrollBar</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">printInfo</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// VerticalScrollBar mixed Window</span>        VerticalScrollBar vbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VerticalScrollBar</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">printInfo</span><span class="token punctuation">(</span>vbw<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>&emsp;&emsp;以下是SimpleWindow及添加了组件HorizontalScrollBar和VerticalScrollBar后的Window测试结果：</p><pre><code>description:simple windowdescription:simple window, including horizontal scrollbarsdescription:simple window, including horizontal scrollbars, including vertical scrollbars</code></pre>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-2&quot;&gt;&lt;a hre
+        &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp; &lt;strong&gt;修饰模式&lt;/strong&gt; ，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就
       
     
     </summary>
@@ -73,6 +41,38 @@
       <category term="设计模式" scheme="https://blog.yanhuada.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="结构型设计模式" scheme="https://blog.yanhuada.cn/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA快捷键大全</title>
+    <link href="https://blog.yanhuada.cn/2019/12/12/tool/idea-keymap/"/>
+    <id>https://blog.yanhuada.cn/2019/12/12/tool/idea-keymap/</id>
+    <published>2019-12-12T13:01:00.000Z</published>
+    <updated>2020-02-13T05:01:17.254Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编辑类快捷键"><a href="#编辑类快捷键" class="headerlink" title="编辑类快捷键"></a>编辑类快捷键</h2><table><thead><tr><th><strong>快捷键</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td><strong>Ctrl + Space</strong></td><td>基本代码完成（任何类的名称，方法或变量）</td></tr><tr><td><strong>Ctrl + Shift + Space</strong></td><td>智能代码完成（筛选方法和变量（按预期类型）</td></tr><tr><td><strong>Ctrl + Shift + Enter</strong></td><td>完整的陈述</td></tr><tr><td><strong>Ctrl + P</strong></td><td>参数信息（在方法调用参数内）</td></tr><tr><td><strong>Ctrl + Q</strong></td><td>快速文档查找</td></tr><tr><td><strong>Shift + F1</strong></td><td>外部文件</td></tr><tr><td><strong>Ctrl + mouse over code</strong></td><td>简短的信息</td></tr><tr><td><strong>Ctrl + F1</strong></td><td>在插入符号处显示错误或警告的描述</td></tr><tr><td><strong>Alt + Insert</strong></td><td>生成代码…(getter、setter,Constructors、hashCode/equals, toString)<br /></td></tr><tr><td><strong>Ctrl + O</strong></td><td>重载方法</td></tr><tr><td><strong>Ctrl + I</strong></td><td>实现方法</td></tr><tr><td><strong>Ctrl + Alt + T</strong></td><td>包裹代码… (if..else, try..catch, for,synchronized, 等.)</td></tr><tr><td><strong>Ctrl + /</strong></td><td>用行注释注释/取消注释<br /></td></tr><tr><td><strong>Ctrl + Shift + /</strong></td><td>用块注释注释/取消注释</td></tr><tr><td><strong>Ctrl + W</strong></td><td>选择连续递增的代码块</td></tr><tr><td><strong>Ctrl + Shift + W</strong></td><td>将当前选择减少到以前的状态</td></tr><tr><td><strong>Alt + Q</strong></td><td>上下文信息</td></tr><tr><td><strong>Alt + Enter</strong></td><td>显示意图动作和快速修复</td></tr><tr><td><strong>Ctrl + Alt + L</strong></td><td>重新格式化代码</td></tr><tr><td><strong>Ctrl + Alt + O</strong></td><td>最优化导入</td></tr><tr><td><strong>Ctrl + Alt + I</strong></td><td>自动缩进线(年代)</td></tr><tr><td><strong>Tab / Shift + Tab</strong></td><td>缩进/ unindent选定的行</td></tr><tr><td><strong>Ctrl + X , Shift + Delete</strong></td><td>将当前行或选定块剪切到剪贴板</td></tr><tr><td><strong>Ctrl + C , Ctrl + Insert</strong></td><td>将当前行或选定块复制到剪贴板</td></tr><tr><td><strong>Ctrl + V , Shift + Insert</strong></td><td>从剪切板粘贴</td></tr><tr><td><strong>Ctrl + Shift + V</strong></td><td>从最近的缓冲区粘贴。。。</td></tr><tr><td><strong>Ctrl + D</strong></td><td>复制当前行或选定块</td></tr><tr><td><strong>Ctrl + Y</strong></td><td>删除插入符号处的行</td></tr><tr><td><strong>Ctrl + Shift + J</strong></td><td>智能线路连接</td></tr><tr><td><strong>Ctrl + Enter</strong></td><td>智能线路拆分</td></tr><tr><td><strong>Shift + Enter</strong></td><td>启动新线</td></tr><tr><td><strong>Ctrl + Shift + U</strong></td><td>在插入符号或选定块处切换单词大小写</td></tr><tr><td><strong>Ctrl + Shift + ]/[</strong></td><td>选择直到代码块结束/开始</td></tr><tr><td><strong>Ctrl + Delete/Backspace</strong></td><td>删除到单词结束/开始</td></tr><tr><td><strong>Ctrl + NumPad+/-</strong></td><td>展开/折叠代码块</td></tr><tr><td><strong>Ctrl + Shift + NumPad+</strong></td><td>全部展开</td></tr><tr><td><strong>Ctrl + Shift + NumPad-</strong></td><td>全部折叠</td></tr><tr><td><strong>Ctrl + F4</strong></td><td>关闭活动编辑器选项卡</td></tr></tbody></table><h2 id="搜索相关快捷键"><a href="#搜索相关快捷键" class="headerlink" title="搜索相关快捷键"></a>搜索相关快捷键</h2><table><thead><tr><th><strong>快捷键</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>Alt + F7/Ctrl + F7</td><td>查找用法/查找文件中的用法</td></tr><tr><td>Ctrl + Shift + F7</td><td>在文件中高领显示用法</td></tr><tr><td>Ctrl + Alt + F7</td><td>显示使用</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;编辑类快捷键&quot;&gt;&lt;a href=&quot;#编辑类快捷键&quot; class=&quot;headerlink&quot; title=&quot;编辑类快捷键&quot;&gt;&lt;/a&gt;编辑类快捷键&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;快捷键&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;s
+      
+    
+    </summary>
+    
+    
+      <category term="IDEA" scheme="https://blog.yanhuada.cn/categories/IDEA/"/>
+    
+    
+      <category term="开发工具" scheme="https://blog.yanhuada.cn/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="快捷键" scheme="https://blog.yanhuada.cn/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   
@@ -91,6 +91,34 @@
       
         &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;代理模式：为其他对象提供一种代理以控制对这个对象的访问。&lt;/p&gt;
 &lt;h2 id=&quot;适用场景&quot;&gt;&lt;a href=&quot;#适
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="https://blog.yanhuada.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="https://blog.yanhuada.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="结构型设计模式" scheme="https://blog.yanhuada.cn/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>适配器模式</title>
+    <link href="https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/"/>
+    <id>https://blog.yanhuada.cn/2019/12/11/design-pattern/structural/adapter-pattern/</id>
+    <published>2019-12-11T12:01:00.000Z</published>
+    <updated>2020-02-12T16:36:17.363Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;-2&quot;&gt;&lt;a hre
       
     
     </summary>
