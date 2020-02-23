@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="修饰模式, 零创世界">
-    <meta name="description" content="向某个对象动态地添加更多的功能。修饰模式是除类继承外另一种扩展功能的方法。">
+    <meta name="keywords" content="Java提供了哪些基本数据类型, 零创世界">
+    <meta name="description" content="&amp;emsp;&amp;emsp;Java语言一共提供了8种原始的数据类型（byte，short，int，long，float，double，char， boolean），这些数据类型不是对象，而是Java语言中不同于类的特殊类型，这些基本类型的数据">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>修饰模式 | 零创世界</title>
+    <title>Java提供了哪些基本数据类型 | 零创世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,12 +219,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">修饰模式</h1>
+                    <h1 class="description center-align post-title">Java提供了哪些基本数据类型</h1>
                 </div>
             </div>
         </div>
@@ -341,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                <span class="chip bg-color">设计模式</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                <span class="chip bg-color">结构型设计模式</span>
+                            <a href="/tags/java%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">java基础</span>
                             </a>
                         
                     </div>
@@ -357,8 +357,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                设计模式
+                            <a href="/categories/java/" class="post-category">
+                                java
                             </a>
                         
                     </div>
@@ -370,7 +370,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-13
+                    2019-12-22
                 </div>
                 
 
@@ -387,119 +387,107 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>&emsp;&emsp; <strong>修饰模式</strong> ，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能。</p>
-<p>&emsp;&emsp; 通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p>
-<p>&emsp;&emsp; 修饰模式是类继承的另外一种选择。类继承在编译时候增加行为，而装饰模式是在运行时增加行为。</p>
-<p>&emsp;&emsp;当有几个相互独立的功能需要扩充时，这个区别就变得很重要。在有些面向对象的编程语言中，类不能在运行时被创建，通常在设计的时候也不能预测到有哪几种功能组合。这就意味着要为每一种组合创建一个新类。相反，修饰模式是面向运行时候的对象实例的,这样就可以在运行时根据需要进行组合。一个修饰模式的示例是JAVA里的<code>Java I/O Streams</code>的实现。</p>
-<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>&emsp;&emsp;例如，一个窗口系统中的窗口，允许这个窗口内容滚动，我们希望给它添加水平或垂直滚动条。假设窗口通过“Window”类实例来表示，并且假设它没有添加滚动条功能。我们可以创建一个子类“ScrollingWindow”来提供，或者我们可以创建一个ScrollingWindowDecorator来为已存在的Window对象添加这个功能。在这点上，只要是解决方案就可以了。 现在我们假设希望选择给我们的窗口添加边框，同样，我们的原始Window类不支持。ScrollingWindow子类现在会造成一个问题，因为它会有效的创建一种新的窗口。如果我们想要给所有窗口添加边框，我们必须创建WindowWithBorder和ScrollingWindowWithBorder子类。显然，这个问题由于被添加类而变得更糟了。对于修饰模式，我们简单的创建一个新类BorderedWindowDecorator，在运行时，我们能够使用ScrollingWindowDecorator或BorderedWindowDecorator或两者结合来修饰已存在的窗口。 一个修饰能够被应用的另一个好例子是当有需要根据某套规则或者几个平行的规则集（不同的用户凭据等）限制访问对象的属性或方法时。</p>
-<p>&emsp;&emsp;一个对象的属性或方法按照某组规则或几个并行规则(不同用户证书等)需要限制访问时，在这种情况下，不是在原始对象中实现访问控制而是在他的使用中不变或不知道任何限制，并且他被包装在一个访问控制修饰对象中，这个对象能够对允许的原始对象的接口子集服务。</p>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E5%9E%8B/%E4%BF%AE%E9%A5%B0%E6%A8%A1%E5%BC%8F/%E7%B1%BB%E5%9B%BE.png" alt=""></p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>&emsp;&emsp;Java IO 流为典型的装饰模式。</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>&emsp;&emsp;这个示例使用window/scrolling情境。</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// The Window interface class</span>
-<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Draws the Window</span>
-    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Returns a description of the Window</span>
-<span class="token punctuation">}</span>
+                <p>&emsp;&emsp;Java语言一共提供了8种原始的数据类型（byte，short，int，long，float，double，char， boolean），这些数据类型不是对象，而是Java语言中不同于类的特殊类型，这些基本类型的数据变量在声明之后就会立刻在栈上被分配内存空间。除了这8种基本的数据类型外，其他类型都是引用类型（例如类、接口、数组等），引用类型类似于C++中的引用或指针的概念，它以特殊的方式指向对象实体，这类变量在声明时不会被分配内存空间，只是存储了一个内存地址而已。</p>
+<p>&emsp;&emsp;表4-2为Java中的基本数据类型及其描述。</p>
+<center>表4-2　不同数据类型对比</center>
 
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">字节长度</th>
+<th align="center">范围</th>
+<th align="center">默认值</th>
+<th align="center">包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">($-2^31$ ~ 2^31-1$)</td>
+<td align="center">0</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">2</td>
+<td align="center">[-32768,32767]</td>
+<td align="center">0</td>
+<td align="center">Short</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">8</td>
+<td align="center">($-2^63$ ~ 2^63-1$)</td>
+<td align="center">0L 或 01</td>
+<td align="center">Long</td>
+</tr>
+<tr>
+<td align="center">byte</td>
+<td align="center">1</td>
+<td align="center">[-128, 127]</td>
+<td align="center">0</td>
+<td align="center">Byte</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">4</td>
+<td align="center">32位 IEEE754 单精度范围</td>
+<td align="center">0.0F 或 0.0f</td>
+<td align="center">Float</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">8</td>
+<td align="center">64位 IEEE754 双精度范围</td>
+<td align="center">0.0</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">char</td>
+<td align="center">2</td>
+<td align="center">Unicode [0, 65535]</td>
+<td align="center">u0000</td>
+<td align="center">Character</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">1</td>
+<td align="center">true 和 false</td>
+<td align="center">false</td>
+<td align="center">boolean</td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;以上这些基本类型可以分为如下4种类型：</p>
+<p>&emsp;&emsp;1）int长度数据类型：byte （8 bit）、short （16 bit）、int （32 bit）、long （64 bit）。</p>
+<p>&emsp;&emsp;2）float长度数据类型：单精度（32 bit float）、双精度（64 bit double）。</p>
+<p>&emsp;&emsp;3）boolean类型变量的取值：ture、false。</p>
+<p>&emsp;&emsp;4）char数据类型：unicode字符（16 bit）。</p>
+<p>&emsp;&emsp;此外，Java语言还提供了对这些原始数据类型的封装类（字符类型Character，布尔类型Boolean，数值类型Byte、Short、Integer、Long、Float、Double）。需要注意的是，Java中的数值类型都是有符号的，不存在无符号的数，它们的取值范围也是固定的，不会随着硬件环境或者操作系统的改变而改变。除了以上提到的8种基本数据类型以外，在Java语言中，还存在另外一种基本类型void，它也有对应的封装类java.lang.void，只是无法直接对它进行操作而已。封装类型和原始类型有许多不同点：首先，原始数据类型在传递参数时都是按值传递，而封装类型是按引用传递的。其次，当封装类型和原始类型用作某个类的实例数据时，它们所指定的默认值不同。对象引用实例变量的默认值为null，而原始类型实例变量的默认值与它们的类型有关（例如int默认初始化为0），示例如下：</p>
+<pre><code>public class Test｛
 
-<span class="token comment" spellcheck="true">// implementation of a simple Window without any scrollbars</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleWindow</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// Draw window</span>
-    <span class="token punctuation">}</span>
+　String s；
+　int i；
+　float f；
 
-    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"simple window"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>&emsp;&emsp;以下类包含所有Window类的decorator，以及修饰类本身。</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// abstract decorator class - note that it implements Window</span>
-<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">WindowDecorator</span> <span class="token keyword">implements</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
-    <span class="token keyword">protected</span> Window decoratedWindow<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// the Window being decorated</span>
+　public static void main（String args[]）｛
+　　　Test t=new Test（）；
+　　　System.out.println（t.s==null）；
+　　　System.out.println（t.i）；
+　　　System.out.println（t.f）；
+　｝
 
-    <span class="token keyword">public</span> <span class="token function">WindowDecorator</span> <span class="token punctuation">(</span>Window decoratedWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>decoratedWindow <span class="token operator">=</span> decoratedWindow<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+｝</code></pre><p>程序运行结果为：</p>
+<p>true</p>
+<p>0</p>
+<p>0.0</p>
+<p>&emsp;&emsp;除了以上需要注意的内容外，在Java语言中，默认声明的小数是double类型的，因此在对float类型的变量进行初始化时需要进行类型转换。float类型的变量有两种初始化方法：float f=1.0f或float f=（float）1.0。与此类似的是，在Java语言中，直接写的整型数字是int类型的，如果在给数据类型为long的变量直接赋值时，int类型的值无法表示一个非常大的数字，因此，在赋值时可以通过如下的方法来赋值：long l=26012402244L。</p>
+<p>&emsp;&emsp;引申：</p>
+<p>&emsp;&emsp;<strong>1.在Java语言中null值是什么？在内存中null是什么？</strong></p>
+<p>&emsp;&emsp;null不是一个合法的Object实例，所以编译器并没有为其分配内存，它仅仅用于表明该引用目前没有指向任何对象。其实，与C语言类似，null是将引用变量的值全部置0。</p>
+<p>&emsp;&emsp;<strong>2.如何理解赋值语句String x=null？</strong></p>
+<p>&emsp;&emsp;在Java语言中，变量被分为两大类型：原始值（primitive）与引用值（reference）。声明为原始类型的变量，其存储的是实际的值。声明为引用类型的变量，存储的是实际对象的地址（指针，引用）。对于赋值语句String x=null，它定义了一个变量”x”，x中存放的是String引用，此处为null。</p>
 
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        decoratedWindow<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> decoratedWindow<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token comment" spellcheck="true">// The first concrete decorator which adds vertical scrollbar functionality</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VerticalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token function">VerticalScrollBar</span><span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawVerticalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// Draw the vertical scrollbar</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including vertical scrollbars"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token comment" spellcheck="true">// The second concrete decorator which adds horizontal scrollbar functionality</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HorizontalScrollBar</span> <span class="token keyword">extends</span> <span class="token class-name">WindowDecorator1</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token function">HorizontalScrollBar</span> <span class="token punctuation">(</span>Window windowToBeDecorated<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>windowToBeDecorated<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawHorizontalScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// Draw the horizontal scrollbar</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", including horizontal scrollbars"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>&emsp;&emsp;以下是一个测试程序，它创建了一个包含多重装饰的Window实例(如,包含了垂直的和水平的滚动条),然后输出它的描述：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// for print descriptions of the window subclasses</span>
-    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span>Window w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"description:"</span><span class="token operator">+</span>w<span class="token punctuation">.</span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// original SimpleWindow</span>
-        SimpleWindow sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">printInfo</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// HorizontalScrollBar  mixed Window</span>
-        HorizontalScrollBar hbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HorizontalScrollBar</span><span class="token punctuation">(</span>sw<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">printInfo</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// VerticalScrollBar mixed Window</span>
-        VerticalScrollBar vbw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VerticalScrollBar</span><span class="token punctuation">(</span>hbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">printInfo</span><span class="token punctuation">(</span>vbw<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>&emsp;&emsp;以下是SimpleWindow及添加了组件HorizontalScrollBar和VerticalScrollBar后的Window测试结果：</p>
-<pre><code>description:simple window
-description:simple window, including horizontal scrollbars
-description:simple window, including horizontal scrollbars, including vertical scrollbars</code></pre>
             </div>
             <hr/>
 
@@ -524,7 +512,7 @@ description:simple window, including horizontal scrollbars, including vertical s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/">https://blog.yanhuada.cn/2019/12/13/design-pattern/structural/decorator-pattern/</a>
+                    <a href="https://blog.yanhuada.cn/2019/12/22/java/base/0001/">https://blog.yanhuada.cn/2019/12/22/java/base/0001/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,12 +550,12 @@ description:simple window, including horizontal scrollbars, including vertical s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                    <span class="chip bg-color">设计模式</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                    <span class="chip bg-color">结构型设计模式</span>
+                                <a href="/tags/java%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">java基础</span>
                                 </a>
                             
                         </div>
@@ -759,31 +747,53 @@ description:simple window, including horizontal scrollbars, including vertical s
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/22/java/base/0001/">
+                <a href="/2020/01/01/linux/linux-base-command/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Java提供了哪些基本数据类型">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux基本命令">
                         
-                        <span class="card-title">Java提供了哪些基本数据类型</span>
+                        <span class="card-title">Linux基本命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            &emsp;&emsp;Java语言一共提供了8种原始的数据类型（byte，short，int，long，float，double，char， boolean），这些数据类型不是对象，而是Java语言中不同于类的特殊类型，这些基本类型的数据
+                            
+执行查看帮助命令在命令行终端中可以输入man man命令来查看man命令自身的帮助信息。man命令中常用按键以及用途 
+
+
+
+参数
+作用
+
+
+
+空格键
+向下翻一页
+
+
+PaGe down
+向下翻一页
+
+
+PaGe up
+最大尝试次数
+
+
+
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -793,12 +803,12 @@ description:simple window, including horizontal scrollbars, including vertical s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/java%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">java基础</span>
+                    <a href="/tags/%E5%91%BD%E4%BB%A4/">
+                        <span class="chip bg-color">命令</span>
                     </a>
                     
                 </div>
@@ -812,47 +822,31 @@ description:simple window, including horizontal scrollbars, including vertical s
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/12/tool/idea-keymap/">
+                <a href="/2019/12/13/design-pattern/structural/decorator-pattern/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="IDEA快捷键大全">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="修饰模式">
                         
-                        <span class="card-title">IDEA快捷键大全</span>
+                        <span class="card-title">修饰模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编辑类快捷键
-
-
-快捷键
-说明
-
-
-
-Ctrl + Space
-基本代码完成（任何类的名称，方法或变量）
-
-
-Ctrl + Shift + Space
-智能代码完成（筛选方法和变量（按预期类型）
-
-
-Ctrl + Shift + Enter
+                            向某个对象动态地添加更多的功能。修饰模式是除类继承外另一种扩展功能的方法。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/IDEA/" class="post-category">
-                                    IDEA
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
@@ -862,12 +856,12 @@ Ctrl + Shift + Enter
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">开发工具</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
-                    <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                        <span class="chip bg-color">快捷键</span>
+                    <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">结构型设计模式</span>
                     </a>
                     
                 </div>
