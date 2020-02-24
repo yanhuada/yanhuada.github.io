@@ -31,8 +31,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="零创世界" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="零创世界" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -405,10 +405,10 @@
 <p><a name="2a8d3932"></a></p>
 <h2 id="四、设置API密钥"><a href="#四、设置API密钥" class="headerlink" title="四、设置API密钥"></a>四、设置API密钥</h2><p>设置API密钥需要安装操作证书，如果前面操作中已经安装过，则可以无需再安装<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/06.png" alt=""><br><br />API密钥需要手动设置32位的密钥<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/07.png" alt=""></p>
 <p><a name="4e21a554"></a></p>
-<h2 id="五、配置支付授权目录"><a href="#五、配置支付授权目录" class="headerlink" title="五、配置支付授权目录"></a>五、配置支付授权目录</h2><p>公众号支付跟其他支付方式有点不一样，这里的授权目录需要填前端的地址，因为公众号支付的预下单是由前端发起的<br /><br><img src="" alt="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/08.png"></p>
+<h2 id="五、配置支付授权目录"><a href="#五、配置支付授权目录" class="headerlink" title="五、配置支付授权目录"></a>五、配置支付授权目录</h2><p>公众号支付跟其他支付方式有点不一样，这里的授权目录需要填前端的地址，因为公众号支付的预下单是由前端发起的<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/08.png" alt=""></p>
 <p><a name="82635ab9"></a></p>
 <h2 id="六、设置网页授权回调"><a href="#六、设置网页授权回调" class="headerlink" title="六、设置网页授权回调"></a>六、设置网页授权回调</h2><p>回到服务号，开发JSAPI支付时，在统一下单接口中要求必传用户openid，而获取openid则需要您在公众平台设置获取openid的域名，只有被设置过的域名才是一个有效的获取openid的域名，否则将获取失败</p>
-<p>但是在设置网页授权回调前，需要确保设置的域名能访问到MP_verify_<em>.txt 文件，例如<a href="http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify" target="_blank" rel="noopener">http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify</a>_</em>.txt 文件访问域名根目录下<br /><br><img src="" alt="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/09.png"></p>
+<p>但是在设置网页授权回调前，需要确保设置的域名能访问到MP_verify_<em>.txt 文件，例如<a href="http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify" target="_blank" rel="noopener">http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify</a>_</em>.txt 文件访问域名根目录下<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/09.png" alt=""></p>
 <p><a name="f01e90fb"></a></p>
 <h2 id="七、项目中的配置"><a href="#七、项目中的配置" class="headerlink" title="七、项目中的配置"></a>七、项目中的配置</h2><p>下面是application.xml中的配置示例</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">wx</span><span class="token punctuation">:</span>
