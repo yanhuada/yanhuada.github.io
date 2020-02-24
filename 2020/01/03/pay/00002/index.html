@@ -676,57 +676,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/03/pay/00002/">
+                <a href="/2020/01/04/database/sql/00001/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="微信公众号支付JSAPI申请配置流程">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SQL优化大总结">
                         
-                        <span class="card-title">微信公众号支付JSAPI申请配置流程</span>
+                        <span class="card-title">SQL优化大总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            由于微信各个账户申请流程较长，请在开发前做好准备
-本文主要是补充说明了微信开发文档中不明确的地方，业务流程请查看官方文档
+                            
+对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
 
-一、申请微信服务号
+应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：
 
-二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；可以通过
+
+select i
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
-                                    微信支付
+                            <a href="/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%94%AF%E4%BB%98/">
-                        <span class="chip bg-color">支付</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
-                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
-                        <span class="chip bg-color">微信支付</span>
+                    <a href="/tags/SQL%E4%BC%98%E5%8C%96/">
+                        <span class="chip bg-color">SQL优化</span>
                     </a>
                     
                 </div>
