@@ -355,33 +355,6 @@
     
     
     <entry>
-      <title>hexo测试文章</title>
-      <link href="/2019/12/07/test/hexo-test/"/>
-      <url>/2019/12/07/test/hexo-test/</url>
-      
-        <content type="html"><![CDATA[<h2 id="文章示例"><a href="#文章示例" class="headerlink" title="文章示例"></a>文章示例</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>title: typora-vue-theme主题介绍date: 2018-09-07 09:25:00author: 赵奇img: /source/images/xxx.jpgtop: truecover: truecoverImg: /images/1.jpgpassword: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92toc: falsemathjax: falsesummary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要categories: Markdowntags:  <span class="token list punctuation">-</span> Typora  - <span class="token title important">Markdown<span class="token punctuation">---</span></span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> markdown </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>工厂方法模式</title>
       <link href="/2019/12/07/design-pattern/create/factory-method-pattern/"/>
       <url>/2019/12/07/design-pattern/create/factory-method-pattern/</url>
@@ -401,6 +374,33 @@
             <tag> 设计模式 </tag>
             
             <tag> 创建型设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo测试文章</title>
+      <link href="/2019/12/07/test/hexo-test/"/>
+      <url>/2019/12/07/test/hexo-test/</url>
+      
+        <content type="html"><![CDATA[<h2 id="文章示例"><a href="#文章示例" class="headerlink" title="文章示例"></a>文章示例</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>title: typora-vue-theme主题介绍date: 2018-09-07 09:25:00author: 赵奇img: /source/images/xxx.jpgtop: truecover: truecoverImg: /images/1.jpgpassword: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92toc: falsemathjax: falsesummary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要categories: Markdowntags:  <span class="token list punctuation">-</span> Typora  - <span class="token title important">Markdown<span class="token punctuation">---</span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
