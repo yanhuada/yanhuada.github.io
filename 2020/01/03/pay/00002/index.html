@@ -4,15 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo测试文章, 零创世界">
-    <meta name="description" content="文章示例
----
-title: typora-vue-theme主题介绍
-date: 2018-09-07 09:25:00
-author: 赵奇
-img: /source/images/xxx.jpg
-top: true
-cover: t">
+    <meta name="keywords" content="微信公众号支付JSAPI申请配置流程, 零创世界">
+    <meta name="description" content="由于微信各个账户申请流程较长，请在开发前做好准备
+本文主要是补充说明了微信开发文档中不明确的地方，业务流程请查看官方文档
+
+一、申请微信服务号
+
+二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；可以通过">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +18,7 @@ cover: t">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo测试文章 | 零创世界</title>
+    <title>微信公众号支付JSAPI申请配置流程 | 零创世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -226,12 +224,12 @@ cover: t">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo测试文章</h1>
+                    <h1 class="description center-align post-title">微信公众号支付JSAPI申请配置流程</h1>
                 </div>
             </div>
         </div>
@@ -348,12 +346,12 @@ cover: t">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/markdown/">
-                                <span class="chip bg-color">markdown</span>
+                            <a href="/tags/%E6%94%AF%E4%BB%98/">
+                                <span class="chip bg-color">支付</span>
                             </a>
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
+                                <span class="chip bg-color">微信支付</span>
                             </a>
                         
                     </div>
@@ -364,8 +362,8 @@ cover: t">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B5%8B%E8%AF%95/" class="post-category">
-                                测试
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
+                                微信支付
                             </a>
                         
                     </div>
@@ -377,7 +375,7 @@ cover: t">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-07
+                    2020-01-03
                 </div>
                 
 
@@ -394,25 +392,34 @@ cover: t">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="文章示例"><a href="#文章示例" class="headerlink" title="文章示例"></a>文章示例</h2><pre class=" language-markdown"><code class="language-markdown">
-<span class="token hr punctuation">---</span>
-title: typora-vue-theme主题介绍
-date: 2018-09-07 09:25:00
-author: 赵奇
-img: /source/images/xxx.jpg
-top: true
-cover: true
-coverImg: /images/1.jpg
-password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
-toc: false
-mathjax: false
-summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-categories: Markdown
-tags:
-  <span class="token list punctuation">-</span> Typora
-  - <span class="token title important">Markdown
-<span class="token punctuation">---</span></span>
-</code></pre>
+                <p>由于微信各个账户申请流程较长，请在开发前做好准备</p>
+<p>本文主要是补充说明了微信开发文档中不明确的地方，<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4" target="_blank" rel="noopener">业务流程请查看官方文档</a></p>
+<p><a name="6125f1bf"></a></p>
+<h2 id="一、申请微信服务号"><a href="#一、申请微信服务号" class="headerlink" title="一、申请微信服务号"></a>一、申请微信服务号</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/01.png" alt=""></p>
+<p><a name="4fed1683"></a></p>
+<h2 id="二、申请微信支付商户号"><a href="#二、申请微信支付商户号" class="headerlink" title="二、申请微信支付商户号"></a>二、申请微信支付商户号</h2><p>请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；<br />可以通过微信服务号中直接申请（推荐）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/02.png" alt=""></p>
+<p>也可以从微信支付平台申请<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/03.png" alt=""></p>
+<p>绑定之前的服务号的APPID（产品中心-&gt;APPID授权管理），默认情况下，从服务号申请的商户号已经绑定了；<br />如果还未绑定，需要提交绑定申请，并到服务号进行确认（如果服务号和商户号的经营主体不一致，则需要经过审核）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/04.png" alt=""></p>
+<p><a name="954759e9"></a></p>
+<h2 id="三、开通JSAPI并授权APPID"><a href="#三、开通JSAPI并授权APPID" class="headerlink" title="三、开通JSAPI并授权APPID"></a>三、开通JSAPI并授权APPID</h2><p>如果是从服务号申请的商户号，默认就开通了JSAPI支付，否则需要从产品中心-&gt;JSAPI提交申请<br /><img src="" alt="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/05.png"></p>
+<p><a name="2a8d3932"></a></p>
+<h2 id="四、设置API密钥"><a href="#四、设置API密钥" class="headerlink" title="四、设置API密钥"></a>四、设置API密钥</h2><p>设置API密钥需要安装操作证书，如果前面操作中已经安装过，则可以无需再安装<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/06.png" alt=""><br><br />API密钥需要手动设置32位的密钥<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/07.png" alt=""></p>
+<p><a name="4e21a554"></a></p>
+<h2 id="五、配置支付授权目录"><a href="#五、配置支付授权目录" class="headerlink" title="五、配置支付授权目录"></a>五、配置支付授权目录</h2><p>公众号支付跟其他支付方式有点不一样，这里的授权目录需要填前端的地址，因为公众号支付的预下单是由前端发起的<br /><br><img src="" alt="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/08.png"></p>
+<p><a name="82635ab9"></a></p>
+<h2 id="六、设置网页授权回调"><a href="#六、设置网页授权回调" class="headerlink" title="六、设置网页授权回调"></a>六、设置网页授权回调</h2><p>回到服务号，开发JSAPI支付时，在统一下单接口中要求必传用户openid，而获取openid则需要您在公众平台设置获取openid的域名，只有被设置过的域名才是一个有效的获取openid的域名，否则将获取失败</p>
+<p>但是在设置网页授权回调前，需要确保设置的域名能访问到MP_verify_<em>.txt 文件，例如<a href="http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify" target="_blank" rel="noopener">http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify</a>_</em>.txt 文件访问域名根目录下<br /><br><img src="" alt="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/09.png"></p>
+<p><a name="f01e90fb"></a></p>
+<h2 id="七、项目中的配置"><a href="#七、项目中的配置" class="headerlink" title="七、项目中的配置"></a>七、项目中的配置</h2><p>下面是application.xml中的配置示例</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">wx</span><span class="token punctuation">:</span>
+  <span class="token comment" spellcheck="true"># 公众平台商户 用于公众号内支付</span>
+  <span class="token key atrule">mp</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app-id</span><span class="token punctuation">:</span> 对应微信服务号的APPID
+    <span class="token key atrule">mch-id</span><span class="token punctuation">:</span> 商户号
+    <span class="token key atrule">mch-key</span><span class="token punctuation">:</span> 商户密钥
+    <span class="token key atrule">key-path</span><span class="token punctuation">:</span> 支付退款的key文件</code></pre>
+<p><a name="8ead8d46"></a></p>
+<h2 id="八、其他"><a href="#八、其他" class="headerlink" title="八、其他"></a>八、其他</h2><p>公众号支付是从前端发起预下单，后端只是把必要的参数传给前端，但是支付的回调结果也是通过后端接收的</p>
 
             </div>
             <hr/>
@@ -438,7 +445,7 @@ tags:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.yanhuada.cn/2019/12/07/test/hexo-test/">https://blog.yanhuada.cn/2019/12/07/test/hexo-test/</a>
+                    <a href="https://blog.yanhuada.cn/2020/01/03/pay/00002/">https://blog.yanhuada.cn/2020/01/03/pay/00002/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +483,12 @@ tags:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/markdown/">
-                                    <span class="chip bg-color">markdown</span>
+                                <a href="/tags/%E6%94%AF%E4%BB%98/">
+                                    <span class="chip bg-color">支付</span>
                                 </a>
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
+                                    <span class="chip bg-color">微信支付</span>
                                 </a>
                             
                         </div>
@@ -669,50 +676,57 @@ tags:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/07/tool/idea/">
+                <a href="/2020/01/03/pay/00002/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="IDEA破解详解">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="微信公众号支付JSAPI申请配置流程">
                         
-                        <span class="card-title">IDEA破解详解</span>
+                        <span class="card-title">微信公众号支付JSAPI申请配置流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                            由于微信各个账户申请流程较长，请在开发前做好准备
+本文主要是补充说明了微信开发文档中不明确的地方，业务流程请查看官方文档
+
+一、申请微信服务号
+
+二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；可以通过
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/IDEA/" class="post-category">
-                                    IDEA
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
+                                    微信支付
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">开发工具</span>
+                    <a href="/tags/%E6%94%AF%E4%BB%98/">
+                        <span class="chip bg-color">支付</span>
                     </a>
                     
-                    <a href="/tags/%E7%A0%B4%E8%A7%A3/">
-                        <span class="chip bg-color">破解</span>
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
+                        <span class="chip bg-color">微信支付</span>
                     </a>
                     
                 </div>
@@ -726,31 +740,35 @@ tags:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/07/design-pattern/create/factory-method-pattern/">
+                <a href="/2020/01/02/pay/00001/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="工厂方法模式">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="微信H5支付申请配置流程">
                         
-                        <span class="card-title">工厂方法模式</span>
+                        <span class="card-title">微信H5支付申请配置流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            定义一个接口用于创建对象，但是让子类决定初始化哪个类。工厂方法把一个类的初始化下放到子类。
+                            由于微信各个账户申请流程较长，请在开发前做好准备。
+本文主要是补充说明了微信支付文档中配置不明确的地方，其他内容详见官方文档
+一、申请微信服务号
+二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；
+可以通
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
+                            <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
+                                    微信支付
                                 </a>
                             
                             
@@ -760,12 +778,12 @@ tags:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
+                    <a href="/tags/%E6%94%AF%E4%BB%98/">
+                        <span class="chip bg-color">支付</span>
                     </a>
                     
-                    <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">创建型设计模式</span>
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
+                        <span class="chip bg-color">微信支付</span>
                     </a>
                     
                 </div>
