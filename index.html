@@ -1,1341 +1,671 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="零创世界">
-    <meta name="description" content="零创世界">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#333333">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="keyword"  content="">
+    <meta name="description" content="">
     <title>零创世界</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
-    <script src="/libs/jquery/jquery.min.js"></script>
-    
+    <base href="/">
+    <link rel="preconnect" href="//cdn.bootcss.com">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-light.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-dark.min.css" rel="stylesheet" media="screen and (prefers-color-scheme: dark)">
+    <!-- UIkit CSS -->
+    <link href="https://cdn.bootcss.com/uikit/3.2.0/css/uikit.min.css" rel="stylesheet">
+    <!-- UIkit JS -->
+    <script src="https://cdn.bootcss.com/uikit/3.2.0/js/uikit.min.js" async></script>
+    <script src="https://cdn.bootcss.com/uikit/3.2.0/js/uikit-icons.min.js" async></script>
+    <link rel="stylesheet" href="/styles/cold-stone.css">
+    <noscript>
+      <p class="text-center">你的浏览器还没开启 Javascript 功能！</p>
+    </noscript>
 <link rel="alternate" href="/atom.xml" title="零创世界" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+  <body>
+    
+      <canvas class="prelude" id="prelude"></canvas>
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper head-container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">零创世界</span>
-                </a>
-            </div>
-            
+    
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <header class="header" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
+  <nav class="wrapper header-content">
+    <div class="nav-overlay uk-navbar-left">
+      <h1 class="title nav-list-item uk-logo" data-link="/">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <a href="/" data-link="/">零创世界</a>
         
-        <div class="logo-name">零创世界</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+      </h1>
+
+      <ul class="nav-list">
+        
+        <li class="nav-list-item" data-link="/categories/">
+          <a class="nav-list-link" href="/categories">カテゴリー</a>
+        </li>
+        
+        
+        <li class="nav-list-item" data-link="/about/">
+          <a class="nav-list-link" href="/about/">私について</a>
+        </li>
+        
+        <li class="nav-list-item" data-link="/rss/">
+          <a class="nav-list-link" href="/atom.xml">RSS</a>
+        </li>
+        
+      </ul>
     </div>
 
     
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
+      <div class="uk-navbar-right">
+        <a class="uk-navbar-toggle" href="#modal-full" uk-search-icon uk-toggle></a>
+      </div>
+    
+  </nav>
 </header>
 
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                千里之行，始于足下
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
+<div id="modal-full" class="uk-modal-full uk-modal" uk-modal>
+  <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
+    <button class="uk-modal-close-full" type="button" uk-close></button>
+    <form class="uk-search uk-search-large search-form" action="//google.com/search" method="get" accept-charset="UTF-8"
+      target="_blank">
+      <input class="uk-search-input search-form-input" type="search" name="q" placeholder="検索"
+        autofocus autocomplete="false">
+      <input type="hidden" name="sitesearch" value="https://blog.yanhuada.cn">
+    </form>
+  </div>
 </div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
+    <main class="main wrapper">
+<section class="index-content">
+    <div class="index-post-list">
+        <ul class="index-list list-unstyled animate-list"
+            uk-scrollspy="target: > li; cls: uk-animation-slide-top-small;">
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2020/01/04/database/sql/00001/">
+                        SQL优化大总结
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2020-01-04">2020-01-04</time>&nbsp;
+                        <span>文字数&#58; 2.5k</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#SQL"
+                                title="SQL">SQL</a>
+                            
+                            <a class="meta-tag" href="/tags/#SQL优化"
+                                title="SQL优化">SQL优化</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2020/01/03/pay/00002/">
+                        微信公众号支付JSAPI申请配置流程
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2020-01-03">2020-01-03</time>&nbsp;
+                        <span>文字数&#58; 633</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#支付"
+                                title="支付">支付</a>
+                            
+                            <a class="meta-tag" href="/tags/#微信支付"
+                                title="微信支付">微信支付</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2020/01/02/pay/00001/">
+                        微信H5支付申请配置流程
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2020-01-02">2020-01-02</time>&nbsp;
+                        <span>文字数&#58; 387</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#支付"
+                                title="支付">支付</a>
+                            
+                            <a class="meta-tag" href="/tags/#微信支付"
+                                title="微信支付">微信支付</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2020/01/01/linux/linux-base-command/">
+                        Linux基本命令
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2020-01-01">2020-01-01</time>&nbsp;
+                        <span>文字数&#58; 5.2k</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#Linux"
+                                title="Linux">Linux</a>
+                            
+                            <a class="meta-tag" href="/tags/#命令"
+                                title="命令">命令</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/22/java/base/0001/">
+                        Java提供了哪些基本数据类型
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-22">2019-12-22</time>&nbsp;
+                        <span>文字数&#58; 1.1k</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#java"
+                                title="java">java</a>
+                            
+                            <a class="meta-tag" href="/tags/#java基础"
+                                title="java基础">java基础</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/12/tool/idea-keymap/">
+                        IDEA快捷键大全
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-12">2019-12-12</time>&nbsp;
+                        <span>文字数&#58; 492</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#开发工具"
+                                title="开发工具">开发工具</a>
+                            
+                            <a class="meta-tag" href="/tags/#快捷键"
+                                title="快捷键">快捷键</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/tool/idea/">
+                        IDEA破解详解
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 209</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#开发工具"
+                                title="开发工具">开发工具</a>
+                            
+                            <a class="meta-tag" href="/tags/#破解"
+                                title="破解">破解</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/design-pattern/created/abstract-factory-pattern/">
+                        抽象工厂模式（Abstract Factory Pattern）
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 0</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#设计模式"
+                                title="设计模式">设计模式</a>
+                            
+                            <a class="meta-tag" href="/tags/#创建型设计模式"
+                                title="创建型设计模式">创建型设计模式</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/design-pattern/behaviour/interpreter-pattern/">
+                        解释器模式（Interpreter Pattern）
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 232</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#设计模式"
+                                title="设计模式">设计模式</a>
+                            
+                            <a class="meta-tag" href="/tags/#行为型设计模式"
+                                title="行为型设计模式">行为型设计模式</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/design-pattern/behaviour/iterator-pattern/">
+                        迭代器模式（Iterator Pattern）
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 206</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#设计模式"
+                                title="设计模式">设计模式</a>
+                            
+                            <a class="meta-tag" href="/tags/#行为型设计模式"
+                                title="行为型设计模式">行为型设计模式</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/design-pattern/behaviour/mediator-pattern/">
+                        中介者模式（Mediator Pattern）
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 433</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#设计模式"
+                                title="设计模式">设计模式</a>
+                            
+                            <a class="meta-tag" href="/tags/#行为型设计模式"
+                                title="行为型设计模式">行为型设计模式</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+            
+            <li class="animate-list__item card card-hover">
+                <h2 class="animate-list__title">
+                    <a class="index-post-link" href="/2019/12/07/design-pattern/behaviour/memento-pattern/">
+                        备忘录模式（Memento Pattern）
+                    </a>
+                </h2>
+                <p></p>
+                <p class="animate-list__desc">
+                    <span class="post-info">
+                        <span>作成日時&#58;</span>
+                        <time class="post-time"
+                            datetime="2019-12-07">2019-12-07</time>&nbsp;
+                        <span>文字数&#58; 409</span>&nbsp;
+                        
+                        <span>タグ&#58; </span>
+                        <span class="meta-tags">
+                            
+                            <a class="meta-tag" href="/tags/#设计模式"
+                                title="设计模式">设计模式</a>
+                            
+                            <a class="meta-tag" href="/tags/#行为型设计模式"
+                                title="行为型设计模式">行为型设计模式</a>
+                            
+                        </span>
+                        
+                    </span>
+                </p>
+            </li>
+                    </ul>
 
+        
+        <nav class="paginator">
+            <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">→</a>
+        </nav>
+        
+    </div>
 
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
+    <aside class="index-aside">
+        <div class="card aside-tags">
+            <ul class="tags list-unstyled" uk-sortable="handle: .tag-item">
                 
-                    <a href="https://github.com/yanhuada" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
+                <li class="tag-item"><a href="/tags/#支付" title="支付"
+                        rel="2">#支付</a></li>
                 
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/yanhuada" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:yanhuada99@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=546230185" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 546230185" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+                <li class="tag-item"><a href="/tags/#微信支付" title="微信支付"
+                        rel="2">#微信支付</a></li>
+                
+                <li class="tag-item"><a href="/tags/#markdown" title="markdown"
+                        rel="1">#markdown</a></li>
+                
+                <li class="tag-item"><a href="/tags/#hexo" title="hexo"
+                        rel="1">#hexo</a></li>
+                
+                <li class="tag-item"><a href="/tags/#开发工具" title="开发工具"
+                        rel="2">#开发工具</a></li>
+                
+                <li class="tag-item"><a href="/tags/#快捷键" title="快捷键"
+                        rel="1">#快捷键</a></li>
+                
+                <li class="tag-item"><a href="/tags/#破解" title="破解"
+                        rel="1">#破解</a></li>
+                
+                <li class="tag-item"><a href="/tags/#Linux" title="Linux"
+                        rel="1">#Linux</a></li>
+                
+                <li class="tag-item"><a href="/tags/#命令" title="命令"
+                        rel="1">#命令</a></li>
+                
+                <li class="tag-item"><a href="/tags/#设计模式" title="设计模式"
+                        rel="23">#设计模式</a></li>
+                
+                <li class="tag-item"><a href="/tags/#行为型设计模式" title="行为型设计模式"
+                        rel="11">#行为型设计模式</a></li>
+                
+                <li class="tag-item"><a href="/tags/#创建型设计模式" title="创建型设计模式"
+                        rel="5">#创建型设计模式</a></li>
+                
+                <li class="tag-item"><a href="/tags/#结构型设计模式" title="结构型设计模式"
+                        rel="7">#结构型设计模式</a></li>
+                
+                <li class="tag-item"><a href="/tags/#java" title="java"
+                        rel="2">#java</a></li>
+                
+                <li class="tag-item"><a href="/tags/#java基础" title="java基础"
+                        rel="1">#java基础</a></li>
+                
+                <li class="tag-item"><a href="/tags/#面试题" title="面试题"
+                        rel="1">#面试题</a></li>
+                
+                <li class="tag-item"><a href="/tags/#SQL" title="SQL"
+                        rel="1">#SQL</a></li>
+                
+                <li class="tag-item"><a href="/tags/#SQL优化" title="SQL优化"
+                        rel="1">#SQL优化</a></li>
+                
+            </ul>
         </div>
-    </div>
 
-    
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true'
-        });
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function() {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        let restartPlay = function () {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;座右铭
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            千里之行始于足下
+        <div class="card">
+            <ul class="archive-tag-list"><li class="archive-tag-list-item"><a class="archive-tag-list-link" href="/archives/2020/01/">2020-01</a><span class="archive-tag-list-count">4</span></li><li class="archive-tag-list-item"><a class="archive-tag-list-link" href="/archives/2019/12/">2019-12</a><span class="archive-tag-list-count">27</span></li><li class="archive-tag-list-item"><a class="archive-tag-list-link" href="/archives/2019/01/">2019-01</a><span class="archive-tag-list-count">1</span></li></ul>
         </div>
-    </div>
-</div>
-                    
 
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                    
-                </div>
-            </div>
+        <div class="card">
+            <p class="subtitle hide" id="busuanzi_container_site_uv">
+                訪問者数&#58; <span id="busuanzi_value_site_uv"></span>
+            </p>
+            <p class="subtitle">総文字数&#58; 18.6k</p>
         </div>
-    </div>
-    
-
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/01/04/database/sql/00001/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SQL优化大总结">
-                            
-                            <span class="card-title">SQL优化大总结</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
-
-应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：
-
-
-select i
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-04
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SQL/">
-                            <span class="chip bg-color">SQL</span>
-                        </a>
-                        
-                        <a href="/tags/SQL%E4%BC%98%E5%8C%96/">
-                            <span class="chip bg-color">SQL优化</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/01/03/pay/00002/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="微信公众号支付JSAPI申请配置流程">
-                            
-                            <span class="card-title">微信公众号支付JSAPI申请配置流程</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                由于微信各个账户申请流程较长，请在开发前做好准备
-本文主要是补充说明了微信开发文档中不明确的地方，业务流程请查看官方文档
-
-一、申请微信服务号
-
-二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；可以通过
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-03
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
-                                    微信支付
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%94%AF%E4%BB%98/">
-                            <span class="chip bg-color">支付</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
-                            <span class="chip bg-color">微信支付</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/01/02/pay/00001/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="微信H5支付申请配置流程">
-                            
-                            <span class="card-title">微信H5支付申请配置流程</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                由于微信各个账户申请流程较长，请在开发前做好准备。
-本文主要是补充说明了微信支付文档中配置不明确的地方，其他内容详见官方文档
-一、申请微信服务号
-二、申请微信支付商户号请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；
-可以通
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" class="post-category">
-                                    微信支付
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%94%AF%E4%BB%98/">
-                            <span class="chip bg-color">支付</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">
-                            <span class="chip bg-color">微信支付</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/01/01/linux/linux-base-command/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux基本命令">
-                            
-                            <span class="card-title">Linux基本命令</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-执行查看帮助命令在命令行终端中可以输入man man命令来查看man命令自身的帮助信息。man命令中常用按键以及用途 
-
-
-
-参数
-作用
-
-
-
-空格键
-向下翻一页
-
-
-PaGe down
-向下翻一页
-
-
-PaGe up
-最大尝试次数
-
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Linux/">
-                            <span class="chip bg-color">Linux</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%91%BD%E4%BB%A4/">
-                            <span class="chip bg-color">命令</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/22/java/base/0001/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Java提供了哪些基本数据类型">
-                            
-                            <span class="card-title">Java提供了哪些基本数据类型</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                &emsp;&emsp;Java语言一共提供了8种原始的数据类型（byte，short，int，long，float，double，char， boolean），这些数据类型不是对象，而是Java语言中不同于类的特殊类型，这些基本类型的数据
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/java/" class="post-category">
-                                    java
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/java/">
-                            <span class="chip bg-color">java</span>
-                        </a>
-                        
-                        <a href="/tags/java%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">java基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/12/tool/idea-keymap/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="IDEA快捷键大全">
-                            
-                            <span class="card-title">IDEA快捷键大全</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                编辑类快捷键
-
-
-快捷键
-说明
-
-
-
-Ctrl + Space
-基本代码完成（任何类的名称，方法或变量）
-
-
-Ctrl + Shift + Space
-智能代码完成（筛选方法和变量（按预期类型）
-
-
-Ctrl + Shift + Enter
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/IDEA/" class="post-category">
-                                    IDEA
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                            <span class="chip bg-color">开发工具</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-                            <span class="chip bg-color">快捷键</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/tool/idea/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="IDEA破解详解">
-                            
-                            <span class="card-title">IDEA破解详解</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/IDEA/" class="post-category">
-                                    IDEA
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
-                            <span class="chip bg-color">开发工具</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%A0%B4%E8%A7%A3/">
-                            <span class="chip bg-color">破解</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/factory-method-pattern/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="工厂方法（Factory Method Pattern）">
-                            
-                            <span class="card-title">工厂方法（Factory Method Pattern）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/prototype-pattern/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="原型模式（Prototype Pattern）">
-                            
-                            <span class="card-title">原型模式（Prototype Pattern）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/singleton.pattern/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="单例模式（Singleton Pattern）">
-                            
-                            <span class="card-title">单例模式（Singleton Pattern）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/behaviour/interpreter-pattern/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="解释器模式（Interpreter Pattern）">
-                            
-                            <span class="card-title">解释器模式（Interpreter Pattern）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">行为型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/behaviour/mediator-pattern/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="中介者模式（Mediator Pattern）">
-                            
-                            <span class="card-title">中介者模式（Mediator Pattern）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概念&emsp;&emsp;中介者模式（Mediator Pattern）：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变他们之间的交互。
-优点
-降低了类的复杂度，将一对多转化
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">行为型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
+    </aside>
+</section>
 </main>
 
+    
+      <footer class="footer">
+  <svg class="wave" id="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#fff" fill-opacity="1"
+      d="M0,96L24,117.3C48,139,96,181,144,197.3C192,213,240,203,288,213.3C336,224,384,256,432,240C480,224,528,160,576,133.3C624,107,672,117,720,106.7C768,96,816,64,864,85.3C912,107,960,181,1008,202.7C1056,224,1104,192,1152,181.3C1200,171,1248,181,1296,154.7C1344,128,1392,64,1416,32L1440,0L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z">
+    </path>
+  </svg>
 
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 3</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
+  <div class="footer-content wrapper">
+    <div class="footer-toggle">
+      <button class="menu-button dark-btn" data-theme="dark" aria-label="Switch to dark mode"
+        title="Switch to dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-moon undefined">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="menu-button light-btn" data-theme="light" aria-label="Switch to light mode"
+        title="Switch to light mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-sun undefined">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
     </div>
-</div>
 
-
-
-
-    <footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2019";
-                    var startMonth = "6";
-                    var startDate = "28";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
-            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
-                <a href="http://www.beian.gov.cn/" target="_blank">粤ICP备19154308号</a>
-            </span>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/yanhuada" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
+    <p>Copyright &copy; 2019 &nbsp;</p>
+    <a class="theme-link" rel="noopener" href="https://github.com/xrr2016/hexo-theme-cold-stone" target="_blank">
+      Theme Cold Stone
     </a>
-
-
-
-    <a href="mailto:yanhuada99@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=546230185" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 546230185" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
+  </div>
 </footer>
 
-<div class="progress-bar"></div>
+    
 
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    <script>
+	window.COLD_STONE = {
+		root: "/",
+		author: "颜华达" || '',
+		gaid: "123" || '',
+		repo: "xrr2016/blog" || '',
+	}
 </script>
 
-    <!-- Baidu Push -->
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+	<script src="https://cdn.bootcss.com/gsap/latest/TweenMax.min.js"></script>
+	<script src="/scripts/leon.js"></script>
+	<script>
+		var leon
+		var canvas = document.getElementById('prelude')
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+		var ANIMATE_TIME = 2 // seconds
+		var THREE_MINUTE = 3 * 60 * 1000
 
-    
+		var sw = window.innerWidth
+		var sh = window.innerHeight
+		var ctx = canvas.getContext('2d')
+		var pixelRatio = window.devicePixelRatio
+		var animatedTime = localStorage.getItem('animatedTime')
 
-    
+		function init() {
+			canvas.width = sw * pixelRatio
+			canvas.height = sh * pixelRatio
+			ctx.scale(pixelRatio, pixelRatio)
 
-    
+			leon = new LeonSans({
+				text: window.COLD_STONE.author || 'Cold Stone',
+				color: ['#000'],
+				size: 80,
+				weight: 200
+			})
 
-    
+			draw()
+		}
 
-    
-    
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+		function draw() {
+			ctx.clearRect(0, 0, sw, sh)
+			const x = (sw - leon.rect.w) / 2
+			const y = (sh - leon.rect.h) / 2
+			leon.position(x, y)
+			leon.draw(ctx)
 
-</body>
+			requestAnimationFrame(draw)
+		}
 
+		function animate() {
+			const total = leon.drawing.length
+
+			for (let i = 0; i < total; i++) {
+				TweenMax.fromTo(
+				leon.drawing[i],
+				ANIMATE_TIME,
+				{ value: 0 },
+				{
+					delay: i * 0.05,
+					value: 1,
+					ease: Power4.easeOut
+				}
+				)
+			}
+
+		    const timeout = setTimeout(function() {
+				clearTimeout(timeout)
+				document.body.removeChild(canvas)
+				localStorage.setItem('animatedTime', Date.now())
+			}, ANIMATE_TIME * 1000)
+		}
+
+		if (!animatedTime || Date.now() > parseInt(animatedTime) + THREE_MINUTE) {
+			init()
+			animate()
+		} else {
+			document.body.removeChild(canvas)
+		}
+	</script>
+
+
+
+
+<script src="/scripts/busuanzi.js" referrerpolicy="origin"></script>
+<script src="/scripts/cold-stone.js"></script>
+
+
+  <script src="//www.googletagmanager.com/gtag/js?id=123"></script>
+
+  <script>
+	window.dataLayer = window.dataLayer || []
+	function gtag() {
+		dataLayer.push(arguments)
+	}
+	gtag('js', new Date())
+	gtag('config', window.COLD_STONE.gaid)
+  </script>
+
+
+  </body>
 </html>

@@ -1,877 +1,474 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 设计模式, 零创世界">
-    <meta name="description" content="分类: 设计模式 | 零创世界">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#333333">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>分类: 设计模式 | 零创世界</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
-    <script src="/libs/jquery/jquery.min.js"></script>
-    
+    <meta name="keyword"  content="">
+    <meta name="description" content="">
+    <title>零创世界</title>
+    <base href="/">
+    <link rel="preconnect" href="//cdn.bootcss.com">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-light.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-dark.min.css" rel="stylesheet" media="screen and (prefers-color-scheme: dark)">
+    <!-- UIkit CSS -->
+    <link href="https://cdn.bootcss.com/uikit/3.2.0/css/uikit.min.css" rel="stylesheet">
+    <!-- UIkit JS -->
+    <script src="https://cdn.bootcss.com/uikit/3.2.0/js/uikit.min.js" async></script>
+    <script src="https://cdn.bootcss.com/uikit/3.2.0/js/uikit-icons.min.js" async></script>
+    <link rel="stylesheet" href="/styles/cold-stone.css">
+    <noscript>
+      <p class="text-center">你的浏览器还没开启 Javascript 功能！</p>
+    </noscript>
 <link rel="alternate" href="/atom.xml" title="零创世界" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+  <body>
+    
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper head-container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">零创世界</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <header class="header" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
+  <nav class="wrapper header-content">
+    <div class="nav-overlay uk-navbar-left">
+      <h1 class="title nav-list-item uk-logo" data-link="/">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <a href="/" data-link="/">零创世界</a>
         
-        <div class="logo-name">零创世界</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+      </h1>
+
+      <ul class="nav-list">
+        
+        <li class="nav-list-item" data-link="/categories/">
+          <a class="nav-list-link" href="/categories">カテゴリー</a>
+        </li>
+        
+        
+        <li class="nav-list-item" data-link="/about/">
+          <a class="nav-list-link" href="/about/">私について</a>
+        </li>
+        
+        <li class="nav-list-item" data-link="/rss/">
+          <a class="nav-list-link" href="/atom.xml">RSS</a>
+        </li>
+        
+      </ul>
     </div>
 
     
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
+      <div class="uk-navbar-right">
+        <a class="uk-navbar-toggle" href="#modal-full" uk-search-icon uk-toggle></a>
+      </div>
+    
+  </nav>
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                千里之行，始于足下
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
+<div id="modal-full" class="uk-modal-full uk-modal" uk-modal>
+  <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
+    <button class="uk-modal-close-full" type="button" uk-close></button>
+    <form class="uk-search uk-search-large search-form" action="//google.com/search" method="get" accept-charset="UTF-8"
+      target="_blank">
+      <input class="uk-search-input search-form-input" type="search" name="q" placeholder="検索"
+        autofocus autocomplete="false">
+      <input type="hidden" name="sitesearch" value="https://blog.yanhuada.cn">
+    </form>
+  </div>
 </div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
+    <main class="main wrapper">
 
 
-    </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/%E6%B5%8B%E8%AF%95/" title="测试: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">测试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/" title="微信支付: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">微信支付
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/IDEA/" title="IDEA: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">IDEA
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式: 23">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #E8F8F5;">设计模式
-                        <span class="tag-length">23</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/java/" title="java: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">java
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Linux
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SQL/" title="SQL: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">SQL
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/behaviour/interpreter-pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="解释器模式（Interpreter Pattern）">
-                            
-                            <span class="card-title">解释器模式（Interpreter Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
+<section class="animate-list">
+    <div class="card slide-in-right">合計&#58; 32</div>
+    <!-- 归档列表 -->
+    <ul class="archives list-unstyled ">
+        
+            <li class="card slide-in-right">
+                <h2 class="archive-name">2020</h2>
+                <ul class="archive-list list-unstyled">
                     
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                        <a href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">行为型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/singleton.pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="单例模式（Singleton Pattern）">
-                            
-                            <span class="card-title">单例模式（Singleton Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                    <li>
+                        <span class="archive-date">01-04</span>
+                        <a href="/2020/01/04/database/sql/00001/">
+                            <span class="hover-underline-animation">
+                                SQL优化大总结
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">01-03</span>
+                        <a href="/2020/01/03/pay/00002/">
+                            <span class="hover-underline-animation">
+                                微信公众号支付JSAPI申请配置流程
                             </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
                         </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/prototype-pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="原型模式（Prototype Pattern）">
-                            
-                            <span class="card-title">原型模式（Prototype Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">01-02</span>
+                        <a href="/2020/01/02/pay/00001/">
+                            <span class="hover-underline-animation">
+                                微信H5支付申请配置流程
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">01-01</span>
+                        <a href="/2020/01/01/linux/linux-base-command/">
+                            <span class="hover-underline-animation">
+                                Linux基本命令
                             </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
                         </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
+                    </li>
+                
+                </ul>
+            </li>
+        
+            <li class="card slide-in-right">
+                <h2 class="archive-name">2019</h2>
+                <ul class="archive-list list-unstyled">
                     
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/factory-method-pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="工厂方法（Factory Method Pattern）">
-                            
-                            <span class="card-title">工厂方法（Factory Method Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                    <li>
+                        <span class="archive-date">12-22</span>
+                        <a href="/2019/12/22/java/base/0001/">
+                            <span class="hover-underline-animation">
+                                Java提供了哪些基本数据类型
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-12</span>
+                        <a href="/2019/12/12/tool/idea-keymap/">
+                            <span class="hover-underline-animation">
+                                IDEA快捷键大全
                             </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
                         </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/created/abstract-factory-pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="抽象工厂模式（Abstract Factory Pattern）">
-                            
-                            <span class="card-title">抽象工厂模式（Abstract Factory Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/tool/idea/">
+                            <span class="hover-underline-animation">
+                                IDEA破解详解
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/combination-pattern/">
+                            <span class="hover-underline-animation">
+                                组合模式（Composite Pattern）
                             </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
                         </a>
-                        
-                        <a href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">创建型设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/12/07/design-pattern/behaviour/template-pattern/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="模板方法模式（Template Method Pattern）">
-                            
-                            <span class="card-title">模板方法模式（Template Method Pattern）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                概念&emsp;&emsp;模板方法模式（Template Method Pattern）：定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
-优点
-封装不变部分，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-07
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/bridging-pattern/">
+                            <span class="hover-underline-animation">
+                                桥接模式（Bridge Pattern）
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
-                                </a>
-                                
-                                
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/agent-pattern/">
+                            <span class="hover-underline-animation">
+                                代理模式（Proxy Pattern）
                             </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">设计模式</span>
                         </a>
-                        
-                        <a href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                            <span class="chip bg-color">行为型设计模式</span>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/adapter-pattern/">
+                            <span class="hover-underline-animation">
+                                适配器模式（Adapter Pattern）
+                            </span>
                         </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/created/singleton.pattern/">
+                            <span class="hover-underline-animation">
+                                单例模式（Singleton Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/created/prototype-pattern/">
+                            <span class="hover-underline-animation">
+                                原型模式（Prototype Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/created/factory-method-pattern/">
+                            <span class="hover-underline-animation">
+                                工厂方法（Factory Method Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/created/builder-pattern/">
+                            <span class="hover-underline-animation">
+                                生成器模式（Builder Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/created/abstract-factory-pattern/">
+                            <span class="hover-underline-animation">
+                                抽象工厂模式（Abstract Factory Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/test/hexo-test/">
+                            <span class="hover-underline-animation">
+                                hexo测试文章
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/template-pattern/">
+                            <span class="hover-underline-animation">
+                                模板方法模式（Template Method Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/strategy-pattern/">
+                            <span class="hover-underline-animation">
+                                策略模式（Strategy Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/state-pattern/">
+                            <span class="hover-underline-animation">
+                                状态模式（State Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/observer-pattern/">
+                            <span class="hover-underline-animation">
+                                观察者模式（Observer Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/memento-pattern/">
+                            <span class="hover-underline-animation">
+                                备忘录模式（Memento Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/mediator-pattern/">
+                            <span class="hover-underline-animation">
+                                中介者模式（Mediator Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/iterator-pattern/">
+                            <span class="hover-underline-animation">
+                                迭代器模式（Iterator Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/interpreter-pattern/">
+                            <span class="hover-underline-animation">
+                                解释器模式（Interpreter Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/command-pattern/">
+                            <span class="hover-underline-animation">
+                                命令模式（Command Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/chain-of-responsibility-pattern/">
+                            <span class="hover-underline-animation">
+                                职责链模式（Chain of Responsibility Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/decorate-pattern/">
+                            <span class="hover-underline-animation">
+                                装饰模式（Decorator Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/facade-pattern/">
+                            <span class="hover-underline-animation">
+                                外观模式（Facade Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/structure/flyweight-pattern/">
+                            <span class="hover-underline-animation">
+                                享元模式（Flyweight Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">12-07</span>
+                        <a href="/2019/12/07/design-pattern/behaviour/visitor-pattern/">
+                            <span class="hover-underline-animation">
+                                访问者模式（Visitor Pattern）
+                            </span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <span class="archive-date">01-03</span>
+                        <a href="/2019/01/03/java/base/0002/">
+                            <span class="hover-underline-animation">
+                                final、finally和finalize有什么区别
+                            </span>
+                        </a>
+                    </li>
+                
+                </ul>
+            </li>
+        
+    </ul>
+</section>
 </main>
 
+    
+      <footer class="footer">
+  <svg class="wave" id="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#fff" fill-opacity="1"
+      d="M0,96L24,117.3C48,139,96,181,144,197.3C192,213,240,203,288,213.3C336,224,384,256,432,240C480,224,528,160,576,133.3C624,107,672,117,720,106.7C768,96,816,64,864,85.3C912,107,960,181,1008,202.7C1056,224,1104,192,1152,181.3C1200,171,1248,181,1296,154.7C1344,128,1392,64,1416,32L1440,0L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z">
+    </path>
+  </svg>
 
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
+  <div class="footer-content wrapper">
+    <div class="footer-toggle">
+      <button class="menu-button dark-btn" data-theme="dark" aria-label="Switch to dark mode"
+        title="Switch to dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-moon undefined">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="menu-button light-btn" data-theme="light" aria-label="Switch to light mode"
+        title="Switch to light mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-sun undefined">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
     </div>
-</div>
 
-
-
-
-    <footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2019";
-                    var startMonth = "6";
-                    var startDate = "28";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
-            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
-                <a href="http://www.beian.gov.cn/" target="_blank">粤ICP备19154308号</a>
-            </span>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/yanhuada" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
+    <p>Copyright &copy; 2019 &nbsp;</p>
+    <a class="theme-link" rel="noopener" href="https://github.com/xrr2016/hexo-theme-cold-stone" target="_blank">
+      Theme Cold Stone
     </a>
-
-
-
-    <a href="mailto:yanhuada99@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=546230185" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 546230185" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-    </div>
+  </div>
 </footer>
 
-<div class="progress-bar"></div>
+    
 
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    <script>
+	window.COLD_STONE = {
+		root: "/",
+		author: "颜华达" || '',
+		gaid: "123" || '',
+		repo: "xrr2016/blog" || '',
+	}
 </script>
 
-    <!-- Baidu Push -->
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
+<script src="/scripts/busuanzi.js" referrerpolicy="origin"></script>
+<script src="/scripts/cold-stone.js"></script>
 
-    
 
-    
+  <script src="//www.googletagmanager.com/gtag/js?id=123"></script>
 
-    
-    
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+  <script>
+	window.dataLayer = window.dataLayer || []
+	function gtag() {
+		dataLayer.push(arguments)
+	}
+	gtag('js', new Date())
+	gtag('config', window.COLD_STONE.gaid)
+  </script>
 
-</body>
 
+  </body>
 </html>
