@@ -48,35 +48,6 @@
   </entry>
   
   <entry>
-    <title>微信公众号支付JSAPI申请配置流程</title>
-    <link href="https://blog.yanhuada.cn/2020/01/03/pay/00002/"/>
-    <id>https://blog.yanhuada.cn/2020/01/03/pay/00002/</id>
-    <published>2020-01-02T16:00:00.000Z</published>
-    <updated>2020-02-24T16:42:06.818Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于微信各个账户申请流程较长，请在开发前做好准备</p><p>本文主要是补充说明了微信开发文档中不明确的地方，<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4" target="_blank" rel="noopener">业务流程请查看官方文档</a></p><p><a name="6125f1bf"></a></p><h2 id="一、申请微信服务号"><a href="#一、申请微信服务号" class="headerlink" title="一、申请微信服务号"></a>一、申请微信服务号</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/01.png" alt=""></p><p><a name="4fed1683"></a></p><h2 id="二、申请微信支付商户号"><a href="#二、申请微信支付商户号" class="headerlink" title="二、申请微信支付商户号"></a>二、申请微信支付商户号</h2><p>请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；<br />可以通过微信服务号中直接申请（推荐）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/02.png" alt=""></p><p>也可以从微信支付平台申请<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/03.png" alt=""></p><p>绑定之前的服务号的APPID（产品中心-&gt;APPID授权管理），默认情况下，从服务号申请的商户号已经绑定了；<br />如果还未绑定，需要提交绑定申请，并到服务号进行确认（如果服务号和商户号的经营主体不一致，则需要经过审核）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/04.png" alt=""></p><p><a name="954759e9"></a></p><h2 id="三、开通JSAPI并授权APPID"><a href="#三、开通JSAPI并授权APPID" class="headerlink" title="三、开通JSAPI并授权APPID"></a>三、开通JSAPI并授权APPID</h2><p>如果是从服务号申请的商户号，默认就开通了JSAPI支付，否则需要从产品中心-&gt;JSAPI提交申请<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/05.png" alt=""></p><p><a name="2a8d3932"></a></p><h2 id="四、设置API密钥"><a href="#四、设置API密钥" class="headerlink" title="四、设置API密钥"></a>四、设置API密钥</h2><p>设置API密钥需要安装操作证书，如果前面操作中已经安装过，则可以无需再安装<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/06.png" alt=""><br><br />API密钥需要手动设置32位的密钥<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/07.png" alt=""></p><p><a name="4e21a554"></a></p><h2 id="五、配置支付授权目录"><a href="#五、配置支付授权目录" class="headerlink" title="五、配置支付授权目录"></a>五、配置支付授权目录</h2><p>公众号支付跟其他支付方式有点不一样，这里的授权目录需要填前端的地址，因为公众号支付的预下单是由前端发起的<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/08.png" alt=""></p><p><a name="82635ab9"></a></p><h2 id="六、设置网页授权回调"><a href="#六、设置网页授权回调" class="headerlink" title="六、设置网页授权回调"></a>六、设置网页授权回调</h2><p>回到服务号，开发JSAPI支付时，在统一下单接口中要求必传用户openid，而获取openid则需要您在公众平台设置获取openid的域名，只有被设置过的域名才是一个有效的获取openid的域名，否则将获取失败</p><p>但是在设置网页授权回调前，需要确保设置的域名能访问到MP_verify_<em>.txt 文件，例如<a href="http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify" target="_blank" rel="noopener">http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify</a>_</em>.txt 文件访问域名根目录下<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/09.png" alt=""></p><p><a name="f01e90fb"></a></p><h2 id="七、项目中的配置"><a href="#七、项目中的配置" class="headerlink" title="七、项目中的配置"></a>七、项目中的配置</h2><p>下面是application.xml中的配置示例</p><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">wx</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 公众平台商户 用于公众号内支付</span>  <span class="token key atrule">mp</span><span class="token punctuation">:</span>    <span class="token key atrule">app-id</span><span class="token punctuation">:</span> 对应微信服务号的APPID    <span class="token key atrule">mch-id</span><span class="token punctuation">:</span> 商户号    <span class="token key atrule">mch-key</span><span class="token punctuation">:</span> 商户密钥    <span class="token key atrule">key-path</span><span class="token punctuation">:</span> 支付退款的key文件</code></pre><p><a name="8ead8d46"></a></p><h2 id="八、其他"><a href="#八、其他" class="headerlink" title="八、其他"></a>八、其他</h2><p>公众号支付是从前端发起预下单，后端只是把必要的参数传给前端，但是支付的回调结果也是通过后端接收的</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;由于微信各个账户申请流程较长，请在开发前做好准备&lt;/p&gt;
-&lt;p&gt;本文主要是补充说明了微信开发文档中不明确的地方，&lt;a href=&quot;https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4&quot; target=&quot;_b
-      
-    
-    </summary>
-    
-    
-      <category term="微信支付" scheme="https://blog.yanhuada.cn/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
-    
-    
-      <category term="支付" scheme="https://blog.yanhuada.cn/tags/%E6%94%AF%E4%BB%98/"/>
-    
-      <category term="微信支付" scheme="https://blog.yanhuada.cn/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spring IoC容器</title>
     <link href="https://blog.yanhuada.cn/2020/01/03/spring/spring-ioc/"/>
     <id>https://blog.yanhuada.cn/2020/01/03/spring/spring-ioc/</id>
@@ -102,6 +73,35 @@
       <category term="Java框架" scheme="https://blog.yanhuada.cn/tags/Java%E6%A1%86%E6%9E%B6/"/>
     
       <category term="spring" scheme="https://blog.yanhuada.cn/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信公众号支付JSAPI申请配置流程</title>
+    <link href="https://blog.yanhuada.cn/2020/01/03/pay/00002/"/>
+    <id>https://blog.yanhuada.cn/2020/01/03/pay/00002/</id>
+    <published>2020-01-02T16:00:00.000Z</published>
+    <updated>2020-02-24T16:42:06.818Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于微信各个账户申请流程较长，请在开发前做好准备</p><p>本文主要是补充说明了微信开发文档中不明确的地方，<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4" target="_blank" rel="noopener">业务流程请查看官方文档</a></p><p><a name="6125f1bf"></a></p><h2 id="一、申请微信服务号"><a href="#一、申请微信服务号" class="headerlink" title="一、申请微信服务号"></a>一、申请微信服务号</h2><p><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/01.png" alt=""></p><p><a name="4fed1683"></a></p><h2 id="二、申请微信支付商户号"><a href="#二、申请微信支付商户号" class="headerlink" title="二、申请微信支付商户号"></a>二、申请微信支付商户号</h2><p>请确保服务号的经营主体与商户号的主体一致，否则可能会审核不通过；<br />可以通过微信服务号中直接申请（推荐）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/02.png" alt=""></p><p>也可以从微信支付平台申请<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/03.png" alt=""></p><p>绑定之前的服务号的APPID（产品中心-&gt;APPID授权管理），默认情况下，从服务号申请的商户号已经绑定了；<br />如果还未绑定，需要提交绑定申请，并到服务号进行确认（如果服务号和商户号的经营主体不一致，则需要经过审核）<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/04.png" alt=""></p><p><a name="954759e9"></a></p><h2 id="三、开通JSAPI并授权APPID"><a href="#三、开通JSAPI并授权APPID" class="headerlink" title="三、开通JSAPI并授权APPID"></a>三、开通JSAPI并授权APPID</h2><p>如果是从服务号申请的商户号，默认就开通了JSAPI支付，否则需要从产品中心-&gt;JSAPI提交申请<br /><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/05.png" alt=""></p><p><a name="2a8d3932"></a></p><h2 id="四、设置API密钥"><a href="#四、设置API密钥" class="headerlink" title="四、设置API密钥"></a>四、设置API密钥</h2><p>设置API密钥需要安装操作证书，如果前面操作中已经安装过，则可以无需再安装<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/06.png" alt=""><br><br />API密钥需要手动设置32位的密钥<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/07.png" alt=""></p><p><a name="4e21a554"></a></p><h2 id="五、配置支付授权目录"><a href="#五、配置支付授权目录" class="headerlink" title="五、配置支付授权目录"></a>五、配置支付授权目录</h2><p>公众号支付跟其他支付方式有点不一样，这里的授权目录需要填前端的地址，因为公众号支付的预下单是由前端发起的<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/08.png" alt=""></p><p><a name="82635ab9"></a></p><h2 id="六、设置网页授权回调"><a href="#六、设置网页授权回调" class="headerlink" title="六、设置网页授权回调"></a>六、设置网页授权回调</h2><p>回到服务号，开发JSAPI支付时，在统一下单接口中要求必传用户openid，而获取openid则需要您在公众平台设置获取openid的域名，只有被设置过的域名才是一个有效的获取openid的域名，否则将获取失败</p><p>但是在设置网页授权回调前，需要确保设置的域名能访问到MP_verify_<em>.txt 文件，例如<a href="http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify" target="_blank" rel="noopener">http://www.abc.com/MP_verify_wleifiw23438.txt能够使用浏览器访问，请把MP_verify</a>_</em>.txt 文件访问域名根目录下<br /><br><img src="https://yanhuada.oss-cn-shenzhen.aliyuncs.com/blog/%E6%94%AF%E4%BB%98/wxjsapi/09.png" alt=""></p><p><a name="f01e90fb"></a></p><h2 id="七、项目中的配置"><a href="#七、项目中的配置" class="headerlink" title="七、项目中的配置"></a>七、项目中的配置</h2><p>下面是application.xml中的配置示例</p><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">wx</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 公众平台商户 用于公众号内支付</span>  <span class="token key atrule">mp</span><span class="token punctuation">:</span>    <span class="token key atrule">app-id</span><span class="token punctuation">:</span> 对应微信服务号的APPID    <span class="token key atrule">mch-id</span><span class="token punctuation">:</span> 商户号    <span class="token key atrule">mch-key</span><span class="token punctuation">:</span> 商户密钥    <span class="token key atrule">key-path</span><span class="token punctuation">:</span> 支付退款的key文件</code></pre><p><a name="8ead8d46"></a></p><h2 id="八、其他"><a href="#八、其他" class="headerlink" title="八、其他"></a>八、其他</h2><p>公众号支付是从前端发起预下单，后端只是把必要的参数传给前端，但是支付的回调结果也是通过后端接收的</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于微信各个账户申请流程较长，请在开发前做好准备&lt;/p&gt;
+&lt;p&gt;本文主要是补充说明了微信开发文档中不明确的地方，&lt;a href=&quot;https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4&quot; target=&quot;_b
+      
+    
+    </summary>
+    
+    
+      <category term="微信支付" scheme="https://blog.yanhuada.cn/categories/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
+    
+    
+      <category term="支付" scheme="https://blog.yanhuada.cn/tags/%E6%94%AF%E4%BB%98/"/>
+    
+      <category term="微信支付" scheme="https://blog.yanhuada.cn/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/"/>
     
   </entry>
   
