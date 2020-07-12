@@ -1,3 +1,4 @@
-FROM nginx:latest
+FROM centos:latest 
+RUN yum -y install nginx 
 COPY ./ /usr/share/nginx/html/
-EXPOSE 8080
+EXPOSE 80
