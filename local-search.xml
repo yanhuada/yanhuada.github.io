@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>C++ GUI Qt 4 编程（第二版）</title>
+    <link href="/2022/08/05/book/C++/C++%20GUI%20Qt%204%20%E7%BC%96%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/"/>
+    <url>/2022/08/05/book/C++/C++%20GUI%20Qt%204%20%E7%BC%96%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h2 id="第1章-QT入门"><a href="#第1章-QT入门" class="headerlink" title="第1章 QT入门"></a>第1章 QT入门</h2><h2 id="第2章-创建对话框"><a href="#第2章-创建对话框" class="headerlink" title="第2章 创建对话框"></a>第2章 创建对话框</h2>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>读书清单</title>
+    <link href="/2022/08/05/book/read_book_list/"/>
+    <url>/2022/08/05/book/read_book_list/</url>
+    
+    <content type="html"><![CDATA[<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><ul><li>C++ GUI Qt 4 编程（第二版）</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>生成ssh秘钥命令</title>
+    <link href="/2022/08/05/ssh/%E7%94%9F%E6%88%90ssh%E7%A7%98%E9%92%A5/"/>
+    <url>/2022/08/05/ssh/%E7%94%9F%E6%88%90ssh%E7%A7%98%E9%92%A5/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;yanhuada99@gmail.com&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PyQT使用教程</title>
+    <link href="/2022/08/05/python/PyQT/"/>
+    <url>/2022/08/05/python/PyQT/</url>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>sql数据导出导入</title>
+    <link href="/2022/08/05/MySQL/sql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/"/>
+    <url>/2022/08/05/MySQL/sql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<p><strong>假设</strong></p><blockquote><p>账号：root<br>密码：123456</p></blockquote><h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -uroot -p123456 database_name &lt; data.sql<br></code></pre></td></tr></table></figure><h2 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysqldump -uroot -p123456  database_name &gt; /data/data.sql<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/08/05/hello-world/"/>
+    <url>/2022/08/05/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>测试</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
