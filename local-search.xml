@@ -4,13 +4,48 @@
   
   
   <entry>
+    <title>libev源码分析</title>
+    <link href="/2022/08/15/src_code_analysis/libev/"/>
+    <url>/2022/08/15/src_code_analysis/libev/</url>
+    
+    <content type="html"><![CDATA[<h1 id="搭建断点调试环境"><a href="#搭建断点调试环境" class="headerlink" title="搭建断点调试环境"></a>搭建断点调试环境</h1><h1 id="监控器类型（WHACHER-TYPES）"><a href="#监控器类型（WHACHER-TYPES）" class="headerlink" title="监控器类型（WHACHER TYPES）"></a>监控器类型（WHACHER TYPES）</h1><h2 id="ev-io"><a href="#ev-io" class="headerlink" title="ev_io"></a>ev_io</h2><h2 id="ev-timer"><a href="#ev-timer" class="headerlink" title="ev_timer"></a>ev_timer</h2><h1 id="代码走读"><a href="#代码走读" class="headerlink" title="代码走读"></a>代码走读</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>源码分析</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++ GUI Qt 4 编程（第二版）</title>
     <link href="/2022/08/05/book/C++/C++_GUI_Qt4_%E7%BC%96%E7%A8%8B_%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/"/>
     <url>/2022/08/05/book/C++/C++_GUI_Qt4_%E7%BC%96%E7%A8%8B_%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<h2 id="第1章-QT入门"><a href="#第1章-QT入门" class="headerlink" title="第1章 QT入门"></a>第1章 QT入门</h2><h2 id="第2章-创建对话框"><a href="#第2章-创建对话框" class="headerlink" title="第2章 创建对话框"></a>第2章 创建对话框</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="第一部分-QT基础"><a href="#第一部分-QT基础" class="headerlink" title="第一部分 QT基础"></a>第一部分 QT基础</h1><h2 id="第1章-QT入门"><a href="#第1章-QT入门" class="headerlink" title="第1章 QT入门"></a>第1章 QT入门</h2><p>这一章介绍了如何把基本的C++知识与Qt所提供的功能组合起来创建一些简单的图形用户界面(Graphical User Interface,CUI)应用程序。在这一章中,还引人了Qt中的两个重要概念:一个是“信号和槽”,另外一个是“布局”。第2章还将对它们做进一步的阐述,而第3章将着手创建一个具有真正意义的应用程序。<br>如果你已经熟知Java或C# ,但对C++的编程经验还有些欠缺的话,那么在开始阅读本书之前,可能需要先阅读附录D,它对C++做了简要介绍。</p><br><p>如果你已经熟知Java或C# ,但对C++的编程经验还有些欠缺的话,那么在开始阅读本书之前,可能需要先阅读附录D,它对C++做了简要介绍。</p><h2 id="第2章-创建对话框"><a href="#第2章-创建对话框" class="headerlink" title="第2章 创建对话框"></a>第2章 创建对话框</h2><h2 id="第3章-创建主窗口"><a href="#第3章-创建主窗口" class="headerlink" title="第3章 创建主窗口"></a>第3章 创建主窗口</h2><h2 id="第4章-实现应用程序功能"><a href="#第4章-实现应用程序功能" class="headerlink" title="第4章 实现应用程序功能"></a>第4章 实现应用程序功能</h2><h2 id="第5章-创建自定义窗口部件"><a href="#第5章-创建自定义窗口部件" class="headerlink" title="第5章 创建自定义窗口部件"></a>第5章 创建自定义窗口部件</h2><h1 id="第二部分-QT中级"><a href="#第二部分-QT中级" class="headerlink" title="第二部分 QT中级"></a>第二部分 QT中级</h1><h2 id="第6章-布局管理"><a href="#第6章-布局管理" class="headerlink" title="第6章 布局管理"></a>第6章 布局管理</h2><h2 id="第7章-事件处理"><a href="#第7章-事件处理" class="headerlink" title="第7章 事件处理"></a>第7章 事件处理</h2><h2 id="第8章-二维图形"><a href="#第8章-二维图形" class="headerlink" title="第8章 二维图形"></a>第8章 二维图形</h2><h2 id="第9章-拖放"><a href="#第9章-拖放" class="headerlink" title="第9章 拖放"></a>第9章 拖放</h2><h2 id="第10章-项视图类"><a href="#第10章-项视图类" class="headerlink" title="第10章 项视图类"></a>第10章 项视图类</h2><h2 id="第11章-容器类"><a href="#第11章-容器类" class="headerlink" title="第11章 容器类"></a>第11章 容器类</h2><h2 id="第12章-输入与输出"><a href="#第12章-输入与输出" class="headerlink" title="第12章 输入与输出"></a>第12章 输入与输出</h2><h2 id="第13章-数据库"><a href="#第13章-数据库" class="headerlink" title="第13章 数据库"></a>第13章 数据库</h2><h2 id="第14章-多线程"><a href="#第14章-多线程" class="headerlink" title="第14章 多线程"></a>第14章 多线程</h2><h2 id="第15章-网络"><a href="#第15章-网络" class="headerlink" title="第15章 网络"></a>第15章 网络</h2><h2 id="第16章-XML"><a href="#第16章-XML" class="headerlink" title="第16章 XML"></a>第16章 XML</h2><h2 id="第17章-提供在线帮助"><a href="#第17章-提供在线帮助" class="headerlink" title="第17章 提供在线帮助"></a>第17章 提供在线帮助</h2><h1 id="第三部分-QT高级"><a href="#第三部分-QT高级" class="headerlink" title="第三部分 QT高级"></a>第三部分 QT高级</h1><h2 id="第18章-国际化"><a href="#第18章-国际化" class="headerlink" title="第18章 国际化"></a>第18章 国际化</h2><h2 id="第19章-自定义外观"><a href="#第19章-自定义外观" class="headerlink" title="第19章 自定义外观"></a>第19章 自定义外观</h2><h2 id="第20章-三维图形"><a href="#第20章-三维图形" class="headerlink" title="第20章 三维图形"></a>第20章 三维图形</h2><h2 id="第21章-创建插件"><a href="#第21章-创建插件" class="headerlink" title="第21章 创建插件"></a>第21章 创建插件</h2><h2 id="第22章-应用程序脚本"><a href="#第22章-应用程序脚本" class="headerlink" title="第22章 应用程序脚本"></a>第22章 应用程序脚本</h2><h2 id="第23章-平台相关特性"><a href="#第23章-平台相关特性" class="headerlink" title="第23章 平台相关特性"></a>第23章 平台相关特性</h2><h2 id="第24章嵌入式编程"><a href="#第24章嵌入式编程" class="headerlink" title="第24章嵌入式编程"></a>第24章嵌入式编程</h2><h1 id="第四部分-附录"><a href="#第四部分-附录" class="headerlink" title="第四部分 附录"></a>第四部分 附录</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2>]]></content>
     
     
+    <categories>
+      
+      <category>书籍</category>
+      
+      <category>C++书籍</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>电子书</tag>
+      
+      <tag>C++</tag>
+      
+    </tags>
     
   </entry>
   
@@ -79,7 +114,7 @@
     <link href="/2022/08/05/hello-world/"/>
     <url>/2022/08/05/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>测试</p>]]></content>
+    <content type="html"><![CDATA[<p>测试                                                                                                                                                                                                                                                                                                                                                                              </p>]]></content>
     
     
     
