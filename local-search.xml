@@ -4,6 +4,46 @@
   
   
   <entry>
+    <title>mac软件资源网站</title>
+    <link href="/2022/10/09/sites/mac/"/>
+    <url>/2022/10/09/sites/mac/</url>
+    
+    <content type="html"><![CDATA[<ul><li><a href="https://xclient.info/">https://xclient.info/</a></li><li><a href="https://www.macwk.com/">https://www.macwk.com/</a> 【倒闭了】</li><li><a href="https://www.macbl.com/">https://www.macbl.com/</a>                                                                                                                                                                                                                                                                                                                                 </li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IDEA 问题解决大全</title>
+    <link href="/2022/09/24/ide/idea/problems/"/>
+    <url>/2022/09/24/ide/idea/problems/</url>
+    
+    <content type="html"><![CDATA[<h2 id="连接数据库失败-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘serverTimezone’-property-manually"><a href="#连接数据库失败-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘serverTimezone’-property-manually" class="headerlink" title="连接数据库失败 Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘serverTimezone’ property manually."></a>连接数据库失败 Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘serverTimezone’ property manually.</h2><p>在Advanced中将serverTimezone设置成Hongkong即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>idea</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>idea</tag>
+      
+      <tag>mysql</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>libev源码分析</title>
     <link href="/2022/08/15/src_code_analysis/libev/"/>
     <url>/2022/08/15/src_code_analysis/libev/</url>
