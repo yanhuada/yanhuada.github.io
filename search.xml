@@ -1,150 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>ssh使用详解</title>
-    <url>/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/</url>
-    <content><![CDATA[<h2 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h2><ul>
-<li>《SSH权威指南》</li>
-</ul>
-<h2 id="SSH秘钥生成"><a href="#SSH秘钥生成" class="headerlink" title="SSH秘钥生成"></a>SSH秘钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;此处填写邮箱号&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2>]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>erlang基础详解</title>
+      <link href="/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/"/>
+      <url>/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul><li>浮点数</li><li>原子</li><li>元组</li><li>列表</li><li>字符串</li></ul><h2 id="编译和运行"><a href="#编译和运行" class="headerlink" title="编译和运行"></a>编译和运行</h2><h3 id="makefile自动化"><a href="#makefile自动化" class="headerlink" title="makefile自动化"></a>makefile自动化</h3>]]></content>
+      
+      
       <categories>
-        <category>工具软件</category>
+          
+          <category> 编程语言 </category>
+          
       </categories>
-      <tags>
-        <tag>ssh</tag>
-        <tag>工具软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【网站收藏】电子书网站推荐</title>
-    <url>/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/</url>
-    <content><![CDATA[<ul>
-<li>zlibrary<ul>
-<li><a href="https://zh.zlibrary1.ru/">https://zh.zlibrary1.ru/</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> erlang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ssh使用详解</title>
+      <link href="/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/"/>
+      <url>/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/</url>
+      
+        <content type="html"><![CDATA[<h2 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h2><ul><li>《SSH权威指南》</li></ul><h2 id="SSH秘钥生成"><a href="#SSH秘钥生成" class="headerlink" title="SSH秘钥生成"></a>SSH秘钥生成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;此处填写邮箱号&quot;</span></span><br></pre></td></tr></table></figure><h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2>]]></content>
+      
+      
       <categories>
-        <category>网站收藏</category>
+          
+          <category> 工具软件 </category>
+          
       </categories>
-      <tags>
-        <tag>网站收藏</tag>
-        <tag>电子书</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【英语】词根大全</title>
-    <url>/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[]]></content>
+      
+      
+        <tags>
+            
+            <tag> ssh </tag>
+            
+            <tag> 工具软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【英语】词根大全</title>
+      <link href="/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/"/>
+      <url>/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>英语</category>
+          
+          <category> 英语 </category>
+          
       </categories>
-      <tags>
-        <tag>英语词根</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>erlang基础详解</title>
-    <url>/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li>浮点数</li>
-<li>原子</li>
-<li>元组</li>
-<li>列表</li>
-<li>字符串</li>
-</ul>
-<h2 id="编译和运行"><a href="#编译和运行" class="headerlink" title="编译和运行"></a>编译和运行</h2><h3 id="makefile自动化"><a href="#makefile自动化" class="headerlink" title="makefile自动化"></a>makefile自动化</h3>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 英语词根 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【英语】虚拟语气</title>
+      <link href="/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/"/>
+      <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>编程语言</category>
+          
+          <category> 英语 </category>
+          
       </categories>
-      <tags>
-        <tag>erlang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【英语】动词时态的基本形式</title>
-    <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="16种时态的基本形式"><a href="#16种时态的基本形式" class="headerlink" title="16种时态的基本形式"></a>16种时态的基本形式</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>一般时态</th>
-<th>进行时态</th>
-<th>完成时态</th>
-<th>完成进行时态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>现在</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>过去</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>将来</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>过去将来</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 英语语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【英语】被动语态</title>
+      <link href="/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/"/>
+      <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>英语</category>
+          
+          <category> 英语 </category>
+          
       </categories>
-      <tags>
-        <tag>英语语法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【英语】虚拟语气</title>
-    <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/</url>
-    <content><![CDATA[]]></content>
+      
+      
+        <tags>
+            
+            <tag> 英语语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【网站收藏】电子书网站推荐</title>
+      <link href="/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/"/>
+      <url>/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/</url>
+      
+        <content type="html"><![CDATA[<ul><li>zlibrary<ul><li><a href="https://zh.zlibrary1.ru/">https://zh.zlibrary1.ru/</a></li></ul></li></ul>]]></content>
+      
+      
       <categories>
-        <category>英语</category>
+          
+          <category> 网站收藏 </category>
+          
       </categories>
-      <tags>
-        <tag>英语语法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【英语】名词用法</title>
-    <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[]]></content>
+      
+      
+        <tags>
+            
+            <tag> 网站收藏 </tag>
+            
+            <tag> 电子书 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【英语】动词时态的基本形式</title>
+      <link href="/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/"/>
+      <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="16种时态的基本形式"><a href="#16种时态的基本形式" class="headerlink" title="16种时态的基本形式"></a>16种时态的基本形式</h2><table><thead><tr><th></th><th>一般时态</th><th>进行时态</th><th>完成时态</th><th>完成进行时态</th></tr></thead><tbody><tr><td>现在</td><td></td><td></td><td></td><td></td></tr><tr><td>过去</td><td></td><td></td><td></td><td></td></tr><tr><td>将来</td><td></td><td></td><td></td><td></td></tr><tr><td>过去将来</td><td></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
+      
+      
       <categories>
-        <category>英语</category>
+          
+          <category> 英语 </category>
+          
       </categories>
-      <tags>
-        <tag>英语语法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【英语】被动语态</title>
-    <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/</url>
-    <content><![CDATA[]]></content>
+      
+      
+        <tags>
+            
+            <tag> 英语语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【英语】名词用法</title>
+      <link href="/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/"/>
+      <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>英语</category>
+          
+          <category> 英语 </category>
+          
       </categories>
-      <tags>
-        <tag>英语语法</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 英语语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
