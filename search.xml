@@ -1,394 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Python魔术方法详解</title>
-      <link href="/2026/04/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/Python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-      <url>/2026/04/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/Python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、str-—-用户友好的字符串表示"><a href="#一、str-—-用户友好的字符串表示" class="headerlink" title="一、str — 用户友好的字符串表示"></a>一、<strong>str</strong> — 用户友好的字符串表示</h2><p><strong>触发时机</strong></p><ul><li>调用 str(obj) 时</li><li>使用 print(obj) 时</li><li>使用 f”{obj}” 或 “{}”.format(obj) 时</li></ul><p><strong>用途</strong><br>给普通用户看的可读字符串，注重可读性</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>)</span><br><span class="line"><span class="built_in">print</span>(p)          <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>(p))     <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;p&#125;</span>&quot;</span>)     <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br></pre></td></tr></table></figure><h2 id="二、repr-—-开发者调试用的字符串表示"><a href="#二、repr-—-开发者调试用的字符串表示" class="headerlink" title="二、repr — 开发者调试用的字符串表示"></a>二、<strong>repr</strong> — 开发者调试用的字符串表示</h2><p><strong>触发时机</strong></p><ul><li>在交互式解释器中直接输入对象时</li><li>调用 repr(obj) 时</li><li>未定义 <strong>str</strong> 时，print() 会回退使用 <strong>repr</strong></li><li>f”{obj!r}” 时</li></ul><p><strong>用途</strong><br>给开发者看的字符串，注重准确性，理想情况下可以用来重建对象。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Person(name=<span class="subst">&#123;self.name!r&#125;</span>, age=<span class="subst">&#123;self.age!r&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>)</span><br><span class="line"><span class="built_in">repr</span>(p)     <span class="comment"># 输出: Person(name=&#x27;张三&#x27;, age=25)</span></span><br><span class="line"><span class="built_in">print</span>(p)    <span class="comment"># 优先用 __str__: 姓名: 张三, 年龄: 25</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表中的对象使用 __repr__</span></span><br><span class="line"><span class="built_in">print</span>([p])  <span class="comment"># 输出: [Person(name=&#x27;张三&#x27;, age=25)]</span></span><br></pre></td></tr></table></figure><h2 id="三、len-—-定义对象长度"><a href="#三、len-—-定义对象长度" class="headerlink" title="三、len — 定义对象长度"></a>三、<strong>len</strong> — 定义对象长度</h2><p><strong>触发时机</strong></p><ul><li>调用 len(obj) 时</li><li>用于布尔判断时（len &#x3D;&#x3D; 0 则为 False）</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Playlist</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.songs = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">self, song</span>):</span><br><span class="line">        <span class="variable language_">self</span>.songs.append(song)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.songs)</span><br><span class="line"></span><br><span class="line">pl = Playlist()</span><br><span class="line">pl.add(<span class="string">&quot;歌曲A&quot;</span>)</span><br><span class="line">pl.add(<span class="string">&quot;歌曲B&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pl))   <span class="comment"># 输出: 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔判断</span></span><br><span class="line"><span class="keyword">if</span> pl:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;播放列表不为空&quot;</span>)  <span class="comment"># 会执行</span></span><br><span class="line"></span><br><span class="line">empty_pl = Playlist()</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> empty_pl:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;播放列表为空&quot;</span>)    <span class="comment"># 会执行</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>ssh使用详解</title>
+    <url>/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/</url>
+    <content><![CDATA[<h2 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h2><ul>
+<li>《SSH权威指南》</li>
+</ul>
+<h2 id="SSH秘钥生成"><a href="#SSH秘钥生成" class="headerlink" title="SSH秘钥生成"></a>SSH秘钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;此处填写邮箱号&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2>]]></content>
       <categories>
-          
-          <category> python </category>
-          
+        <category>工具软件</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【命理】天干地支</title>
-      <link href="/2026/04/29/%E5%91%BD%E7%90%86/%E5%A4%A9%E5%B9%B2%E5%9C%B0%E6%94%AF/"/>
-      <url>/2026/04/29/%E5%91%BD%E7%90%86/%E5%A4%A9%E5%B9%B2%E5%9C%B0%E6%94%AF/</url>
-      
-        <content type="html"><![CDATA[<p>李虚中、徐子平创立算命术以后，算命的都少不了要和天干地支打交道，否则便寸步难行。</p><p>“天干地支”，简称“干支”，又称“干枝”。前人有云：“夫干，犹木之干，强而为阳；支，犹木之枝，弱而为阴。”可见称为干支的原始用意。</p><p>天干的数目有十位，它们的依次顺序是：甲、乙、丙、丁、戊、己、庚、辛、壬、癸。</p><p>地支的数目有十二位，它们的依次顺序是：子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥。</p>]]></content>
-      
-      
+      <tags>
+        <tag>ssh</tag>
+        <tag>工具软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【网站收藏】电子书网站推荐</title>
+    <url>/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/</url>
+    <content><![CDATA[<ul>
+<li>zlibrary<ul>
+<li><a href="https://zh.zlibrary1.ru/">https://zh.zlibrary1.ru/</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
-          
-          <category> 命理 </category>
-          
+        <category>网站收藏</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 命理 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【AI】AI大模型学习大纲</title>
-      <link href="/2026/04/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"/>
-      <url>/2026/04/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/</url>
-      
-        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="一、数学基础"><a href="#一、数学基础" class="headerlink" title="一、数学基础"></a>一、数学基础</h2><ul><li>线性代数：矩阵运算、特征值分解、SVD</li><li>概率论与统计：贝叶斯定理、概率分布、最大似然估计</li><li>微积分与优化：梯度、链式法则、凸优化</li><li>信息论：熵、KL散度、互信息</li><li>推荐书籍：<br>《线性代数》— 吉尔伯特·斯特朗<br>《概率论与数理统计》— 陈希孺<br>《凸优化》— Boyd &amp; Vandenberghe（免费PDF）<br>《信息论基础》— Cover &amp; Thomas</li></ul>]]></content>
-      
-      
+      <tags>
+        <tag>网站收藏</tag>
+        <tag>电子书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】词根大全</title>
+    <url>/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
       <categories>
-          
-          <category> AI </category>
-          
+        <category>英语</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> AI </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>python基础总结</title>
-      <link href="/2025/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/python%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/"/>
-      <url>/2025/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/python%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、Python-基础入门"><a href="#一、Python-基础入门" class="headerlink" title="一、Python 基础入门"></a>一、Python 基础入门</h2><h3 id="1-1-环境搭建：Python安装、pip包管理、虚拟环境（venv-conda）、IDE选择（VSCode-PyCharm）"><a href="#1-1-环境搭建：Python安装、pip包管理、虚拟环境（venv-conda）、IDE选择（VSCode-PyCharm）" class="headerlink" title="1.1  环境搭建：Python安装、pip包管理、虚拟环境（venv&#x2F;conda）、IDE选择（VSCode&#x2F;PyCharm）"></a>1.1  环境搭建：Python安装、pip包管理、虚拟环境（venv&#x2F;conda）、IDE选择（VSCode&#x2F;PyCharm）</h3><h3 id="1-2-基本语法：变量、数据类型、运算符、注释"><a href="#1-2-基本语法：变量、数据类型、运算符、注释" class="headerlink" title="1.2 基本语法：变量、数据类型、运算符、注释"></a>1.2 基本语法：变量、数据类型、运算符、注释</h3><h3 id="1-3-流程控制：if-elif-else、for-while循环、break-continue-pass"><a href="#1-3-流程控制：if-elif-else、for-while循环、break-continue-pass" class="headerlink" title="1.3 流程控制：if&#x2F;elif&#x2F;else、for&#x2F;while循环、break&#x2F;continue&#x2F;pass"></a>1.3 流程控制：if&#x2F;elif&#x2F;else、for&#x2F;while循环、break&#x2F;continue&#x2F;pass</h3><h3 id="1-4-输入输出：print、input、格式化字符串（f-string）"><a href="#1-4-输入输出：print、input、格式化字符串（f-string）" class="headerlink" title="1.4 输入输出：print、input、格式化字符串（f-string）"></a>1.4 输入输出：print、input、格式化字符串（f-string）</h3><h2 id="二、数据结构"><a href="#二、数据结构" class="headerlink" title="二、数据结构"></a>二、数据结构</h2><ul><li>字符串：切片、常用方法、正则表达式（re模块）</li><li>列表（List）：增删改查、列表推导式</li><li>元组（Tuple）：不可变序列、解包</li><li>字典（Dict）：键值对、字典推导式、常用方法</li><li>集合（Set）：去重、交并差运算</li><li>推导式：列表&#x2F;字典&#x2F;集合&#x2F;生成器推导式</li></ul><h2 id="三、函数与模块"><a href="#三、函数与模块" class="headerlink" title="三、函数与模块"></a>三、函数与模块</h2><ul><li>函数定义：参数（位置&#x2F;关键字&#x2F;默认&#x2F;可变参数）、返回值</li><li>作用域：LEGB规则、global&#x2F;nonlocal</li><li>高阶函数：lambda、map、filter、reduce</li><li>装饰器：函数装饰器、类装饰器、wraps</li><li>生成器：yield、迭代器协议</li><li>模块与包：import机制、<strong>init</strong>.py、相对&#x2F;绝对导入</li></ul><h2 id="四、面向对象编程（OOP）"><a href="#四、面向对象编程（OOP）" class="headerlink" title="四、面向对象编程（OOP）"></a>四、面向对象编程（OOP）</h2><ul><li>类与对象：<strong>init</strong>、实例属性、类属性</li><li>封装、继承、多态</li><li>魔术方法：<strong>str</strong>、<strong>repr</strong>、<strong>len</strong>、__eq__等</li><li>类方法与静态方法：@classmethod、@staticmethod</li><li>属性管理：@property、<strong>slots</strong></li><li>抽象类：abc模块</li><li>MRO与多继承：方法解析顺序</li></ul><h2 id="五、异常处理与文件操作"><a href="#五、异常处理与文件操作" class="headerlink" title="五、异常处理与文件操作"></a>五、异常处理与文件操作</h2><ul><li>异常处理：try&#x2F;except&#x2F;else&#x2F;finally、自定义异常</li><li>上下文管理器：with语句、<strong>enter</strong>&#x2F;<strong>exit</strong></li><li>文件操作：读写文本&#x2F;二进制文件、os&#x2F;pathlib模块</li><li>序列化：json、pickle、csv模块</li></ul><h2 id="六、常用标准库"><a href="#六、常用标准库" class="headerlink" title="六、常用标准库"></a>六、常用标准库</h2><ul><li>系统相关：os、sys、shutil、subprocess</li><li>时间日期：datetime、time、calendar</li><li>数据处理：collections、itertools、functools</li><li>并发基础：threading、multiprocessing、concurrent.futures</li><li>网络基础：socket、urllib、http.client</li><li>日志：logging模块</li></ul><h2 id="七、异步编程"><a href="#七、异步编程" class="headerlink" title="七、异步编程"></a>七、异步编程</h2><ul><li>协程基础：async&#x2F;await语法</li><li>事件循环：asyncio模块</li><li>异步IO：aiohttp、aiofiles</li><li>并发模型对比：多线程 vs 多进程 vs 协程</li></ul><h2 id="八、常用第三方库"><a href="#八、常用第三方库" class="headerlink" title="八、常用第三方库"></a>八、常用第三方库</h2><table><thead><tr><th align="left">方向</th><th align="left">常用库</th></tr></thead><tbody><tr><td align="left">数据处理</td><td align="left">NumPy、Pandas</td></tr><tr><td align="left">数据可视化</td><td align="left">Matplotlib、Seaborn、Plotly</td></tr><tr><td align="left">Web开发</td><td align="left">Flask、FastAPI、Django</td></tr><tr><td align="left">爬虫</td><td align="left">Requests、BeautifulSoup、Scrapy</td></tr><tr><td align="left">测试</td><td align="left">pytest、unittest、mock</td></tr><tr><td align="left">机器学习</td><td align="left">Scikit-learn、PyTorch、TensorFlow</td></tr><tr><td align="left">数据库</td><td align="left">SQLAlchemy、pymysql、redis-py</td></tr></tbody></table><h2 id="九、工程化与最佳实践"><a href="#九、工程化与最佳实践" class="headerlink" title="九、工程化与最佳实践"></a>九、工程化与最佳实践</h2><ul><li>代码规范：PEP8、类型注解（typing）、mypy</li><li>包管理：poetry、pip-tools、requirements.txt</li><li>测试：单元测试、集成测试、TDD</li><li>调试：pdb、ipdb、VSCode调试器</li><li>性能优化：cProfile、line_profiler、Cython</li><li>设计模式：单例、工厂、观察者、策略模式</li><li>文档：docstring、Sphinx</li></ul><h2 id="十、进阶专项方向（选择一个深入）"><a href="#十、进阶专项方向（选择一个深入）" class="headerlink" title="十、进阶专项方向（选择一个深入）"></a>十、进阶专项方向（选择一个深入）</h2><p>Web后端开发    →  FastAPI &#x2F; Django + 数据库 + 部署<br>数据分析       →  Pandas + Matplotlib + Jupyter<br>机器学习&#x2F;AI    →  NumPy + Scikit-learn + PyTorch<br>爬虫与自动化   →  Scrapy + Playwright + 反爬策略<br>运维&#x2F;脚本      →  Fabric + Ansible + Shell交互</p>]]></content>
-      
-      
+      <tags>
+        <tag>英语词根</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>erlang基础详解</title>
+    <url>/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>浮点数</li>
+<li>原子</li>
+<li>元组</li>
+<li>列表</li>
+<li>字符串</li>
+</ul>
+<h2 id="编译和运行"><a href="#编译和运行" class="headerlink" title="编译和运行"></a>编译和运行</h2><h3 id="makefile自动化"><a href="#makefile自动化" class="headerlink" title="makefile自动化"></a>makefile自动化</h3>]]></content>
       <categories>
-          
-          <category> python </category>
-          
+        <category>编程语言</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>会呼吸的文字：与千年前的诗人共赴一场心灵奇旅</title>
-      <link href="/2025/09/16/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/article_03/"/>
-      <url>/2025/09/16/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/article_03/</url>
-      
-        <content type="html"><![CDATA[<p>你是否曾觉得，语文课本里的古诗词像是博物馆中蒙尘的文物，遥远而陌生？那些整齐排列的方块字，是否总与“背诵全文”的焦虑紧密相连？请允许我为你揭开一个被隐藏了太久的秘密：这些穿越千年的诗句，其实是会呼吸的生命，正等待着与你展开一场跨越时空的心灵对话。</p><p>当我们打开社交媒体，为一首流行歌曲的歌词心动不已时，可曾想过——李白、杜甫、苏轼，正是他们时代的“顶流创作者”？那些被我们视为“考试内容”的诗句，其实是古人最鲜活的情感记录。李白“举杯邀明月，对影成三人”时，不正像极了我们在深夜发朋友圈诉说心事？苏轼“明月几时有，把酒问青天”的感慨，与我们在困惑时刻向星空发出的追问何其相似！这些文字之所以能穿越时空击中我们，正是因为人类最本质的情感从未改变。</p><p>每一首古诗词都是一扇任意门，轻轻推开，便能瞬间抵达另一个世界。“两个黄鹂鸣翠柳，一行白鹭上青天”——杜甫用十四个字绘制了一幅会动的春日图卷，鸟鸣声几乎穿透纸张；“大漠孤烟直，长河落日圆”——王维以十字写尽边塞苍茫，令人仿佛感受到扑面而来的风沙。这种通过文字构建“沉浸式体验”的能力，岂不比如今的VR技术更加神奇？诗人是最早的虚拟现实大师，他们用文字为我们建造了无数可随时进入的平行宇宙。</p><p>更有趣的是，古诗词中藏着无数“彩蛋”等待我们发现。李商隐的“相见时难别亦难，东风无力百花残”背后，是怎样的爱恋与无奈？杜甫写下“国破山河在，城春草木深”时，眼中看到的是怎样的景象？当我们了解诗背后的故事，文字便突然有了温度。这种解读过程，堪比侦探破案般引人入胜——我们通过零散线索，重建千年前的生活现场，与诗人的喜怒哀乐同频共振。</p><p>或许你会问：在短视频当道的时代，为什么还要读这些“老古董”？答案恰恰藏在我们这个时代最稀缺的东西里——古诗词提供了一种“慢思考”的可能，一种与浮躁保持距离的力量。当我们读着“采菊东篱下，悠然见南山”，不知不觉间便会放缓呼吸；当我们品味“行到水穷处，坐看云起时”，焦虑的心绪渐渐平复。在这个信息爆炸的时代，这些诗句仿佛一个个心灵避难所，让我们得以短暂逃离喧嚣，找回内心的宁静。</p><p>更重要的是，古诗词是我们文化基因的密码本。当我们看到落日时，不仅能说“哇，好大的太阳”，还能想起“落日熔金，暮云合璧”的绚烂；当我们登高望远时，不仅能拍照发圈，还能与王之涣一起感叹“欲穷千里目，更上一层楼”。这些传承千年的诗句，赋予我们一种更丰富、更深刻的体验世界的方式，让我们与这片土地上无数先辈通过共同的文化记忆相连。</p><p>如何开始这场奇妙的探险？不必正襟危坐，无需倒背如流。可以从最简单的开始：看到春雨时，想想“好雨知时节，当春乃发生”；望见明月时，默念“小时不识月，呼作白玉盘”。让这些诗句自然而然地进入生活，成为我们表达感受的另一种语言。你会发现，背诗不再是任务，而像学会一首好听的歌，忍不住时时哼唱；像收藏一个精美的表情包，在合适场合信手拈来。</p><p>亲爱的同学，那些课本里的古诗词从来不是冰冷的知识点，而是无数先人留给我们的心灵礼物。它们是被压缩的时间胶囊，是能穿越时空的情感密码。当你下次打开诗词集，不妨想象自己正在解锁一个跨越千年的朋友圈——李白在晒他的月亮酒会，杜甫在记录他的旅途见闻，苏轼在分享他的生活哲思。而你，可以通过这些文字与他们即时互动，感受那份从未褪色的情感温度。</p><p>这场贯穿千年的心灵奇旅已经开始，请问准备好与李白共饮、与苏轼同游、与李清照对话了吗？你的诗心，正在被唤醒。</p>]]></content>
-      
-      
+      <tags>
+        <tag>erlang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】动词时态的基本形式</title>
+    <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="16种时态的基本形式"><a href="#16种时态的基本形式" class="headerlink" title="16种时态的基本形式"></a>16种时态的基本形式</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>一般时态</th>
+<th>进行时态</th>
+<th>完成时态</th>
+<th>完成进行时态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>现在</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>过去</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>将来</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>过去将来</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
       <categories>
-          
-          <category> 散文 </category>
-          
+        <category>英语</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 散文 </tag>
-            
-            <tag> 古诗词 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>诗映人生：在词章间寻觅生命的意义</title>
-      <link href="/2025/09/15/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E6%98%A0%E4%BA%BA%E7%94%9F%EF%BC%9A%E5%9C%A8%E8%AF%8D%E7%AB%A0%E9%97%B4%E5%AF%BB%E8%A7%85%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89/"/>
-      <url>/2025/09/15/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E6%98%A0%E4%BA%BA%E7%94%9F%EF%BC%9A%E5%9C%A8%E8%AF%8D%E7%AB%A0%E9%97%B4%E5%AF%BB%E8%A7%85%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89/</url>
-      
-        <content type="html"><![CDATA[<p>人生如逆旅，我亦是行人。苏轼的这句词，道尽了人在时间长河中的漂泊与追寻。千百年来，诗词不仅是文人墨客的闲情雅致，更是照见生命本质的一面明镜。在平仄起伏间，在比兴寄托里，诗词以其独特的艺术形式，为我们提供了一把解读人生意义的钥匙。</p><p>诗词教会我们的第一课，是关于生命的短暂与珍贵。“人生天地间，忽如远行客”，《古诗十九首》中的叹息穿越千年依然震撼人心。李白在《春夜宴从弟桃花园序》中直言：“夫天地者，万物之逆旅；光阴者，百代之过客。”这种对生命有限的清醒认知，非但没有导致消极无为，反而激发了中国文人强烈的生命意识——既然时光易逝，就当珍惜当下，活出生命的密度与质量。陶渊明“采菊东篱下，悠然见南山”的闲适，背后是对官场虚名的不屑与对真实生活的拥抱；苏轼“人生如梦，一尊还酹江月”的感慨，蕴含的是对当下体验的珍视。诗词告诉我们：生命的意义首先在于清醒地活着，感受每一刻的独特与不可重复。</p><p>人生绝非坦途，而诗词展现了困境中的超越智慧。陆游“山重水复疑无路，柳暗花明又一村”的名句，已成为逆境中保持希望的经典隐喻。诗人词客们不回避苦难，却总能从中开掘出精神的高度。杜甫身经乱离，目睹“国破山河在，城春草木深”的惨状，却依然怀抱“安得广厦千万间，大庇天下寒士俱欢颜”的博大胸怀。苏轼屡遭贬谪，却能吟出“莫听穿林打叶声，何妨吟啸且徐行”的洒脱，在最低谷处展现最高远的精神境界。这些诗词向我们昭示：人生的意义不在于避开苦难，而在于如何带着苦难前行，并在其中完成精神的升华。</p><p>孤独是生命的常态，而诗词展现了孤独中的丰富与深邃。陈子昂登幽州台，“念天地之悠悠，独怆然而涕下”，这种孤独感接通了个体与永恒。柳宗元“孤舟蓑笠翁，独钓寒江雪”的意象，不仅是政治失意的写照，更是独立人格的诗意表达。诗人们在孤独中与自然对话，与历史交感，与内心深处的自我相遇。李商隐“嫦娥应悔偷灵药，碧海青天夜夜心”的诗句，将孤独转化为一种凄美的永恒存在。诗词告诉我们：孤独不是需要填补的空虚，而是可以深耕的沃土，真正的生命意义常常在独处时被领悟。</p><p>人生的意义还在于情感的深度与广度，诗词恰是情感的结晶。“相见时难别亦难，东风无力百花残”，李商隐的爱情诗写尽了情感的缠绵与无奈；“桃李春风一杯酒，江湖夜雨十年灯”，黄庭坚的友情诗穿越时空依然感人肺腑；“慈母手中线，游子身上衣”，孟郊的亲情诗简单质朴却直击人心。诗词提醒我们：人生的意义很大程度上在于我们爱过、痛过、思念过、期待过，在于情感体验的丰富性与深刻性。没有深刻情感体验的人生，再长也是苍白的。</p><p>而最终，诗词揭示了生命意义的最高层次——超越小我，与更大的存在融合。杜甫“安得广厦千万间，大庇天下寒士俱欢颜”的胸怀，范仲淹“先天下之忧而忧，后天下之乐而乐”的担当，文天祥“人生自古谁无死，留取丹心照汗青”的气节，都将个人生命融入历史洪流与文化传承之中。这种超越不是对个体价值的否定，而是个体价值的最高实现——通过将自己献给某种永恒之物，个体生命获得了永恒。</p><p>在诗词的长河中漫游，我们看到的不仅是文字之美，更是生命可能达到的高度与深度。诗词之于人生，犹如灯塔之于夜航，它不能替我们行走人生的每一步，却能在迷雾中指引方向，在困惑时提供启示。每个生命都是自己意义的创作者，而诗词提供了丰富的素材与灵感。当我们以诗心观照生活，日常生活便有了诗意；当我们以人生体验诗词，古老文字便焕发新生。</p><p>或许，人生的终极意义就像一首好诗——不能用一句话概括，却能在反复品味中不断发现新的层次；需要经历推敲打磨，最终呈现出简洁中的丰富；既是个体的独特创造，又能与无数心灵产生共鸣。在这个意义上，每个人都是自己生命的诗人，用选择与行动书写着独一无二的诗篇。而当我们能够以欣赏诗词的细腻与深刻来体验人生，以创作诗词的匠心与激情来经营人生，生命本身便成为了一首值得反复吟咏的绝妙好诗。</p>]]></content>
-      
-      
+      <tags>
+        <tag>英语语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】虚拟语气</title>
+    <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/</url>
+    <content><![CDATA[]]></content>
       <categories>
-          
-          <category> 散文 </category>
-          
+        <category>英语</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 散文 </tag>
-            
-            <tag> 古诗词 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>诗香润师恩：千年文脉中的尊师之道</title>
-      <link href="/2025/09/10/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E9%A6%99%E6%B6%A6%E5%B8%88%E6%81%A9%EF%BC%9A%E5%8D%83%E5%B9%B4%E6%96%87%E8%84%89%E4%B8%AD%E7%9A%84%E5%B0%8A%E5%B8%88%E4%B9%8B%E9%81%93/"/>
-      <url>/2025/09/10/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E9%A6%99%E6%B6%A6%E5%B8%88%E6%81%A9%EF%BC%9A%E5%8D%83%E5%B9%B4%E6%96%87%E8%84%89%E4%B8%AD%E7%9A%84%E5%B0%8A%E5%B8%88%E4%B9%8B%E9%81%93/</url>
-      
-        <content type="html"><![CDATA[<p>秋风又起，桂子飘香，一年一度的教师节如期而至。在这个充满敬意的季节里，翻阅泛黄的诗卷，我们能在字里行间寻得师者永恒的身影。中国古代诗词如一条蜿蜒的文化长河，流淌着对师道的尊崇与礼赞，那些隽永的诗句穿越时空，依然闪烁着智慧的光芒。</p><p>《荀子·劝学》开篇即言：“学不可以已。”此言如晨钟暮鼓，回荡在无数求知者的心间。师者，所以传道授业解惑也。韩愈在《师说》中精准勾勒出教师的使命与担当，将师道提升至文化传承的高度。在古代诗人的笔下，师者形象常与自然意象相融合，李商隐“春蚕到死丝方尽，蜡炬成灰泪始干”的千古名句，不仅写尽了情感的执着，更被后人引申为教师无私奉献的精神写照——如春蚕吐丝般倾囊相授，似蜡烛燃烧般照亮他人。</p><p>杜甫言“读书破万卷，下笔如有神”，这“神”并非凭空而来，乃是在师者指引下，经过千百次锤炼而得。古代学子尊师重道，程门立雪的故事流传千年：杨时、游酢为请教问题而立于师尊程颐门前，即便大雪纷飞亦不离去，直至老师醒来看见门外已积雪一尺。这不仅是尊师的佳话，更体现了对知识的渴求与对师者的敬重。</p><p>师者之于学子，犹如春风之于幼苗。白居易诗句“野火烧不尽，春风吹又生”中的“春风”，恰似师者化育万物的力量，在知识的原野上唤醒沉睡的种子，催发智慧的萌芽。这种教化之力，潜移默化而又深远持久，塑造着一个个独立的灵魂。</p><p>回望历史，孔子周游列国，弟子三千，开创私学传统；朱熹讲学授徒，复兴白鹿洞书院，传承文化薪火。师者不仅是知识的传递者，更是文明的守护人。他们如同郑板桥画中的竹子“咬定青山不放松”，坚守教育阵地，在时代变迁中守护着文化的根脉。</p><p>今人庆祝教师节，不妨从古诗词中汲取智慧，以更深厚的情感理解师道的价值。当我们吟诵“新竹高于旧竹枝，全凭老干为扶持”时，应当明白每一代人的成长都离不开前人的托举。在这个特别的日子里，让我们以千年文脉为底色，用最真挚的心意向所有教师致敬——他们延续着文明的火种，塑造着民族的未来，他们的工作平凡而伟大，如诗中所写：“润物细无声”，却滋养着整个时代。</p><p>片言之赐，皆事师也。愿尊师重教的传统如不绝的诗香，永远弥漫在中华文化的空气之中。</p>]]></content>
-      
-      
+      <tags>
+        <tag>英语语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】名词用法</title>
+    <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[]]></content>
       <categories>
-          
-          <category> 散文 </category>
-          
+        <category>英语</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 散文 </tag>
-            
-            <tag> 古诗词 </tag>
-            
-            <tag> 教师节 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>erlang基础详解</title>
-      <link href="/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/"/>
-      <url>/2025/07/24/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/erlang/erlang%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3/</url>
-      
-        <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul><li>浮点数</li><li>原子</li><li>元组</li><li>列表</li><li>字符串</li></ul><h2 id="编译和运行"><a href="#编译和运行" class="headerlink" title="编译和运行"></a>编译和运行</h2><h3 id="makefile自动化"><a href="#makefile自动化" class="headerlink" title="makefile自动化"></a>makefile自动化</h3>]]></content>
-      
-      
+      <tags>
+        <tag>英语语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】被动语态</title>
+    <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/</url>
+    <content><![CDATA[]]></content>
       <categories>
-          
-          <category> 编程语言 </category>
-          
+        <category>英语</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> erlang </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ssh使用详解</title>
-      <link href="/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/"/>
-      <url>/2025/07/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/ssh/</url>
-      
-        <content type="html"><![CDATA[<h2 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h2><ul><li>《SSH权威指南》</li></ul><h2 id="SSH秘钥生成"><a href="#SSH秘钥生成" class="headerlink" title="SSH秘钥生成"></a>SSH秘钥生成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;此处填写邮箱号&quot;</span></span><br></pre></td></tr></table></figure><h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2>]]></content>
-      
-      
+      <tags>
+        <tag>英语语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>诗香润师恩：千年文脉中的尊师之道</title>
+    <url>/2025/09/10/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E9%A6%99%E6%B6%A6%E5%B8%88%E6%81%A9%EF%BC%9A%E5%8D%83%E5%B9%B4%E6%96%87%E8%84%89%E4%B8%AD%E7%9A%84%E5%B0%8A%E5%B8%88%E4%B9%8B%E9%81%93/</url>
+    <content><![CDATA[<p>秋风又起，桂子飘香，一年一度的教师节如期而至。在这个充满敬意的季节里，翻阅泛黄的诗卷，我们能在字里行间寻得师者永恒的身影。中国古代诗词如一条蜿蜒的文化长河，流淌着对师道的尊崇与礼赞，那些隽永的诗句穿越时空，依然闪烁着智慧的光芒。</p>
+<p>《荀子·劝学》开篇即言：“学不可以已。”此言如晨钟暮鼓，回荡在无数求知者的心间。师者，所以传道授业解惑也。韩愈在《师说》中精准勾勒出教师的使命与担当，将师道提升至文化传承的高度。在古代诗人的笔下，师者形象常与自然意象相融合，李商隐“春蚕到死丝方尽，蜡炬成灰泪始干”的千古名句，不仅写尽了情感的执着，更被后人引申为教师无私奉献的精神写照——如春蚕吐丝般倾囊相授，似蜡烛燃烧般照亮他人。</p>
+<p>杜甫言“读书破万卷，下笔如有神”，这“神”并非凭空而来，乃是在师者指引下，经过千百次锤炼而得。古代学子尊师重道，程门立雪的故事流传千年：杨时、游酢为请教问题而立于师尊程颐门前，即便大雪纷飞亦不离去，直至老师醒来看见门外已积雪一尺。这不仅是尊师的佳话，更体现了对知识的渴求与对师者的敬重。</p>
+<p>师者之于学子，犹如春风之于幼苗。白居易诗句“野火烧不尽，春风吹又生”中的“春风”，恰似师者化育万物的力量，在知识的原野上唤醒沉睡的种子，催发智慧的萌芽。这种教化之力，潜移默化而又深远持久，塑造着一个个独立的灵魂。</p>
+<p>回望历史，孔子周游列国，弟子三千，开创私学传统；朱熹讲学授徒，复兴白鹿洞书院，传承文化薪火。师者不仅是知识的传递者，更是文明的守护人。他们如同郑板桥画中的竹子“咬定青山不放松”，坚守教育阵地，在时代变迁中守护着文化的根脉。</p>
+<p>今人庆祝教师节，不妨从古诗词中汲取智慧，以更深厚的情感理解师道的价值。当我们吟诵“新竹高于旧竹枝，全凭老干为扶持”时，应当明白每一代人的成长都离不开前人的托举。在这个特别的日子里，让我们以千年文脉为底色，用最真挚的心意向所有教师致敬——他们延续着文明的火种，塑造着民族的未来，他们的工作平凡而伟大，如诗中所写：“润物细无声”，却滋养着整个时代。</p>
+<p>片言之赐，皆事师也。愿尊师重教的传统如不绝的诗香，永远弥漫在中华文化的空气之中。</p>
+]]></content>
       <categories>
-          
-          <category> 工具软件 </category>
-          
+        <category>散文</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> ssh </tag>
-            
-            <tag> 工具软件 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【英语】词根大全</title>
-      <link href="/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/"/>
-      <url>/2025/07/24/lang/english/%E8%AF%8D%E6%A0%B9%E5%A4%A7%E5%85%A8/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+      <tags>
+        <tag>散文</tag>
+        <tag>古诗词</tag>
+        <tag>教师节</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>诗映人生：在词章间寻觅生命的意义</title>
+    <url>/2025/09/15/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E8%AF%97%E6%98%A0%E4%BA%BA%E7%94%9F%EF%BC%9A%E5%9C%A8%E8%AF%8D%E7%AB%A0%E9%97%B4%E5%AF%BB%E8%A7%85%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89/</url>
+    <content><![CDATA[<p>人生如逆旅，我亦是行人。苏轼的这句词，道尽了人在时间长河中的漂泊与追寻。千百年来，诗词不仅是文人墨客的闲情雅致，更是照见生命本质的一面明镜。在平仄起伏间，在比兴寄托里，诗词以其独特的艺术形式，为我们提供了一把解读人生意义的钥匙。</p>
+<p>诗词教会我们的第一课，是关于生命的短暂与珍贵。“人生天地间，忽如远行客”，《古诗十九首》中的叹息穿越千年依然震撼人心。李白在《春夜宴从弟桃花园序》中直言：“夫天地者，万物之逆旅；光阴者，百代之过客。”这种对生命有限的清醒认知，非但没有导致消极无为，反而激发了中国文人强烈的生命意识——既然时光易逝，就当珍惜当下，活出生命的密度与质量。陶渊明“采菊东篱下，悠然见南山”的闲适，背后是对官场虚名的不屑与对真实生活的拥抱；苏轼“人生如梦，一尊还酹江月”的感慨，蕴含的是对当下体验的珍视。诗词告诉我们：生命的意义首先在于清醒地活着，感受每一刻的独特与不可重复。</p>
+<p>人生绝非坦途，而诗词展现了困境中的超越智慧。陆游“山重水复疑无路，柳暗花明又一村”的名句，已成为逆境中保持希望的经典隐喻。诗人词客们不回避苦难，却总能从中开掘出精神的高度。杜甫身经乱离，目睹“国破山河在，城春草木深”的惨状，却依然怀抱“安得广厦千万间，大庇天下寒士俱欢颜”的博大胸怀。苏轼屡遭贬谪，却能吟出“莫听穿林打叶声，何妨吟啸且徐行”的洒脱，在最低谷处展现最高远的精神境界。这些诗词向我们昭示：人生的意义不在于避开苦难，而在于如何带着苦难前行，并在其中完成精神的升华。</p>
+<p>孤独是生命的常态，而诗词展现了孤独中的丰富与深邃。陈子昂登幽州台，“念天地之悠悠，独怆然而涕下”，这种孤独感接通了个体与永恒。柳宗元“孤舟蓑笠翁，独钓寒江雪”的意象，不仅是政治失意的写照，更是独立人格的诗意表达。诗人们在孤独中与自然对话，与历史交感，与内心深处的自我相遇。李商隐“嫦娥应悔偷灵药，碧海青天夜夜心”的诗句，将孤独转化为一种凄美的永恒存在。诗词告诉我们：孤独不是需要填补的空虚，而是可以深耕的沃土，真正的生命意义常常在独处时被领悟。</p>
+<p>人生的意义还在于情感的深度与广度，诗词恰是情感的结晶。“相见时难别亦难，东风无力百花残”，李商隐的爱情诗写尽了情感的缠绵与无奈；“桃李春风一杯酒，江湖夜雨十年灯”，黄庭坚的友情诗穿越时空依然感人肺腑；“慈母手中线，游子身上衣”，孟郊的亲情诗简单质朴却直击人心。诗词提醒我们：人生的意义很大程度上在于我们爱过、痛过、思念过、期待过，在于情感体验的丰富性与深刻性。没有深刻情感体验的人生，再长也是苍白的。</p>
+<p>而最终，诗词揭示了生命意义的最高层次——超越小我，与更大的存在融合。杜甫“安得广厦千万间，大庇天下寒士俱欢颜”的胸怀，范仲淹“先天下之忧而忧，后天下之乐而乐”的担当，文天祥“人生自古谁无死，留取丹心照汗青”的气节，都将个人生命融入历史洪流与文化传承之中。这种超越不是对个体价值的否定，而是个体价值的最高实现——通过将自己献给某种永恒之物，个体生命获得了永恒。</p>
+<p>在诗词的长河中漫游，我们看到的不仅是文字之美，更是生命可能达到的高度与深度。诗词之于人生，犹如灯塔之于夜航，它不能替我们行走人生的每一步，却能在迷雾中指引方向，在困惑时提供启示。每个生命都是自己意义的创作者，而诗词提供了丰富的素材与灵感。当我们以诗心观照生活，日常生活便有了诗意；当我们以人生体验诗词，古老文字便焕发新生。</p>
+<p>或许，人生的终极意义就像一首好诗——不能用一句话概括，却能在反复品味中不断发现新的层次；需要经历推敲打磨，最终呈现出简洁中的丰富；既是个体的独特创造，又能与无数心灵产生共鸣。在这个意义上，每个人都是自己生命的诗人，用选择与行动书写着独一无二的诗篇。而当我们能够以欣赏诗词的细腻与深刻来体验人生，以创作诗词的匠心与激情来经营人生，生命本身便成为了一首值得反复吟咏的绝妙好诗。</p>
+]]></content>
       <categories>
-          
-          <category> 英语 </category>
-          
+        <category>散文</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 英语词根 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【英语】虚拟语气</title>
-      <link href="/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/"/>
-      <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%99%9A%E6%8B%9F%E8%AF%AD%E6%B0%94/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+      <tags>
+        <tag>散文</tag>
+        <tag>古诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>会呼吸的文字：与千年前的诗人共赴一场心灵奇旅</title>
+    <url>/2025/09/16/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/article_03/</url>
+    <content><![CDATA[<p>你是否曾觉得，语文课本里的古诗词像是博物馆中蒙尘的文物，遥远而陌生？那些整齐排列的方块字，是否总与“背诵全文”的焦虑紧密相连？请允许我为你揭开一个被隐藏了太久的秘密：这些穿越千年的诗句，其实是会呼吸的生命，正等待着与你展开一场跨越时空的心灵对话。</p>
+<p>当我们打开社交媒体，为一首流行歌曲的歌词心动不已时，可曾想过——李白、杜甫、苏轼，正是他们时代的“顶流创作者”？那些被我们视为“考试内容”的诗句，其实是古人最鲜活的情感记录。李白“举杯邀明月，对影成三人”时，不正像极了我们在深夜发朋友圈诉说心事？苏轼“明月几时有，把酒问青天”的感慨，与我们在困惑时刻向星空发出的追问何其相似！这些文字之所以能穿越时空击中我们，正是因为人类最本质的情感从未改变。</p>
+<p>每一首古诗词都是一扇任意门，轻轻推开，便能瞬间抵达另一个世界。“两个黄鹂鸣翠柳，一行白鹭上青天”——杜甫用十四个字绘制了一幅会动的春日图卷，鸟鸣声几乎穿透纸张；“大漠孤烟直，长河落日圆”——王维以十字写尽边塞苍茫，令人仿佛感受到扑面而来的风沙。这种通过文字构建“沉浸式体验”的能力，岂不比如今的VR技术更加神奇？诗人是最早的虚拟现实大师，他们用文字为我们建造了无数可随时进入的平行宇宙。</p>
+<p>更有趣的是，古诗词中藏着无数“彩蛋”等待我们发现。李商隐的“相见时难别亦难，东风无力百花残”背后，是怎样的爱恋与无奈？杜甫写下“国破山河在，城春草木深”时，眼中看到的是怎样的景象？当我们了解诗背后的故事，文字便突然有了温度。这种解读过程，堪比侦探破案般引人入胜——我们通过零散线索，重建千年前的生活现场，与诗人的喜怒哀乐同频共振。</p>
+<p>或许你会问：在短视频当道的时代，为什么还要读这些“老古董”？答案恰恰藏在我们这个时代最稀缺的东西里——古诗词提供了一种“慢思考”的可能，一种与浮躁保持距离的力量。当我们读着“采菊东篱下，悠然见南山”，不知不觉间便会放缓呼吸；当我们品味“行到水穷处，坐看云起时”，焦虑的心绪渐渐平复。在这个信息爆炸的时代，这些诗句仿佛一个个心灵避难所，让我们得以短暂逃离喧嚣，找回内心的宁静。</p>
+<p>更重要的是，古诗词是我们文化基因的密码本。当我们看到落日时，不仅能说“哇，好大的太阳”，还能想起“落日熔金，暮云合璧”的绚烂；当我们登高望远时，不仅能拍照发圈，还能与王之涣一起感叹“欲穷千里目，更上一层楼”。这些传承千年的诗句，赋予我们一种更丰富、更深刻的体验世界的方式，让我们与这片土地上无数先辈通过共同的文化记忆相连。</p>
+<p>如何开始这场奇妙的探险？不必正襟危坐，无需倒背如流。可以从最简单的开始：看到春雨时，想想“好雨知时节，当春乃发生”；望见明月时，默念“小时不识月，呼作白玉盘”。让这些诗句自然而然地进入生活，成为我们表达感受的另一种语言。你会发现，背诗不再是任务，而像学会一首好听的歌，忍不住时时哼唱；像收藏一个精美的表情包，在合适场合信手拈来。</p>
+<p>亲爱的同学，那些课本里的古诗词从来不是冰冷的知识点，而是无数先人留给我们的心灵礼物。它们是被压缩的时间胶囊，是能穿越时空的情感密码。当你下次打开诗词集，不妨想象自己正在解锁一个跨越千年的朋友圈——李白在晒他的月亮酒会，杜甫在记录他的旅途见闻，苏轼在分享他的生活哲思。而你，可以通过这些文字与他们即时互动，感受那份从未褪色的情感温度。</p>
+<p>这场贯穿千年的心灵奇旅已经开始，请问准备好与李白共饮、与苏轼同游、与李清照对话了吗？你的诗心，正在被唤醒。</p>
+]]></content>
       <categories>
-          
-          <category> 英语 </category>
-          
+        <category>散文</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 英语语法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【英语】被动语态</title>
-      <link href="/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/"/>
-      <url>/2025/07/24/lang/english/%E8%AF%AD%E6%B3%95/%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+      <tags>
+        <tag>散文</tag>
+        <tag>古诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python基础总结</title>
+    <url>/2025/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/python%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="一、Python-基础入门"><a href="#一、Python-基础入门" class="headerlink" title="一、Python 基础入门"></a>一、Python 基础入门</h2><h3 id="1-1-环境搭建：Python安装、pip包管理、虚拟环境（venv-conda）、IDE选择（VSCode-PyCharm）"><a href="#1-1-环境搭建：Python安装、pip包管理、虚拟环境（venv-conda）、IDE选择（VSCode-PyCharm）" class="headerlink" title="1.1  环境搭建：Python安装、pip包管理、虚拟环境（venv&#x2F;conda）、IDE选择（VSCode&#x2F;PyCharm）"></a>1.1  环境搭建：Python安装、pip包管理、虚拟环境（venv&#x2F;conda）、IDE选择（VSCode&#x2F;PyCharm）</h3><h3 id="1-2-基本语法：变量、数据类型、运算符、注释"><a href="#1-2-基本语法：变量、数据类型、运算符、注释" class="headerlink" title="1.2 基本语法：变量、数据类型、运算符、注释"></a>1.2 基本语法：变量、数据类型、运算符、注释</h3><h3 id="1-3-流程控制：if-elif-else、for-while循环、break-continue-pass"><a href="#1-3-流程控制：if-elif-else、for-while循环、break-continue-pass" class="headerlink" title="1.3 流程控制：if&#x2F;elif&#x2F;else、for&#x2F;while循环、break&#x2F;continue&#x2F;pass"></a>1.3 流程控制：if&#x2F;elif&#x2F;else、for&#x2F;while循环、break&#x2F;continue&#x2F;pass</h3><h3 id="1-4-输入输出：print、input、格式化字符串（f-string）"><a href="#1-4-输入输出：print、input、格式化字符串（f-string）" class="headerlink" title="1.4 输入输出：print、input、格式化字符串（f-string）"></a>1.4 输入输出：print、input、格式化字符串（f-string）</h3><h2 id="二、数据结构"><a href="#二、数据结构" class="headerlink" title="二、数据结构"></a>二、数据结构</h2><ul>
+<li>字符串：切片、常用方法、正则表达式（re模块）</li>
+<li>列表（List）：增删改查、列表推导式</li>
+<li>元组（Tuple）：不可变序列、解包</li>
+<li>字典（Dict）：键值对、字典推导式、常用方法</li>
+<li>集合（Set）：去重、交并差运算</li>
+<li>推导式：列表&#x2F;字典&#x2F;集合&#x2F;生成器推导式</li>
+</ul>
+<h2 id="三、函数与模块"><a href="#三、函数与模块" class="headerlink" title="三、函数与模块"></a>三、函数与模块</h2><ul>
+<li>函数定义：参数（位置&#x2F;关键字&#x2F;默认&#x2F;可变参数）、返回值</li>
+<li>作用域：LEGB规则、global&#x2F;nonlocal</li>
+<li>高阶函数：lambda、map、filter、reduce</li>
+<li>装饰器：函数装饰器、类装饰器、wraps</li>
+<li>生成器：yield、迭代器协议</li>
+<li>模块与包：import机制、<strong>init</strong>.py、相对&#x2F;绝对导入</li>
+</ul>
+<h2 id="四、面向对象编程（OOP）"><a href="#四、面向对象编程（OOP）" class="headerlink" title="四、面向对象编程（OOP）"></a>四、面向对象编程（OOP）</h2><ul>
+<li>类与对象：<strong>init</strong>、实例属性、类属性</li>
+<li>封装、继承、多态</li>
+<li>魔术方法：<strong>str</strong>、<strong>repr</strong>、<strong>len</strong>、__eq__等</li>
+<li>类方法与静态方法：@classmethod、@staticmethod</li>
+<li>属性管理：@property、<strong>slots</strong></li>
+<li>抽象类：abc模块</li>
+<li>MRO与多继承：方法解析顺序</li>
+</ul>
+<h2 id="五、异常处理与文件操作"><a href="#五、异常处理与文件操作" class="headerlink" title="五、异常处理与文件操作"></a>五、异常处理与文件操作</h2><ul>
+<li>异常处理：try&#x2F;except&#x2F;else&#x2F;finally、自定义异常</li>
+<li>上下文管理器：with语句、<strong>enter</strong>&#x2F;<strong>exit</strong></li>
+<li>文件操作：读写文本&#x2F;二进制文件、os&#x2F;pathlib模块</li>
+<li>序列化：json、pickle、csv模块</li>
+</ul>
+<h2 id="六、常用标准库"><a href="#六、常用标准库" class="headerlink" title="六、常用标准库"></a>六、常用标准库</h2><ul>
+<li>系统相关：os、sys、shutil、subprocess</li>
+<li>时间日期：datetime、time、calendar</li>
+<li>数据处理：collections、itertools、functools</li>
+<li>并发基础：threading、multiprocessing、concurrent.futures</li>
+<li>网络基础：socket、urllib、http.client</li>
+<li>日志：logging模块</li>
+</ul>
+<h2 id="七、异步编程"><a href="#七、异步编程" class="headerlink" title="七、异步编程"></a>七、异步编程</h2><ul>
+<li>协程基础：async&#x2F;await语法</li>
+<li>事件循环：asyncio模块</li>
+<li>异步IO：aiohttp、aiofiles</li>
+<li>并发模型对比：多线程 vs 多进程 vs 协程</li>
+</ul>
+<h2 id="八、常用第三方库"><a href="#八、常用第三方库" class="headerlink" title="八、常用第三方库"></a>八、常用第三方库</h2><table>
+<thead>
+<tr>
+<th align="left">方向</th>
+<th align="left">常用库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数据处理</td>
+<td align="left">NumPy、Pandas</td>
+</tr>
+<tr>
+<td align="left">数据可视化</td>
+<td align="left">Matplotlib、Seaborn、Plotly</td>
+</tr>
+<tr>
+<td align="left">Web开发</td>
+<td align="left">Flask、FastAPI、Django</td>
+</tr>
+<tr>
+<td align="left">爬虫</td>
+<td align="left">Requests、BeautifulSoup、Scrapy</td>
+</tr>
+<tr>
+<td align="left">测试</td>
+<td align="left">pytest、unittest、mock</td>
+</tr>
+<tr>
+<td align="left">机器学习</td>
+<td align="left">Scikit-learn、PyTorch、TensorFlow</td>
+</tr>
+<tr>
+<td align="left">数据库</td>
+<td align="left">SQLAlchemy、pymysql、redis-py</td>
+</tr>
+</tbody></table>
+<h2 id="九、工程化与最佳实践"><a href="#九、工程化与最佳实践" class="headerlink" title="九、工程化与最佳实践"></a>九、工程化与最佳实践</h2><ul>
+<li>代码规范：PEP8、类型注解（typing）、mypy</li>
+<li>包管理：poetry、pip-tools、requirements.txt</li>
+<li>测试：单元测试、集成测试、TDD</li>
+<li>调试：pdb、ipdb、VSCode调试器</li>
+<li>性能优化：cProfile、line_profiler、Cython</li>
+<li>设计模式：单例、工厂、观察者、策略模式</li>
+<li>文档：docstring、Sphinx</li>
+</ul>
+<h2 id="十、进阶专项方向（选择一个深入）"><a href="#十、进阶专项方向（选择一个深入）" class="headerlink" title="十、进阶专项方向（选择一个深入）"></a>十、进阶专项方向（选择一个深入）</h2><p>Web后端开发    →  FastAPI &#x2F; Django + 数据库 + 部署<br>数据分析       →  Pandas + Matplotlib + Jupyter<br>机器学习&#x2F;AI    →  NumPy + Scikit-learn + PyTorch<br>爬虫与自动化   →  Scrapy + Playwright + 反爬策略<br>运维&#x2F;脚本      →  Fabric + Ansible + Shell交互</p>
+]]></content>
       <categories>
-          
-          <category> 英语 </category>
-          
+        <category>python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 英语语法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【网站收藏】电子书网站推荐</title>
-      <link href="/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/"/>
-      <url>/2025/07/09/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%94%B5%E5%AD%90%E4%B9%A6%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/</url>
-      
-        <content type="html"><![CDATA[<ul><li>zlibrary<ul><li><a href="https://zh.zlibrary1.ru/">https://zh.zlibrary1.ru/</a></li></ul></li></ul>]]></content>
-      
-      
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【命理】天干地支</title>
+    <url>/2026/04/29/%E5%91%BD%E7%90%86/%E5%A4%A9%E5%B9%B2%E5%9C%B0%E6%94%AF/</url>
+    <content><![CDATA[<p>李虚中、徐子平创立算命术以后，算命的都少不了要和天干地支打交道，否则便寸步难行。</p>
+<p>“天干地支”，简称“干支”，又称“干枝”。前人有云：“夫干，犹木之干，强而为阳；支，犹木之枝，弱而为阴。”可见称为干支的原始用意。</p>
+<p>天干的数目有十位，它们的依次顺序是：甲、乙、丙、丁、戊、己、庚、辛、壬、癸。</p>
+<p>地支的数目有十二位，它们的依次顺序是：子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥。</p>
+]]></content>
       <categories>
-          
-          <category> 网站收藏 </category>
-          
+        <category>命理</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 网站收藏 </tag>
-            
-            <tag> 电子书 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【英语】动词时态的基本形式</title>
-      <link href="/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/"/>
-      <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%8A%A8%E8%AF%8D%E6%97%B6%E6%80%81/</url>
-      
-        <content type="html"><![CDATA[<h2 id="16种时态的基本形式"><a href="#16种时态的基本形式" class="headerlink" title="16种时态的基本形式"></a>16种时态的基本形式</h2><table><thead><tr><th></th><th>一般时态</th><th>进行时态</th><th>完成时态</th><th>完成进行时态</th></tr></thead><tbody><tr><td>现在</td><td></td><td></td><td></td><td></td></tr><tr><td>过去</td><td></td><td></td><td></td><td></td></tr><tr><td>将来</td><td></td><td></td><td></td><td></td></tr><tr><td>过去将来</td><td></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
-      
-      
+      <tags>
+        <tag>命理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【AI】AI大模型学习大纲</title>
+    <url>/2026/04/29/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="一、数学基础"><a href="#一、数学基础" class="headerlink" title="一、数学基础"></a>一、数学基础</h2><ul>
+<li>线性代数：矩阵运算、特征值分解、SVD</li>
+<li>概率论与统计：贝叶斯定理、概率分布、最大似然估计</li>
+<li>微积分与优化：梯度、链式法则、凸优化</li>
+<li>信息论：熵、KL散度、互信息</li>
+<li>推荐书籍：<br>《线性代数》— 吉尔伯特·斯特朗<br>《概率论与数理统计》— 陈希孺<br>《凸优化》— Boyd &amp; Vandenberghe（免费PDF）<br>《信息论基础》— Cover &amp; Thomas</li>
+</ul>
+]]></content>
       <categories>
-          
-          <category> 英语 </category>
-          
+        <category>AI</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 英语语法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【英语】名词用法</title>
-      <link href="/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/"/>
-      <url>/2025/07/09/lang/english/%E8%AF%AD%E6%B3%95/%E5%90%8D%E8%AF%8D%E7%94%A8%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python魔术方法详解</title>
+    <url>/2026/04/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/Python%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="一、str-—-用户友好的字符串表示"><a href="#一、str-—-用户友好的字符串表示" class="headerlink" title="一、str — 用户友好的字符串表示"></a>一、<strong>str</strong> — 用户友好的字符串表示</h2><p><strong>触发时机</strong></p>
+<ul>
+<li>调用 str(obj) 时</li>
+<li>使用 print(obj) 时</li>
+<li>使用 f”{obj}” 或 “{}”.format(obj) 时</li>
+</ul>
+<p><strong>用途</strong><br>给普通用户看的可读字符串，注重可读性</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>)</span><br><span class="line"><span class="built_in">print</span>(p)          <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>(p))     <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;p&#125;</span>&quot;</span>)     <span class="comment"># 输出: 姓名: 张三, 年龄: 25</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="二、repr-—-开发者调试用的字符串表示"><a href="#二、repr-—-开发者调试用的字符串表示" class="headerlink" title="二、repr — 开发者调试用的字符串表示"></a>二、<strong>repr</strong> — 开发者调试用的字符串表示</h2><p><strong>触发时机</strong></p>
+<ul>
+<li>在交互式解释器中直接输入对象时</li>
+<li>调用 repr(obj) 时</li>
+<li>未定义 <strong>str</strong> 时，print() 会回退使用 <strong>repr</strong></li>
+<li>f”{obj!r}” 时</li>
+</ul>
+<p><strong>用途</strong><br>给开发者看的字符串，注重准确性，理想情况下可以用来重建对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Person(name=<span class="subst">&#123;self.name!r&#125;</span>, age=<span class="subst">&#123;self.age!r&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>)</span><br><span class="line"><span class="built_in">repr</span>(p)     <span class="comment"># 输出: Person(name=&#x27;张三&#x27;, age=25)</span></span><br><span class="line"><span class="built_in">print</span>(p)    <span class="comment"># 优先用 __str__: 姓名: 张三, 年龄: 25</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表中的对象使用 __repr__</span></span><br><span class="line"><span class="built_in">print</span>([p])  <span class="comment"># 输出: [Person(name=&#x27;张三&#x27;, age=25)]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、len-—-定义对象长度"><a href="#三、len-—-定义对象长度" class="headerlink" title="三、len — 定义对象长度"></a>三、<strong>len</strong> — 定义对象长度</h2><p><strong>触发时机</strong></p>
+<ul>
+<li>调用 len(obj) 时</li>
+<li>用于布尔判断时（len &#x3D;&#x3D; 0 则为 False）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Playlist</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.songs = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">self, song</span>):</span><br><span class="line">        <span class="variable language_">self</span>.songs.append(song)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.songs)</span><br><span class="line"></span><br><span class="line">pl = Playlist()</span><br><span class="line">pl.add(<span class="string">&quot;歌曲A&quot;</span>)</span><br><span class="line">pl.add(<span class="string">&quot;歌曲B&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pl))   <span class="comment"># 输出: 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔判断</span></span><br><span class="line"><span class="keyword">if</span> pl:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;播放列表不为空&quot;</span>)  <span class="comment"># 会执行</span></span><br><span class="line"></span><br><span class="line">empty_pl = Playlist()</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> empty_pl:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;播放列表为空&quot;</span>)    <span class="comment"># 会执行</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="四、eq-—-定义相等性判断"><a href="#四、eq-—-定义相等性判断" class="headerlink" title="四、eq — 定义相等性判断"></a>四、<strong>eq</strong> — 定义相等性判断</h2><p><strong>触发时机</strong></p>
+<ul>
+<li>使用 &#x3D;&#x3D; 运算符时</li>
+</ul>
+<p><strong>默认行为</strong><br>未定义时，&#x3D;&#x3D; 比较的是内存地址（同 is）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x</span><br><span class="line">        <span class="variable language_">self</span>.y = y</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__eq__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(other, Point):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NotImplemented</span>  <span class="comment"># 类型不同时返回 NotImplemented</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.x == other.x <span class="keyword">and</span> <span class="variable language_">self</span>.y == other.y</span><br><span class="line"></span><br><span class="line">p1 = Point(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">p2 = Point(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">p3 = Point(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1 == p2)   <span class="comment"># True（值相同）</span></span><br><span class="line"><span class="built_in">print</span>(p1 == p3)   <span class="comment"># False</span></span><br><span class="line"><span class="built_in">print</span>(p1 == <span class="string">&quot;abc&quot;</span>) <span class="comment"># False（NotImplemented 让Python反向尝试）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意：定义 __eq__ 后，__hash__ 自动变为 None</span></span><br><span class="line"><span class="comment"># 对象不能作为字典键或集合元素，需同时定义 __hash__</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="五、其他常用魔术方法速览"><a href="#五、其他常用魔术方法速览" class="headerlink" title="五、其他常用魔术方法速览"></a>五、其他常用魔术方法速览</h2><p><strong>比较运算符系列</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Temperature</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, celsius</span>):</span><br><span class="line">        <span class="variable language_">self</span>.celsius = celsius</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__eq__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius == other.celsius  <span class="comment"># ==</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__ne__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius != other.celsius  <span class="comment"># !=</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__lt__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius &lt;  other.celsius  <span class="comment"># &lt;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__le__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius &lt;= other.celsius  <span class="comment"># &lt;=</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__gt__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius &gt;  other.celsius  <span class="comment"># &gt;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__ge__</span>(<span class="params">self, other</span>):   <span class="keyword">return</span> <span class="variable language_">self</span>.celsius &gt;= other.celsius  <span class="comment"># &gt;=</span></span><br><span class="line"></span><br><span class="line">t1 = Temperature(<span class="number">20</span>)</span><br><span class="line">t2 = Temperature(<span class="number">30</span>)</span><br><span class="line"><span class="built_in">print</span>(t1 &lt; t2)   <span class="comment"># True</span></span><br><span class="line"><span class="built_in">print</span>(t1 &gt; t2)   <span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>技巧：使用 @functools.total_ordering 只需实现 <strong>eq</strong> 和一个比较方法，其余自动推导。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> total_ordering</span><br><span class="line"></span><br><span class="line"><span class="meta">@total_ordering</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Temperature</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, celsius</span>):</span><br><span class="line">        <span class="variable language_">self</span>.celsius = celsius</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__eq__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.celsius == other.celsius</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__lt__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.celsius &lt; other.celsius</span><br><span class="line">    <span class="comment"># __le__, __gt__, __ge__ 自动生成</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>算术运算符系列</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Vector</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x</span><br><span class="line">        <span class="variable language_">self</span>.y = y</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__add__</span>(<span class="params">self, other</span>):          <span class="comment"># v1 + v2</span></span><br><span class="line">        <span class="keyword">return</span> Vector(<span class="variable language_">self</span>.x + other.x, <span class="variable language_">self</span>.y + other.y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__sub__</span>(<span class="params">self, other</span>):          <span class="comment"># v1 - v2</span></span><br><span class="line">        <span class="keyword">return</span> Vector(<span class="variable language_">self</span>.x - other.x, <span class="variable language_">self</span>.y - other.y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__mul__</span>(<span class="params">self, scalar</span>):         <span class="comment"># v * 3</span></span><br><span class="line">        <span class="keyword">return</span> Vector(<span class="variable language_">self</span>.x * scalar, <span class="variable language_">self</span>.y * scalar)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__rmul__</span>(<span class="params">self, scalar</span>):        <span class="comment"># 3 * v (反向)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.__mul__(scalar)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__neg__</span>(<span class="params">self</span>):                 <span class="comment"># -v</span></span><br><span class="line">        <span class="keyword">return</span> Vector(-<span class="variable language_">self</span>.x, -<span class="variable language_">self</span>.y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Vector(<span class="subst">&#123;self.x&#125;</span>, <span class="subst">&#123;self.y&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line">v1 = Vector(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">v2 = Vector(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(v1 + v2)    <span class="comment"># Vector(4, 6)</span></span><br><span class="line"><span class="built_in">print</span>(v1 * <span class="number">3</span>)     <span class="comment"># Vector(3, 6)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">3</span> * v1)     <span class="comment"># Vector(3, 6)</span></span><br><span class="line"><span class="built_in">print</span>(-v1)        <span class="comment"># Vector(-1, -2)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>容器协议系列</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyList</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>._data = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):              <span class="comment"># len(obj)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>._data)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):   <span class="comment"># obj[index]</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>._data[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setitem__</span>(<span class="params">self, index, value</span>):  <span class="comment"># obj[index] = value</span></span><br><span class="line">        <span class="variable language_">self</span>._data[index] = value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__delitem__</span>(<span class="params">self, index</span>):   <span class="comment"># del obj[index]</span></span><br><span class="line">        <span class="keyword">del</span> <span class="variable language_">self</span>._data[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__contains__</span>(<span class="params">self, item</span>):  <span class="comment"># item in obj</span></span><br><span class="line">        <span class="keyword">return</span> item <span class="keyword">in</span> <span class="variable language_">self</span>._data</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):            <span class="comment"># for x in obj</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">iter</span>(<span class="variable language_">self</span>._data)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>生命周期与上下文管理</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DatabaseConnection</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, url</span>):</span><br><span class="line">        <span class="variable language_">self</span>.url = url</span><br><span class="line">        <span class="variable language_">self</span>.conn = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__enter__</span>(<span class="params">self</span>):           <span class="comment"># with 语句进入</span></span><br><span class="line">        <span class="variable language_">self</span>.conn = connect(<span class="variable language_">self</span>.url)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.conn</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):  <span class="comment"># with 语句退出</span></span><br><span class="line">        <span class="variable language_">self</span>.conn.close()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># False = 不吞掉异常</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__del__</span>(<span class="params">self</span>):             <span class="comment"># 对象被垃圾回收时</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.conn:</span><br><span class="line">            <span class="variable language_">self</span>.conn.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line"><span class="keyword">with</span> DatabaseConnection(<span class="string">&quot;db://localhost&quot;</span>) <span class="keyword">as</span> conn:</span><br><span class="line">    conn.query(<span class="string">&quot;SELECT * FROM users&quot;</span>)</span><br><span class="line"><span class="comment"># 自动关闭连接</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong><strong>hash</strong> — 配合 <strong>eq</strong> 使用</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x</span><br><span class="line">        <span class="variable language_">self</span>.y = y</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__eq__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.x == other.x <span class="keyword">and</span> <span class="variable language_">self</span>.y == other.y</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__hash__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 定义了 __eq__ 必须同时定义 __hash__</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hash</span>((<span class="variable language_">self</span>.x, <span class="variable language_">self</span>.y))</span><br><span class="line"></span><br><span class="line">p1 = Point(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">p2 = Point(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可作为字典键和集合元素</span></span><br><span class="line">d = &#123;p1: <span class="string">&quot;point A&quot;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(d[p2])          <span class="comment"># &quot;point A&quot;（p1 == p2，hash相同）</span></span><br><span class="line"></span><br><span class="line">s = &#123;p1, p2&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(s))         <span class="comment"># 1（被视为相同元素）</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、魔术方法总览表"><a href="#六、魔术方法总览表" class="headerlink" title="六、魔术方法总览表"></a>六、魔术方法总览表</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>方法</th>
+<th>触发场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字符串</td>
+<td><strong>str</strong></td>
+<td>print(), str(), f”{}”</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td><strong>repr</strong></td>
+<td>repr(), 交互器, 容器中</td>
+</tr>
+<tr>
+<td>长度</td>
+<td><strong>len</strong></td>
+<td>len(), 布尔判断</td>
+</tr>
+<tr>
+<td>比较</td>
+<td><strong>eq</strong> <strong>lt</strong> <strong>gt</strong></td>
+<td>&#x3D;&#x3D; &lt; &gt;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>核心原则：魔术方法让自定义类与Python内置语法深度集成，是Python鸭子类型思想的核心体现——只要实现了对应的魔术方法，对象就能支持对应的语法和操作。</p>
+</blockquote>
+]]></content>
       <categories>
-          
-          <category> 英语 </category>
-          
+        <category>python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 英语语法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
 </search>
