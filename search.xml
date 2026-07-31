@@ -480,4 +480,30 @@
         <tag>python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>certbot基本用法</title>
+    <url>/2026/07/31/certbot/%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop nginx</span><br><span class="line"><span class="built_in">sudo</span> certbot certonly --standalone -d blog.sososys.com</span><br><span class="line"><span class="built_in">sudo</span> systemctl start nginx</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>证书</category>
+      </categories>
+      <tags>
+        <tag>证书</tag>
+        <tag>certbot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【英语】语法全概览</title>
+    <url>/2026/05/07/lang/english/%E8%AF%AD%E6%B3%95/%E8%AF%AD%E6%B3%95%E5%85%A8%E6%A6%82%E8%A7%88/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>英语</category>
+      </categories>
+      <tags>
+        <tag>英语语法</tag>
+      </tags>
+  </entry>
 </search>
