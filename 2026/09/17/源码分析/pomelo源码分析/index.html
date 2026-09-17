@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.sososys.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="源码： https:&#x2F;&#x2F;github.com&#x2F;NetEase&#x2F;pomelo   定位   维度 说明    名称 Pomelo — fast, scalable game server framework for Node.js   作者 网易（NetEase）   版本 2.2.7（2019）   协议 MIT   核心思想 多进程 + 单线程 分布式架构，约定优于配置   架构  核心技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【源码分析】pomelo源码分析">
+<meta property="og:url" content="http://blog.sososys.com/2026/09/17/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/pomelo%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="颜华达的博客">
+<meta property="og:description" content="源码： https:&#x2F;&#x2F;github.com&#x2F;NetEase&#x2F;pomelo   定位   维度 说明    名称 Pomelo — fast, scalable game server framework for Node.js   作者 网易（NetEase）   版本 2.2.7（2019）   协议 MIT   核心思想 多进程 + 单线程 分布式架构，约定优于配置   架构  核心技术栈">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.sososys.com/assets/2026-09-17-17-29-28-image.png">
+<meta property="article:published_time" content="2026-09-17T09:00:01.000Z">
+<meta property="article:modified_time" content="2026-09-17T09:36:30.468Z">
+<meta property="article:author" content="颜华达">
+<meta property="article:tag" content="游戏引擎">
+<meta property="article:tag" content="源码分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.sososys.com/assets/2026-09-17-17-29-28-image.png">
+
+
+<link rel="canonical" href="http://blog.sososys.com/2026/09/17/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/pomelo%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.sososys.com/2026/09/17/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/pomelo%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/","path":"2026/09/17/源码分析/pomelo源码分析/","title":"【源码分析】pomelo源码分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【源码分析】pomelo源码分析 | 颜华达的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">颜华达的博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="nav-number">1.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">3.</span> <span class="nav-text">核心技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-number">4.</span> <span class="nav-text">创建并运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8-CLI-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">## 常用 CLI 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">## 关键配置文件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">颜华达</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.sososys.com/2026/09/17/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/pomelo%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="颜华达">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="颜华达的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【源码分析】pomelo源码分析 | 颜华达的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【源码分析】pomelo源码分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-09-17 17:00:01 / 修改时间：17:36:30" itemprop="dateCreated datePublished" datetime="2026-09-17T17:00:01+08:00">2026-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">源码分析</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/NetEase/pomelo">源码： https://github.com/NetEase/pomelo</a> </p>
+</blockquote>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>Pomelo — fast, scalable game server framework for Node.js</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>网易（NetEase）</td>
+</tr>
+<tr>
+<td>版本</td>
+<td>2.2.7（2019）</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>核心思想</td>
+<td>多进程 + 单线程 分布式架构，约定优于配置</td>
+</tr>
+</tbody></table>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p> <img src="/../../assets/2026-09-17-17-29-28-image.png"></p>
+<h2 id="核心技术栈"><a href="#核心技术栈" class="headerlink" title="核心技术栈"></a>核心技术栈</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>技术&#x2F;依赖</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行时</td>
+<td>Node.js</td>
+<td>单线程事件驱动</td>
+</tr>
+<tr>
+<td>网络协议</td>
+<td><code>pomelo-protocol</code></td>
+<td>自定义二进制协议</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td><code>pomelo-protobuf</code></td>
+<td>Protobuf 编解码</td>
+</tr>
+<tr>
+<td>压缩</td>
+<td>Dictionary 组件</td>
+<td>路由&#x2F;消息字典压缩</td>
+</tr>
+<tr>
+<td>RPC</td>
+<td><code>pomelo-rpc</code>（MQTT 协议）</td>
+<td>跨进程服务调用</td>
+</tr>
+<tr>
+<td>连接层</td>
+<td>HybridConnector &#x2F; SIO &#x2F; UDP &#x2F; MQTT</td>
+<td>多协议接入</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td><code>ws</code></td>
+<td>原生 WebSocket</td>
+</tr>
+<tr>
+<td>Socket.IO</td>
+<td><code>socket.io</code> 1.7.2</td>
+<td>浏览器长连接</td>
+</tr>
+<tr>
+<td>日志</td>
+<td><code>pomelo-logger</code>（log4js）</td>
+<td>分级日志</td>
+</tr>
+<tr>
+<td>调度</td>
+<td><code>pomelo-scheduler</code></td>
+<td>Cron 定时任务</td>
+</tr>
+<tr>
+<td>管理</td>
+<td><code>pomelo-admin</code></td>
+<td>运维控制台</td>
+</tr>
+<tr>
+<td>模块加载</td>
+<td><code>pomelo-loader</code></td>
+<td>Handler&#x2F;Remote 自动加载</td>
+</tr>
+<tr>
+<td>异步</td>
+<td><code>async</code></td>
+<td>串行&#x2F;并行流程控制</td>
+</tr>
+<tr>
+<td>队列</td>
+<td><code>seq-queue</code></td>
+<td>串行化请求（serial filter）</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td><code>commander</code> + <code>cliff</code></td>
+<td>命令行工具</td>
+</tr>
+</tbody></table>
+<h2 id="创建并运行项目"><a href="#创建并运行项目" class="headerlink" title="创建并运行项目"></a>创建并运行项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 全局安装 CLI</span></span><br><span class="line">npm install pomelo -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 初始化项目（生成 game-server + web-server 模板）</span></span><br><span class="line">pomelo init mygame</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 安装依赖</span></span><br><span class="line"><span class="built_in">cd</span> mygame &amp;&amp; sh npm-install.sh   <span class="comment"># Linux/Mac</span></span><br><span class="line"><span class="comment"># 或 npm-install.bat             # Windows</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 启动游戏服务器</span></span><br><span class="line"><span class="built_in">cd</span> game-server</span><br><span class="line">pomelo start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 启动 Web 静态资源服务器（可选）</span></span><br><span class="line"><span class="built_in">cd</span> ../web-server</span><br><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常用-CLI-命令"><a href="#常用-CLI-命令" class="headerlink" title="## 常用 CLI 命令"></a>## 常用 CLI 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pomelo init [path]</code></td>
+<td>创建新项目</td>
+</tr>
+<tr>
+<td><code>pomelo start</code></td>
+<td>启动全部&#x2F;指定服务器</td>
+</tr>
+<tr>
+<td><code>pomelo start -e production</code></td>
+<td>指定环境</td>
+</tr>
+<tr>
+<td><code>pomelo start -D</code></td>
+<td>后台守护进程</td>
+</tr>
+<tr>
+<td><code>pomelo start -t connector -i connector-server-1</code></td>
+<td>启动指定类型&#x2F;ID</td>
+</tr>
+<tr>
+<td><code>pomelo list</code></td>
+<td>查看在线服务器</td>
+</tr>
+<tr>
+<td><code>pomelo add</code></td>
+<td>动态添加服务器</td>
+</tr>
+<tr>
+<td><code>pomelo stop</code></td>
+<td>停止服务器</td>
+</tr>
+<tr>
+<td><code>pomelo restart</code></td>
+<td>重启服务器</td>
+</tr>
+<tr>
+<td><code>pomelo kill</code></td>
+<td>强制杀进程</td>
+</tr>
+</tbody></table>
+<h2 id="关键配置文件"><a href="#关键配置文件" class="headerlink" title="## 关键配置文件"></a>## 关键配置文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">game-server/</span><br><span class="line">├── app.js                    # 入口：createApp() + configure() + start()</span><br><span class="line">├── config/</span><br><span class="line">│   ├── master.json           # Master 地址（默认 3005）</span><br><span class="line">│   ├── servers.json          # 各类型服务器列表</span><br><span class="line">│   ├── log4js.json           # 日志配置</span><br><span class="line">│   ├── serverProtos.json     # 服务端 Protobuf 定义</span><br><span class="line">│   ├── clientProtos.json     # 客户端 Protobuf 定义</span><br><span class="line">│   └── dictionary.json         # 路由压缩字典</span><br><span class="line">└── app/servers/</span><br><span class="line">    └── connector/</span><br><span class="line">        └── handler/</span><br><span class="line">            └── entryHandler.js  # 路由处理：connector.entryHandler.entry</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/" rel="tag"># 游戏引擎</a>
+              <a href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="tag"># 源码分析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/31/certbot/%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" rel="prev" title="certbot基本用法">
+                  <i class="fa fa-angle-left"></i> certbot基本用法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">颜华达</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

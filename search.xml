@@ -506,4 +506,191 @@
         <tag>英语语法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【源码分析】pomelo源码分析</title>
+    <url>/2026/09/17/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/pomelo%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://github.com/NetEase/pomelo">源码： https://github.com/NetEase/pomelo</a> </p>
+</blockquote>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>Pomelo — fast, scalable game server framework for Node.js</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>网易（NetEase）</td>
+</tr>
+<tr>
+<td>版本</td>
+<td>2.2.7（2019）</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>核心思想</td>
+<td>多进程 + 单线程 分布式架构，约定优于配置</td>
+</tr>
+</tbody></table>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p> <img src="/../../assets/2026-09-17-17-29-28-image.png"></p>
+<h2 id="核心技术栈"><a href="#核心技术栈" class="headerlink" title="核心技术栈"></a>核心技术栈</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>技术&#x2F;依赖</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行时</td>
+<td>Node.js</td>
+<td>单线程事件驱动</td>
+</tr>
+<tr>
+<td>网络协议</td>
+<td><code>pomelo-protocol</code></td>
+<td>自定义二进制协议</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td><code>pomelo-protobuf</code></td>
+<td>Protobuf 编解码</td>
+</tr>
+<tr>
+<td>压缩</td>
+<td>Dictionary 组件</td>
+<td>路由&#x2F;消息字典压缩</td>
+</tr>
+<tr>
+<td>RPC</td>
+<td><code>pomelo-rpc</code>（MQTT 协议）</td>
+<td>跨进程服务调用</td>
+</tr>
+<tr>
+<td>连接层</td>
+<td>HybridConnector &#x2F; SIO &#x2F; UDP &#x2F; MQTT</td>
+<td>多协议接入</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td><code>ws</code></td>
+<td>原生 WebSocket</td>
+</tr>
+<tr>
+<td>Socket.IO</td>
+<td><code>socket.io</code> 1.7.2</td>
+<td>浏览器长连接</td>
+</tr>
+<tr>
+<td>日志</td>
+<td><code>pomelo-logger</code>（log4js）</td>
+<td>分级日志</td>
+</tr>
+<tr>
+<td>调度</td>
+<td><code>pomelo-scheduler</code></td>
+<td>Cron 定时任务</td>
+</tr>
+<tr>
+<td>管理</td>
+<td><code>pomelo-admin</code></td>
+<td>运维控制台</td>
+</tr>
+<tr>
+<td>模块加载</td>
+<td><code>pomelo-loader</code></td>
+<td>Handler&#x2F;Remote 自动加载</td>
+</tr>
+<tr>
+<td>异步</td>
+<td><code>async</code></td>
+<td>串行&#x2F;并行流程控制</td>
+</tr>
+<tr>
+<td>队列</td>
+<td><code>seq-queue</code></td>
+<td>串行化请求（serial filter）</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td><code>commander</code> + <code>cliff</code></td>
+<td>命令行工具</td>
+</tr>
+</tbody></table>
+<h2 id="创建并运行项目"><a href="#创建并运行项目" class="headerlink" title="创建并运行项目"></a>创建并运行项目</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 全局安装 CLI</span></span><br><span class="line">npm install pomelo -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 初始化项目（生成 game-server + web-server 模板）</span></span><br><span class="line">pomelo init mygame</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 安装依赖</span></span><br><span class="line"><span class="built_in">cd</span> mygame &amp;&amp; sh npm-install.sh   <span class="comment"># Linux/Mac</span></span><br><span class="line"><span class="comment"># 或 npm-install.bat             # Windows</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 启动游戏服务器</span></span><br><span class="line"><span class="built_in">cd</span> game-server</span><br><span class="line">pomelo start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 启动 Web 静态资源服务器（可选）</span></span><br><span class="line"><span class="built_in">cd</span> ../web-server</span><br><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常用-CLI-命令"><a href="#常用-CLI-命令" class="headerlink" title="## 常用 CLI 命令"></a>## 常用 CLI 命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pomelo init [path]</code></td>
+<td>创建新项目</td>
+</tr>
+<tr>
+<td><code>pomelo start</code></td>
+<td>启动全部&#x2F;指定服务器</td>
+</tr>
+<tr>
+<td><code>pomelo start -e production</code></td>
+<td>指定环境</td>
+</tr>
+<tr>
+<td><code>pomelo start -D</code></td>
+<td>后台守护进程</td>
+</tr>
+<tr>
+<td><code>pomelo start -t connector -i connector-server-1</code></td>
+<td>启动指定类型&#x2F;ID</td>
+</tr>
+<tr>
+<td><code>pomelo list</code></td>
+<td>查看在线服务器</td>
+</tr>
+<tr>
+<td><code>pomelo add</code></td>
+<td>动态添加服务器</td>
+</tr>
+<tr>
+<td><code>pomelo stop</code></td>
+<td>停止服务器</td>
+</tr>
+<tr>
+<td><code>pomelo restart</code></td>
+<td>重启服务器</td>
+</tr>
+<tr>
+<td><code>pomelo kill</code></td>
+<td>强制杀进程</td>
+</tr>
+</tbody></table>
+<h2 id="关键配置文件"><a href="#关键配置文件" class="headerlink" title="## 关键配置文件"></a>## 关键配置文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">game-server/</span><br><span class="line">├── app.js                    # 入口：createApp() + configure() + start()</span><br><span class="line">├── config/</span><br><span class="line">│   ├── master.json           # Master 地址（默认 3005）</span><br><span class="line">│   ├── servers.json          # 各类型服务器列表</span><br><span class="line">│   ├── log4js.json           # 日志配置</span><br><span class="line">│   ├── serverProtos.json     # 服务端 Protobuf 定义</span><br><span class="line">│   ├── clientProtos.json     # 客户端 Protobuf 定义</span><br><span class="line">│   └── dictionary.json         # 路由压缩字典</span><br><span class="line">└── app/servers/</span><br><span class="line">    └── connector/</span><br><span class="line">        └── handler/</span><br><span class="line">            └── entryHandler.js  # 路由处理：connector.entryHandler.entry</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>源码分析</category>
+      </categories>
+      <tags>
+        <tag>游戏引擎</tag>
+        <tag>源码分析</tag>
+      </tags>
+  </entry>
 </search>
