@@ -683,7 +683,270 @@
 
 
 
-
+<h2 id="源码分析大纲"><a href="#源码分析大纲" class="headerlink" title="源码分析大纲"></a>源码分析大纲</h2><h3 id="第一层：入口与CLI"><a href="#第一层：入口与CLI" class="headerlink" title="第一层：入口与CLI"></a>第一层：入口与CLI</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.1</td>
+<td><code>lib/index.js</code></td>
+<td>导出入口</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td><code>lib/pomelo.js</code></td>
+<td><code>createApp()</code>、组件&#x2F;Filter&#x2F;Connector 懒加载</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td><code>bin/pomelo</code></td>
+<td>CLI：<code>init/start/stop/list/add/restart/kill/masterha</code></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td><code>lib/modules/console.js</code></td>
+<td>项目初始化脚手架逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="第二层：Application核心"><a href="#第二层：Application核心" class="headerlink" title="第二层：Application核心"></a>第二层：Application核心</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2.1</td>
+<td><code>lib/application.js</code></td>
+<td>应用单例、状态机、configure&#x2F;load&#x2F;filter&#x2F;start&#x2F;stop</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td><code>lib/util/appUtil.js</code></td>
+<td>配置加载、默认组件装配、生命周期</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td><code>lib/util/constants.js</code></td>
+<td>路径、关键字、生命周期常量</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td><code>lib/util/pathUtil.js</code></td>
+<td>Handler&#x2F;Remote&#x2F;Cron 路径解析</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td><code>lib/util/moduleUtil.js</code></td>
+<td>Admin 模块注册与加载</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td><code>lib/util/events.js</code></td>
+<td>框架事件定义</td>
+</tr>
+</tbody></table>
+<h3 id="第三层：Master与进程管理"><a href="#第三层：Master与进程管理" class="headerlink" title="第三层：Master与进程管理"></a>第三层：Master与进程管理</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3.1</td>
+<td><code>lib/master/master.js</code></td>
+<td>Master 启动、服务器注册、断线重连、自动重启</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td><code>lib/master/starter.js</code></td>
+<td>fork&#x2F;spawn 子进程、CPU 绑定</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td><code>lib/master/watchdog.js</code></td>
+<td>进程守护</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td><code>lib/components/master.js</code></td>
+<td>Master 组件封装</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td><code>lib/monitor/monitor.js</code></td>
+<td>监控上报</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td><code>lib/components/monitor.js</code></td>
+<td>Monitor 组件</td>
+</tr>
+</tbody></table>
+<h3 id="第四层：网络连接层（Connector）"><a href="#第四层：网络连接层（Connector）" class="headerlink" title="第四层：网络连接层（Connector）"></a>第四层：网络连接层（Connector）</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td><code>lib/components/connector.js</code></td>
+<td>连接组件：握手、Session 绑定、加解密</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td><code>lib/connectors/hybridconnector.js</code></td>
+<td>TCP + WebSocket 混合连接器（默认）</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td><code>lib/connectors/hybrid/switcher.js</code></td>
+<td>协议切换</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td><code>lib/connectors/hybrid/tcpprocessor.js</code></td>
+<td>TCP 处理</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td><code>lib/connectors/hybrid/wsprocessor.js</code></td>
+<td>WebSocket 处理</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td><code>lib/connectors/sioconnector.js</code></td>
+<td>Socket.IO 连接器</td>
+</tr>
+<tr>
+<td>4.7</td>
+<td><code>lib/connectors/udpconnector.js</code></td>
+<td>UDP 连接器</td>
+</tr>
+<tr>
+<td>4.8</td>
+<td><code>lib/connectors/mqttconnector.js</code></td>
+<td>MQTT 连接器</td>
+</tr>
+<tr>
+<td>4.9</td>
+<td><code>lib/connectors/commands/handshake.js</code></td>
+<td>握手协议</td>
+</tr>
+<tr>
+<td>4.10</td>
+<td><code>lib/connectors/commands/heartbeat.js</code></td>
+<td>心跳保活</td>
+</tr>
+<tr>
+<td>4.11</td>
+<td><code>lib/connectors/commands/kick.js</code></td>
+<td>踢人逻辑</td>
+</tr>
+<tr>
+<td>4.12</td>
+<td><code>lib/connectors/common/coder.js</code></td>
+<td>编解码</td>
+</tr>
+</tbody></table>
+<h3 id="第五层：请求处理链路"><a href="#第五层：请求处理链路" class="headerlink" title="第五层：请求处理链路"></a>第五层：请求处理链路</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.1</td>
+<td><code>lib/components/server.js</code></td>
+<td>Server 组件入口</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td><code>lib/server/server.js</code></td>
+<td>消息路由、Filter 链、Handler 分发、Cron</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td><code>lib/common/service/handlerService.js</code></td>
+<td>按 <code>serverType.handler.method</code> 路由</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td><code>lib/common/service/filterService.js</code></td>
+<td>before&#x2F;after 过滤器链</td>
+</tr>
+<tr>
+<td>5.5</td>
+<td><code>lib/filters/handler/timeout.js</code></td>
+<td>请求超时</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td><code>lib/filters/handler/serial.js</code></td>
+<td>同 Session 串行</td>
+</tr>
+<tr>
+<td>5.7</td>
+<td><code>lib/filters/handler/toobusy.js</code></td>
+<td>过载保护</td>
+</tr>
+<tr>
+<td>5.8</td>
+<td><code>lib/filters/handler/time.js</code></td>
+<td>耗时统计</td>
+</tr>
+</tbody></table>
+<h3 id="第六层：Session与连接管理"><a href="#第六层：Session与连接管理" class="headerlink" title="第六层：Session与连接管理"></a>第六层：Session与连接管理</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件</th>
+<th>分析要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6.1</td>
+<td><code>lib/components/session.js</code></td>
+<td>前端 Session</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td><code>lib/components/backendSession.js</code></td>
+<td>后端 Session（跨服共享）</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td><code>lib/components/connection.js</code></td>
+<td>连接管理</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td><code>lib/common/service/sessionService.js</code></td>
+<td>Session CRUD、绑定 uid</td>
+</tr>
+<tr>
+<td>6.5</td>
+<td><code>lib/common/service/connectionService.js</code></td>
+<td>连接池管理</td>
+</tr>
+<tr>
+<td>6.6</td>
+<td><code>lib/common/service/backendSessionService.js</code></td>
+<td>后端 Session 服务</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>源码分析</category>
